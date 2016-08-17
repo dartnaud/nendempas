@@ -1,0 +1,31 @@
+<?php
+// NNP/PlatformBundle/Entity/User.php
+
+namespace NNP\PlatformBundle\Entity;
+
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user")
+ */
+class User extends BaseUser
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $addresse;
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+}

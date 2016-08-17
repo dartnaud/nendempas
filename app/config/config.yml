@@ -8,6 +8,11 @@ imports:
 parameters:
     locale: en
 
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: NNP\PlatformBundle\Entity\User
+
 framework:
     #esi:             ~
     #translator:      { fallbacks: ["%locale%"] }

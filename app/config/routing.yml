@@ -1,0 +1,4 @@
+nnp_platform:
+    resource: "@NNPPlatformBundle/Resources/config/routing.yml"
+    prefix:   /
+

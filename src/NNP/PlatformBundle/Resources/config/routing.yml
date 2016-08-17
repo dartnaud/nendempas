@@ -1,0 +1,3 @@
+nnp_platform_homepage:
+    path:     /
+    defaults: { _controller: NNPPlatformBundle:Homepage:index }

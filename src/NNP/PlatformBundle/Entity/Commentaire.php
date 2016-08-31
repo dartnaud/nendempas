@@ -42,6 +42,21 @@ class Commentaire
      */
     private $statut;
 
+    /**
+     *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\Ndem")
+     *@ORM\JoinColumn(nullable=false)
+     */
+    private $ndem;
+
+    /**
+     *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\User")
+     *@ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    public function __construct(){
+        $this->dateCreation = new \DateTime();
+    }
 
     /**
      * Get id
@@ -84,7 +99,7 @@ class Commentaire
      *
      * @return Commentaire
      */
-    public function setDateCreation($dateCreation)
+    public function setDateCreation(\DateTime $dateCreation)
     {
         $this->dateCreation = $dateCreation;
 
@@ -123,6 +138,49 @@ class Commentaire
     public function getStatut()
     {
         return $this->statut;
+    }
+
+
+    /**
+     * Set ndem
+     *
+     */
+    public function setNdem(Ndem $ndem)
+    {
+        $this->ndem = $ndem;
+
+        return $this;
+    }
+
+    /**
+     * Get ndem
+     *
+     * @return string
+     */
+    public function getNdem()
+    {
+        return $this->ndem;
+    }
+
+     /**
+     * Set user
+     *
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     *
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
 

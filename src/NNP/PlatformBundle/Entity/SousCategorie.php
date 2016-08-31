@@ -28,6 +28,12 @@ class SousCategorie
      */
     private $nom;
 
+    /**
+     *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\Categorie")
+     *@ORM\JoinColumn(nullable=false)
+     */
+    private $categorie;
+
 
     /**
      * Get id
@@ -61,6 +67,27 @@ class SousCategorie
     public function getNom()
     {
         return $this->nom;
+    }
+
+     /**
+     * Set categorie
+     *
+     */
+    public function setCategorie(Categorie $categorie)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return string
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 }
 

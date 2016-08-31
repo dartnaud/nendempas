@@ -2,6 +2,7 @@
 
 namespace NNP\PlatformBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +57,39 @@ class Ndem
      */
     private $statut;
 
+    /**
+     *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\User")
+     *@ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="NNP\PlatformBundle\Entity\Categorie", cascade={"persist"})
+     */
+    private $categories;
+
+
+
+    public function __construct(){
+        $this->dateCreation = new \DateTime();
+        $this->categories = new ArrayCollection();
+    }
+
+
+    public function addCategory(Categorie $categorie)
+    {
+        $this->categorie[] = $categorie;
+    }
+
+    public function removeCategorie(Categorie $categorie)
+    {
+        $this->categories->removeElement($categorie);
+    }
+
+    public function getCategories()
+    {
+        return $this->categories;
+    }
 
     /**
      * Get id
@@ -122,7 +156,7 @@ class Ndem
      *
      * @return Ndem
      */
-    public function setDateCreation($dateCreation)
+    public function setDateCreation(\DateTime $dateCreation)
     {
         $this->dateCreation = $dateCreation;
 
@@ -185,6 +219,27 @@ class Ndem
     public function getStatut()
     {
         return $this->statut;
+    }
+
+    /**
+     * Set user
+     *
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     *
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
 

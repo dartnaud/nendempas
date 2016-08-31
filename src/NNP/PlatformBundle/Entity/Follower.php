@@ -49,6 +49,16 @@ class Follower
      */
     private $statut;
 
+    /**
+     *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\User")
+     *@ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    public function __construct(){
+        $this->dateFollow = new \DateTime();
+    }
+
 
     /**
      * Get id
@@ -154,6 +164,27 @@ class Follower
     public function getStatut()
     {
         return $this->statut;
+    }
+
+    /**
+     * Set user
+     *
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     *
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
 

@@ -69,7 +69,6 @@ class Ndem
     private $categories;
 
 
-
     public function __construct(){
         $this->dateCreation = new \DateTime();
         $this->categories = new ArrayCollection();

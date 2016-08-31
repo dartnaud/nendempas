@@ -186,5 +186,6 @@ class Follower
     {
         return $this->user;
     }
+    
 }
 

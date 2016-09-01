@@ -5,9 +5,16 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% stylesheets 'http://localhost/nendempas/web/bundles/nnpplatform/css/main.css' %}
+          <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block entete %}
+        <div>Logo</div>
+        {% endblock %}
+        {% block body %}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

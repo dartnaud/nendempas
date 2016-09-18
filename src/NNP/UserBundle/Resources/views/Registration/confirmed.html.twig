@@ -1,0 +1,60 @@
+
+{% extends "::base.html.twig" %}
+{% block title %}Homepage{% endblock %}
+{% block body %}
+<div class="container-fluid">
+  <section class="slider">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-5"></div>
+        <div class="col-lg-4 connexion">
+          <div class="newlog">Inscription</div>
+          <div class="loggin">
+
+            {# On affiche les messages flash que définissent les contrôleurs du bundle #}
+            {% for key, messages in app.session.flashbag.all() %}
+              {% for message in messages %}
+                <div class="alert alert-{{ key }}">
+                  {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+              {% endfor %}
+            {% endfor %}
+            {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
+            {% block fos_user_content %}
+                <p>{{ 'Inscription confirmée'|trans({'%username%': user.username}) }}</p>
+                {% if targetUrl %}
+                <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+                {% endif %}
+            {% endblock fos_user_content %}
+
+          </div>
+          <div class="logwith fbk">Consultez les ndems</div>
+          <div class="logwith gml">Accedez à votre espace</div>
+        </div>
+        <div class="col-lg-1"></div>
+      </div>
+    </section>
+</div>
+<div class="container">
+  <section>
+    <div class="row bande-stat">
+      <div class="col-lg-3 stat">
+        <span class="chf">12</span><br/>
+        NDEMS D'AMOUR<br/>abordés
+      </div>
+        <div class="col-lg-3 stat">
+          <span class="chf">30</span><br/>
+          NDEMS DE CARRIERE<br/>abordés
+        </div>
+        <div class="col-lg-3 stat">
+          <span class="chf">120</span><br/>
+          NDEMS DE NJOKA<br/>abordés
+        </div>
+        <div class="col-lg-3 stat">
+          <span class="chf">32</span><br/>
+          NDEMS DE MODE<br/>abordés
+        </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

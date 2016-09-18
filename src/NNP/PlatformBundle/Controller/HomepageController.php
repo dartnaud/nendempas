@@ -12,4 +12,16 @@ class HomepageController extends Controller
     	$content = $this->get('templating')->render('NNPPlatformBundle:Homepage:index.html.twig');
     	return new Response($content);
     }
+
+    public function presentationAction()
+    {
+    	$content = $this->get('templating')->render('NNPPlatformBundle:Homepage:presentation.html.twig');
+    	return new Response($content);
+    }
+
+    public function profilAction()
+    {
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profil.html.twig');
+        return new Response($content);
+    }
 }

@@ -1,3 +1,7 @@
 nnp_platform_homepage:
     path:     /
     defaults: { _controller: NNPPlatformBundle:Homepage:index }
+
+nnp_platform_presentation:
+    path:     /group/qui-sommes-nous
+    defaults: { _controller: NNPPlatformBundle:Homepage:presentation }

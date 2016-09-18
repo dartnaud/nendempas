@@ -20,7 +20,9 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @var string
+     *
+     * @ORM\Column(name="addresse", type="string", length=255, nullable=true)
      */
     protected $addresse;
 
@@ -55,7 +57,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", length=255, nullable=true)
      */
     private $description;
 
@@ -73,17 +75,12 @@ class User extends BaseUser
      */
     private $photo;
 
-    /**
-     *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\Profil")
-     *@ORM\JoinColumn(nullable=false)
-     */
-    private $ndem;
-
 
 
     public function __construct()
     {
         parent::__construct();
+        $this->dateCreation = new \DateTime();
     }
 
      /**

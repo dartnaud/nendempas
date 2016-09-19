@@ -6,10 +6,12 @@
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        {% stylesheets 'http://localhost/nendempas/web/bundles/nnpplatform/css/main.css' %}
+        <link rel="stylesheet" href="{{ asset('bundles/nnpplatform/css/main.css') }}" type="text/css" />
+        {# {% stylesheets "{{ asset('bundles/nnpplatform/css/main.css') }}"  %}
           <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-        {% endstylesheets %}
+        {% endstylesheets %} #}
     </head>
     <body>
         {% block entete %}
@@ -45,10 +47,15 @@
             <header>
                 <div class="row">
                     <div class="col-md-4"><a href="{{ path('nnp_platform_homepage') }}"><img src="{{ asset('bundles/nnpplatform/images/logo.png')}}" width="300px" /></a></div>
-                    <div class="col-md-8"></div>
+                    <div class="col-md-8">
+
+                    </div>
                 </div>
             </header>
         </div>
+        {% endblock %}
+
+        {% block bande %}
         {% endblock %}
 
         {% block body %}
@@ -66,6 +73,7 @@
         
         {% block javascripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         {% endblock %}
     </body>
 </html>

@@ -1,1 +1,26 @@
-<section></section>
+{% extends "::base.html.twig" %}
+
+
+
+{% block bande %}
+<div class="container-fluid">
+	<section class="bande">
+		<div class="row">
+			<div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-6 menu-central">
+            	{% block menu %}
+        		<ul class="nav navbar-nav">
+        			<li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                  	<li><a href="#">CARRIERE</a></li>
+				    <li><a href="#">NJOKA</a></li>
+				    <li><a href="#">AMOUR</a></li>
+				    <li><a href="#">MODE</a></li>
+                </ul>
+                {% endblock %}
+            </div>
+            <div class="col-md-2"></div>
+		</div>
+	</section>
+</div>
+{% endblock %}

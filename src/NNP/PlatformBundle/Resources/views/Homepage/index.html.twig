@@ -1,42 +1,163 @@
 
-{% extends "::base.html.twig" %}
+
+{% extends "NNPPlatformBundle::template.html.twig" %}
 {% block title %}Homepage{% endblock %}
 {% block body %}
+
 <div class="container-fluid">
-	<section class="slider">
-    	<div class="row">
-    		<div class="col-lg-2"></div>
-    		<div class="col-lg-5"></div>
-    		<div class="col-lg-4 connexion">
-    			<div class="logwith fbk">Connect with Facebook</div>
-    			<div class="logwith gml">Connect with Gmail</div>
-    			<div class="loggin"></div>
-    			<div class="newlog">Nouveau membre ? Inscris-toi !</div>
-    		</div>
-    		<div class="col-lg-1"></div>
-    	</div>
-    </section>
-</div>
-<div class="container">
 	<section>
-		<div class="row bande-stat">
-			<div class="col-lg-3 stat">
-				<span class="chf">12</span><br/>
-				NDEMS D'AMOUR<br/>abordés
-			</div>
-    		<div class="col-lg-3 stat">
-    			<span class="chf">30</span><br/>
-    			NDEMS DE CARRIERE<br/>abordés
-    		</div>
-    		<div class="col-lg-3 stat">
-    			<span class="chf">120</span><br/>
-    			NDEMS DE NJOKA<br/>abordés
-    		</div>
-    		<div class="col-lg-3 stat">
-    			<span class="chf">32</span><br/>
-    			NDEMS DE MODE<br/>abordés
-    		</div>
-		</div>
+        <div class="row">
+            <div class="col-md-12 home-1">
+                <div class="bloc">
+                    <div class="categorie">CARRIERE</div>
+                    <div class="liste-ndem">
+                        {% for i in 0..3 %}
+                        <div class="ndem">
+                            <div class="titre">Eric a posté un ndem Vendredi à 18 H</div>
+                            <p>Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec dignitatem ...</p>
+                            <!-- Trigger the modal with a button -->
+                            <div class="info-ndem">
+                                <div class="commentaire">23 commentaires -</div>
+                                <div class="commentaire">3 coachs ont réagis</div>
+                                <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Voir son ndem</button>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title">Posté par Eric, vendredi 14 septembre  - 18h</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                          <p>Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret, Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Réagir au Ndem</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="bloc">
+                    <div class="categorie">NJOKA</div>
+                    <div class="liste-ndem">
+                        {% for i in 0..3 %}
+                        <div class="ndem">
+                            <div class="titre">Eric a posté un ndem Vendredi à 18 H</div>
+                            <p>Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec dignitatem ...</p>
+                            <!-- Trigger the modal with a button -->
+                            <div class="info-ndem">
+                                <div class="commentaire">23 commentaires -</div>
+                                <div class="commentaire">3 coachs ont réagis</div>
+                                <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Voir son ndem</button>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title">Posté par Eric, vendredi 14 septembre  - 18h</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                          <p>Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret, Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Réagir au Ndem</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="bloc">
+                    <div class="categorie">AMOUR</div>
+                    <div class="liste-ndem">
+                        {% for i in 0..3 %}
+                        <div class="ndem">
+                            <div class="titre">Eric a posté un ndem Vendredi à 18 H</div>
+                            <p>Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec dignitatem ...</p>
+                            <!-- Trigger the modal with a button -->
+                            <div class="info-ndem">
+                                <div class="commentaire">23 commentaires -</div>
+                                <div class="commentaire">3 coachs ont réagis</div>
+                                <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Voir son ndem</button>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title">Posté par Eric, vendredi 14 septembre  - 18h</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                          <p>Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret, Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Réagir au Ndem</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="bloc">
+                    <div class="categorie">MODE</div>
+                    <div class="liste-ndem">
+                        {% for i in 0..3 %}
+                        <div class="ndem">
+                            <div class="titre">Eric a posté un ndem Vendredi à 18 H</div>
+                            <p>Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec dignitatem ...</p>
+                            <!-- Trigger the modal with a button -->
+                            <div class="info-ndem">
+                                <div class="commentaire">23 commentaires -</div>
+                                <div class="commentaire">3 coachs ont réagis</div>
+                                <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Voir son ndem</button>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title">Posté par Eric, vendredi 14 septembre  - 18h</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                          <p>Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret, Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Réagir au Ndem</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
 	</section>
 </div>
 {% endblock %}

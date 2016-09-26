@@ -5,6 +5,7 @@ namespace NNP\PlatformBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -22,14 +23,9 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="addresse", type="string", length=255, nullable=true)
-     */
-    protected $addresse;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
+     *
+     
      */
     private $prenom;
 
@@ -55,9 +51,9 @@ class User extends BaseUser
     private $dateCreation;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(name="description", type="text", length=255, nullable=true)
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -72,9 +68,13 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=255, nullable=true)
+     * @Assert\File(
+     *      maxSize = "5M",
+     *      mimeTypes = {"image/jpeg", "image/gif", "image/png", "image/tiff"},
+     *      maxSizeMessage = "The maximum allowed file size is 5MB.",
+     *      mimeTypesMessage = "Only the file types image are allowed.")
      */
     private $photo;
-
 
 
     public function __construct()
@@ -252,24 +252,6 @@ class User extends BaseUser
     }
 
 
-    /**
-     * Set profil
-     *
-     */
-    public function setProfil(Profil $profil)
-    {
-        $this->profil = $profil;
 
-        return $this;
-    }
 
-    /**
-     * Get profil
-     *
-     * @return string
-     */
-    public function getProfil()
-    {
-        return $this->profil;
-    }
 }

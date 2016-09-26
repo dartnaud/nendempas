@@ -5,3 +5,17 @@ nnp_platform_homepage:
 nnp_platform_presentation:
     path:     /group/qui-sommes-nous
     defaults: { _controller: NNPPlatformBundle:Homepage:presentation }
+
+nnp_platform_profil:
+    path:     /mon-profil/{id}
+    defaults:  
+        _controller: NNPPlatformBundle:Homepage:profil 
+    requirements:
+        id: \d+
+
+nnp_platform_editerProfil:
+    path:     /mon-profil/editer/{id}
+    defaults:  
+        _controller: NNPPlatformBundle:Homepage:editerProfil 
+    requirements:
+        id: \d+

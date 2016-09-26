@@ -8,11 +8,15 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    photoprofil_directory: '%kernel.root_dir%/../web/uploads/images/photoProfil'
 
 fos_user:
     db_driver: orm
     firewall_name: main
     user_class: NNP\PlatformBundle\Entity\User
+    registration:
+        form:
+            type: NNP\PlatformBundle\Form\UserType
 
 framework:
     #esi:             ~
@@ -42,6 +46,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    # form_themes:
+    #     - 'bootstrap_3_layout.html.twig'
 
 
 assetic:

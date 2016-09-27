@@ -1,0 +1,525 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 5, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 10, ../sass/main.scss */
+.container {
+  font-family: 'Inconsolata', monospace;
+}
+
+/* line 14, ../sass/main.scss */
+.alignCenter {
+  text-align: center;
+}
+
+/* line 18, ../sass/main.scss */
+.top-header {
+  background-color: #fa4a6b;
+  margin-bottom: 20px;
+  font-family: 'Oswald', sans-serif;
+}
+/* line 25, ../sass/main.scss */
+.top-header .top-menu a {
+  color: #ffffff;
+}
+/* line 27, ../sass/main.scss */
+.top-header .top-menu a:hover {
+  color: #fa4a6b;
+}
+/* line 33, ../sass/main.scss */
+.top-header .reseaux {
+  text-align: right;
+  color: #ffffff;
+}
+/* line 36, ../sass/main.scss */
+.top-header .reseaux .icon {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-left: 8px;
+}
+/* line 43, ../sass/main.scss */
+.top-header .reseaux .info-user {
+  display: inline-block;
+}
+/* line 47, ../sass/main.scss */
+.top-header .reseaux .info-user .nav li {
+  color: #ffffff;
+}
+/* line 49, ../sass/main.scss */
+.top-header .reseaux .info-user .nav li .caret {
+  margin-left: 20px;
+  zoom: document;
+}
+/* line 53, ../sass/main.scss */
+.top-header .reseaux .info-user .nav li.open {
+  background-color: #fa4a6b;
+}
+/* line 55, ../sass/main.scss */
+.top-header .reseaux .info-user .nav li.open a {
+  color: #fa4a6b;
+}
+/* line 58, ../sass/main.scss */
+.top-header .reseaux .info-user .nav li.open ul {
+  background-color: #7b7b7b;
+}
+/* line 61, ../sass/main.scss */
+.top-header .reseaux .info-user .nav li.open ul li a {
+  color: #ffffff;
+}
+/* line 63, ../sass/main.scss */
+.top-header .reseaux .info-user .nav li.open ul li a:hover {
+  color: #fa4a6b;
+}
+/* line 72, ../sass/main.scss */
+.top-header .reseaux .info-user .nav li a {
+  color: #ffffff;
+}
+/* line 74, ../sass/main.scss */
+.top-header .reseaux .info-user .nav li a:hover {
+  color: #fa4a6b;
+}
+
+/* line 84, ../sass/main.scss */
+.bande {
+  background-color: #fa4a6b;
+  -moz-box-shadow: 0px 4px 9px 0px #656565;
+  -webkit-box-shadow: 0px 4px 9px 0px #656565;
+  -o-box-shadow: 0px 4px 9px 0px #656565;
+  box-shadow: 0px 4px 9px 0px #656565;
+}
+/* line 87, ../sass/main.scss */
+.bande .menu-central {
+  text-align: right;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+}
+/* line 92, ../sass/main.scss */
+.bande .menu-central a {
+  color: #ffffff;
+}
+/* line 94, ../sass/main.scss */
+.bande .menu-central a:hover {
+  color: #fa4a6b;
+}
+/* line 99, ../sass/main.scss */
+.bande .menu-central .glyphicon {
+  color: #ffffff;
+}
+/* line 101, ../sass/main.scss */
+.bande .menu-central .glyphicon:hover {
+  color: #fa4a6b;
+}
+
+/* line 109, ../sass/main.scss */
+.slider {
+  background-image: url("http://localhost/nendempas/web/bundles/nnpplatform/images/banniere1.jpg");
+  width: 100%;
+  height: 500px;
+  -moz-box-shadow: 0px 4px 9px 0px #656565;
+  -webkit-box-shadow: 0px 4px 9px 0px #656565;
+  -o-box-shadow: 0px 4px 9px 0px #656565;
+  box-shadow: 0px 4px 9px 0px #656565;
+}
+/* line 121, ../sass/main.scss */
+.slider .connexion {
+  width: 480px;
+  background-color: rgba(250, 74, 107, 0.7);
+  margin-top: 130px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+/* line 129, ../sass/main.scss */
+.slider .connexion .logwith {
+  width: 42%;
+  margin-left: 5%;
+  border-radius: 5px;
+  color: #ffffff;
+  text-align: center;
+  float: left;
+  padding: 10px;
+  margin-top: 10px;
+}
+/* line 138, ../sass/main.scss */
+.slider .connexion .logwith.fbk {
+  background-color: #3B5998;
+}
+/* line 141, ../sass/main.scss */
+.slider .connexion .logwith.gml {
+  background-color: #DF4A32;
+}
+/* line 146, ../sass/main.scss */
+.slider .connexion .loggin {
+  width: 89%;
+  float: left;
+  margin-left: 5%;
+  background-color: #ffffff;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 15px;
+}
+/* line 156, ../sass/main.scss */
+.slider .connexion .loggin label {
+  width: 45%;
+  padding-bottom: 7px;
+  padding-top: 7px;
+}
+/* line 162, ../sass/main.scss */
+.slider .connexion .loggin input {
+  background-color: #e3e1e1;
+  border: 1px solid #adadad;
+  padding: 5px;
+  width: 50%;
+}
+/* line 169, ../sass/main.scss */
+.slider .connexion .loggin input[type=submit] {
+  margin-left: 50%;
+  margin-top: 10px;
+  background-color: #3B5998;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  padding: 6px;
+  color: #ffffff;
+  border-radius: 3px solid #40affc;
+}
+/* line 183, ../sass/main.scss */
+.slider .connexion .loggin #fos_user_registration_form div {
+  margin-bottom: 5px;
+}
+/* line 187, ../sass/main.scss */
+.slider .connexion .loggin #fos_user_registration_form input {
+  width: 55%;
+  background-color: #e3e1e1;
+  border: 1px solid #adadad;
+}
+/* line 195, ../sass/main.scss */
+.slider .connexion .newlog {
+  width: 89%;
+  float: left;
+  margin-left: 5%;
+  background-color: #40affc;
+  margin-top: 10px;
+  text-align: center;
+  color: #ffffff;
+  padding: 10px;
+  font-size: 18px;
+}
+/* line 206, ../sass/main.scss */
+.slider .connexion .newlog a {
+  color: #ffffff;
+}
+/* line 208, ../sass/main.scss */
+.slider .connexion .newlog a:hover {
+  color: #ffffff;
+}
+
+/* line 217, ../sass/main.scss */
+.home-1 {
+  margin-top: 20px;
+}
+/* line 219, ../sass/main.scss */
+.home-1 .bloc {
+  float: left;
+  padding: 10px;
+  width: 23%;
+  margin-left: 20px;
+  -moz-box-shadow: 0px 4px 9px 0px #656565;
+  -webkit-box-shadow: 0px 4px 9px 0px #656565;
+  -o-box-shadow: 0px 4px 9px 0px #656565;
+  box-shadow: 0px 4px 9px 0px #656565;
+}
+/* line 227, ../sass/main.scss */
+.home-1 .bloc .categorie {
+  padding: 10px;
+  text-align: left;
+  font-family: 'Oswald', sans-serif;
+  font-size: 25px;
+  background-color: #e3e1e1;
+  color: #fa4a6b;
+}
+/* line 236, ../sass/main.scss */
+.home-1 .bloc .liste-ndem {
+  padding: 10px;
+}
+/* line 238, ../sass/main.scss */
+.home-1 .bloc .liste-ndem .ndem {
+  padding: 10px;
+}
+/* line 242, ../sass/main.scss */
+.home-1 .bloc .liste-ndem .ndem .titre {
+  background-color: #5BC0DE;
+  padding: 5px;
+  color: #ffffff;
+  font-family: 'Baloo Bhaina', cursive;
+  padding-top: 13px;
+}
+/* line 250, ../sass/main.scss */
+.home-1 .bloc .liste-ndem .ndem p {
+  padding: 5px;
+  border: 2px solid #5BC0DE;
+}
+/* line 255, ../sass/main.scss */
+.home-1 .bloc .liste-ndem .ndem .info-ndem {
+  text-align: right;
+  background-color: #e3e1e1;
+}
+/* line 258, ../sass/main.scss */
+.home-1 .bloc .liste-ndem .ndem .info-ndem .commentaire {
+  font-style: italic;
+  margin-right: 5px;
+  display: inline-block;
+  color: #fa4a6b;
+}
+
+/* line 271, ../sass/main.scss */
+.profil .sidebar {
+  background-color: #7b7b7b;
+  padding: 20px;
+  color: #ffffff;
+  line-height: 24px;
+  font-family: 'Oswald', sans-serif;
+  -moz-box-shadow: 0px 4px 9px 0px #656565;
+  -webkit-box-shadow: 0px 4px 9px 0px #656565;
+  -o-box-shadow: 0px 4px 9px 0px #656565;
+  box-shadow: 0px 4px 9px 0px #656565;
+}
+/* line 279, ../sass/main.scss */
+.profil .sidebar p {
+  margin-bottom: 10px;
+}
+/* line 283, ../sass/main.scss */
+.profil .sidebar button {
+  padding: 10px;
+  width: 100%;
+  background-color: #fa4a6b;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+/* line 294, ../sass/main.scss */
+.profil .sidebar h1 {
+  color: #fa4a6b;
+  font-size: 18px;
+  background-color: #adadad;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+/* line 305, ../sass/main.scss */
+.profil .sidebar .identite {
+  margin: 10px 0;
+  color: #ffffff;
+  font-size: 20px;
+}
+/* line 309, ../sass/main.scss */
+.profil .sidebar .identite .nom {
+  margin-bottom: 10px;
+  font-weight: bold;
+  background-color: #ffffff;
+  padding: 10px;
+  color: #000000;
+}
+/* line 317, ../sass/main.scss */
+.profil .sidebar .identite .description {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-align: justify;
+}
+/* line 325, ../sass/main.scss */
+.profil .sidebar .info p {
+  margin-top: 10px;
+  color: #fa4a6b;
+  font-size: 18px;
+  background-color: #e3e1e1;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+/* line 333, ../sass/main.scss */
+.profil .sidebar .info p .chiffre {
+  margin-right: 10px;
+}
+/* line 340, ../sass/main.scss */
+.profil .center {
+  background-color: #ffffff;
+  padding: 20px;
+  -moz-box-shadow: 0px 4px 9px 0px #656565;
+  -webkit-box-shadow: 0px 4px 9px 0px #656565;
+  -o-box-shadow: 0px 4px 9px 0px #656565;
+  box-shadow: 0px 4px 9px 0px #656565;
+}
+/* line 344, ../sass/main.scss */
+.profil .center h1 {
+  padding: 10px;
+  text-align: left;
+  font-family: 'Oswald', sans-serif;
+  font-size: 25px;
+  background-color: #e3e1e1;
+  color: #fa4a6b;
+  margin-bottom: 20px;
+}
+/* line 354, ../sass/main.scss */
+.profil .center .divider {
+  height: 2px;
+  width: 100%;
+  background-color: #000000;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+/* line 362, ../sass/main.scss */
+.profil .center .bloc {
+  display: inline-block;
+  width: 45%;
+}
+/* line 365, ../sass/main.scss */
+.profil .center .bloc p {
+  margin-bottom: 10px;
+}
+/* line 367, ../sass/main.scss */
+.profil .center .bloc p .chiffre {
+  margin-right: 10px;
+}
+/* line 374, ../sass/main.scss */
+.profil .center .follower img {
+  margin-right: 10px;
+}
+
+/* line 381, ../sass/main.scss */
+.bande-stat {
+  margin-top: 50px;
+}
+/* line 383, ../sass/main.scss */
+.bande-stat .stat {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  font-size: 25px;
+}
+/* line 389, ../sass/main.scss */
+.bande-stat .stat .chf {
+  color: #fa4a6b;
+  font-size: 45px;
+}
+
+/* line 396, ../sass/main.scss */
+.footer {
+  background-color: #000000;
+  padding: 10px;
+  margin-top: 40px;
+  color: #adadad;
+  margin-bottom: 0;
+}
+
+/* line 405, ../sass/main.scss */
+#app_user_registration {
+  padding: 20px;
+  font-family: 'Inconsolata', monospace;
+  /* & :nth-child(even){
+    background-color: #dcdcdc;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }  */
+}
+/* line 408, ../sass/main.scss */
+#app_user_registration div {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+/* line 411, ../sass/main.scss */
+#app_user_registration div label {
+  width: 30%;
+}
+/* line 416, ../sass/main.scss */
+#app_user_registration div input {
+  width: 65%;
+  padding: 10px;
+  -moz-box-shadow: 0px 4px 9px 0px #e3e1e1;
+  -webkit-box-shadow: 0px 4px 9px 0px #e3e1e1;
+  -o-box-shadow: 0px 4px 9px 0px #e3e1e1;
+  box-shadow: 0px 4px 9px 0px #e3e1e1;
+}
+/* line 422, ../sass/main.scss */
+#app_user_registration div textarea {
+  width: 65%;
+  height: 200px;
+  padding: 10px;
+  vertical-align: top;
+}
+/* line 429, ../sass/main.scss */
+#app_user_registration div button {
+  padding: 10px;
+  width: 100%;
+  background-color: #fa4a6b;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+  margin-bottom: 10px;
+}

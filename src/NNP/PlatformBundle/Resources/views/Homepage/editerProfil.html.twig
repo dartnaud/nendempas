@@ -30,7 +30,7 @@
 				<div class="divider"></div>
 				<div class="liens">
 					<button>Voir tous mes sujets</button>
-					<button>Créer un nouveau sujet</button>
+					<button onclick="location.href='{{ path('nnp_platform_creerNdem') }}';">Créer un nouveau sujet</button>
 					<button onclick="location.href='{{ path('nnp_platform_editerProfil', {'id': app.user.id }) }}';">Modifier mon profil</button>
 				</div>
 				

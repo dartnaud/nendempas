@@ -3,8 +3,10 @@
 namespace NNP\PlatformBundle\Controller;
 
 use NNP\PlatformBundle\Entity\User ;
+use NNP\PlatformBundle\Entity\Ndem ;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use NNP\PlatformBundle\Form\UserType ;
+use NNP\PlatformBundle\Form\NdemType ;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -40,7 +42,7 @@ class HomepageController extends Controller
                 ->getManager()
                 ->getRepository('NNPPlatformBundle:User')
                 ->find($id);
-;
+
         $form = $this->get('form.factory')->create(UserType::class,$user);
             //->add('lastname', 'text', array('label' => 'Identifiant','data' => $user->getLastname()));
 
@@ -69,6 +71,15 @@ class HomepageController extends Controller
         }
 
         $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:editerProfil.html.twig', array('id'=>$id, 'form' => $form->createView()));
+        return new Response($content);
+    }
+
+    public function creerNdemAction(Request $request)
+    {
+        $ndem = new Ndem();
+        $form = $this->get('form.factory')->create(NdemType::class, $ndem);
+
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:creerNdem.html.twig', array('form'=>$form->createView()));
         return new Response($content);
     }
 }

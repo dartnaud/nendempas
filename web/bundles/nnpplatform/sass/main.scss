@@ -1,0 +1,446 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "_variables";
+@import "_mixins";
+
+.container{
+	font-family: 'Inconsolata', monospace;
+}
+
+.alignCenter{
+	text-align: center;
+}
+
+.top-header{
+	background-color: $bordeau;
+	margin-bottom: 20px;
+	//font-family: 'Baloo Bhaina', cursive;
+	font-family: 'Oswald', sans-serif;
+	.top-menu{
+
+		a{
+			color: $white;
+			&:hover{
+				color: $bordeau;
+			}
+		}
+	}
+
+	.reseaux{
+		text-align: right;
+		color: $white;
+		.icon{
+			width: 30px;
+			height: 30px;
+			//background-color:$gris;
+			display: inline-block;
+			margin-left: 8px;
+		}
+		.info-user{
+			display: inline-block;
+			
+			 
+			.nav li{
+				color: $white;
+				.caret{
+					margin-left: 20px;
+    				zoom: document;
+				}
+				&.open{
+					background-color: $bordeau;
+					a{
+						color: $bordeau;
+					}
+					ul{
+						background-color: $fondProfil;
+						li{
+							a{
+								color: $white;
+								&:hover{
+									color: $bordeau;
+								}
+							}
+						}
+					}
+
+				}
+				
+				a{
+				color: $white;
+					&:hover{
+						color: $bordeau;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+.bande{
+	background-color: $bordeau;
+	@include ombrage($couleurOmbre);
+	.menu-central{
+		text-align: right;
+		//font-family: 'Baloo Bhaina', cursive;
+		font-family: 'Oswald', sans-serif;
+		font-size: 20px;
+		a{
+			color: $white;
+			&:hover{
+				color: $bordeau;
+			}
+		}
+
+		.glyphicon{
+			color: $white;
+			&:hover{
+				color: $bordeau;
+			}
+		}
+	}
+
+}
+
+.slider{
+	//background-color: $bordeau;
+	background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/banniere1.jpg');
+	width: 100%;
+	height: 500px;
+	//border-top: 5px solid $bordeau;
+	//border-bottom: 5px solid $bordeau;
+	@include ombrage($couleurOmbre);
+		
+	.inscription{
+
+	}
+	.connexion{
+		width: 480px;
+		//background-color: $bordeau;
+		background-color: rgba(250, 74, 107, 0.70); 
+		margin-top: 130px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+
+		.logwith{
+			width: 42%;
+			margin-left: 5%;
+			border-radius: 5px;
+			color: $white;
+			text-align: center;
+			float: left;
+			padding: 10px;
+			margin-top: 10px;
+			&.fbk{
+				background-color: $facebook;
+			}
+			&.gml{
+				background-color: $twitter;
+			}
+		}
+
+		.loggin{
+			width: 89%;
+			//height: 180px;
+			float: left;
+			margin-left: 5%;
+			background-color: $white;
+			margin-top: 10px;
+			border-radius: 5px;
+			padding: 15px;
+
+			label{
+				width: 45%;
+				padding-bottom: 7px;
+				padding-top: 7px;
+			}
+
+			input{
+				background-color: $grisClair;
+				border: 1px solid $gris;
+				padding: 5px;
+				width: 50%;
+			}
+
+			input[type=submit]{
+				margin-left: 50%;
+				margin-top: 10px;
+				background-color: $facebook;
+				border-radius: 5px;
+				-moz-border-radius: 5px;
+				-o-border-radius: 5px;
+				padding: 6px;
+				color: $white;
+				border-radius: 3px solid $bleuciel;
+			}
+
+			#fos_user_registration_form{
+
+				div{
+					margin-bottom: 5px;
+				}
+
+				input{
+					width: 55%;
+					background-color: $grisClair;
+					border: 1px solid $gris;
+				}
+			}
+		}
+
+		.newlog{
+			width: 89%;
+			float: left;
+			margin-left: 5%;
+			background-color: $bleuciel;
+			margin-top: 10px;
+			text-align: center;
+			color: $white;
+			padding: 10px;
+			font-size: 18px;
+
+			a{
+				color: $white;
+				&:hover{
+					color: $white;
+				}
+			}
+		}
+	}
+
+}
+
+.home-1{
+	margin-top: 20px;
+	.bloc{
+		float: left;
+		padding: 10px;
+		width: 23%;
+		margin-left: 20px;
+		//border: 3px solid $bordeau;
+		@include ombrage($couleurOmbre);
+
+		.categorie{
+			padding: 10px;
+			text-align: left;
+			font-family: 'Oswald', sans-serif;
+			font-size: 25px;
+			background-color: $grisClair;
+			color: $bordeau;
+		}
+
+		.liste-ndem{
+			padding: 10px;
+			.ndem{
+				padding: 10px;
+				//border: 1px solid $bleuBouton;
+
+				.titre{
+					background-color: $bleuBouton;
+					padding: 5px;
+					color: $white;
+					font-family: 'Baloo Bhaina', cursive;
+					padding-top: 13px;
+				}
+
+				p{
+					padding: 5px;
+					border: 2px solid $bleuBouton;
+				}
+
+				.info-ndem{
+					text-align: right;
+					background-color: $grisClair;
+					.commentaire {
+						font-style: italic;
+						margin-right: 5px;
+						display: inline-block;
+						color: $bordeau;
+					}
+				}
+			}
+		}
+	}
+}
+
+.profil { 
+	.sidebar{
+		background-color: $fondProfil;
+		padding: 20px;
+		color: $white;
+		line-height: 24px;
+		font-family: 'Oswald', sans-serif;
+		@include ombrage($couleurOmbre);
+
+		p{
+			margin-bottom: 10px;
+		}
+
+		button{
+			padding: 10px;
+			width: 100%;
+			background-color: $bordeau;
+			color: $white;
+			border-radius: 10px;
+			border: none;
+			margin-bottom: 20px;
+			margin-bottom: 10px;
+		}
+
+		h1{
+			color: $bordeau;
+			font-size: 18px;
+			background-color: $gris;
+			width: 100%;
+			margin-bottom: 10px;
+			padding: 5px;
+		}
+
+		
+
+		.identite {
+			margin: 10px 0;
+			color: $white;
+			font-size: 20px;
+			.nom {
+				margin-bottom: 10px;
+				font-weight: bold;
+				background-color: $white;
+				padding: 10px;
+				color: $black;
+			}
+
+			.description {
+				margin-top: 10px;
+				margin-bottom: 10px;
+				font-size: 16px;
+				text-align: justify;
+			}
+		}
+		.info{
+			p{
+				margin-top: 10px;
+				color: $bordeau;
+				font-size: 18px;
+				background-color: $grisClair;
+				margin-bottom: 10px;
+				padding: 5px;
+
+				.chiffre{
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+
+	.center{
+		background-color: $white;
+		padding: 20px;
+		@include ombrage($couleurOmbre);
+		h1{
+			padding: 10px;
+			text-align: left;
+			font-family: 'Oswald', sans-serif;
+			font-size: 25px;
+			background-color: $grisClair;
+			color: $bordeau;
+			margin-bottom: 20px;
+		}
+
+		.divider{
+			height: 2px;
+			width: 100%;
+			background-color: $black;
+			margin-bottom: 20px;
+			margin-top: 20px;
+		}
+
+		.bloc{
+			display: inline-block;
+			width: 45%;
+			p{
+				margin-bottom: 10px;
+				.chiffre{
+					margin-right: 10px;
+				}
+			}
+		}
+
+		.follower{
+			img{
+				margin-right: 10px;
+			}
+		}
+	}
+}
+
+.bande-stat{
+	margin-top: 50px;
+	.stat{
+		//font-family: 'Baloo Bhaina', cursive;
+		font-family: 'Oswald', sans-serif;
+		text-align: center;
+		font-size: 25px;
+
+		.chf{
+			color: $bordeau;
+			font-size: 45px;
+		}
+	}
+}
+
+.footer {
+	background-color: $black;
+	padding: 10px;
+	margin-top: 40px;
+	color: $gris;
+	margin-bottom: 0;
+}
+
+
+#app_user_registration{
+	padding: 20px;
+	font-family: 'Inconsolata', monospace;
+	div{
+		margin-top: 20px;
+		margin-bottom: 20px;
+		label{
+			width: 30%;
+			
+		}
+
+		input{
+			width: 65%;
+			padding: 10px;
+			@include ombrage($grisClair);
+		}
+
+		textarea{
+			width: 65%;
+			height: 200px;
+			padding: 10px;
+			vertical-align: top;
+		}
+
+		button{
+			padding: 10px;
+			width: 100%;
+			background-color: $bordeau;
+			color: $white;
+			border-radius: 10px;
+			border: none;
+			margin-bottom: 20px;
+			margin-bottom: 10px;
+		}
+	}
+
+	/* & :nth-child(even){
+	  background-color: #dcdcdc;
+	  margin-bottom: 20px;
+	  margin-top: 20px;
+	}  */
+}

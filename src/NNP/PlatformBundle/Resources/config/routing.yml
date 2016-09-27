@@ -19,3 +19,8 @@ nnp_platform_editerProfil:
         _controller: NNPPlatformBundle:Homepage:editerProfil 
     requirements:
         id: \d+
+
+nnp_platform_creerNdem:
+    path:     /mon-profil/cree-ndem
+    defaults:  
+        _controller: NNPPlatformBundle:Homepage:creerNdem

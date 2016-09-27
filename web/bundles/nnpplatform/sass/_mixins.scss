@@ -1,0 +1,7 @@
+@mixin ombrage ($couleur){
+	-moz-box-shadow: 0px 4px 9px 0px $couleur;
+	-webkit-box-shadow: 0px 4px 9px 0px $couleur;
+	-o-box-shadow: 0px 4px 9px 0px $couleur;
+	box-shadow: 0px 4px 9px 0px $couleur;
+}
+

@@ -30,8 +30,8 @@ class UserType extends AbstractType
             ->add('pseudo', TextType::class, array('label'=>'Pseudo (Votre nom sur \'NeNdemPlus\' )'))
             ->add('sexe', ChoiceType::class, array(
                 'choices' => array(
-                    'm' => 'Male',
-                    'f' => 'Female'
+                    'Masculin' => 'm',
+                    'Feminin' => 'f'
                 ),
                 'required'    => false,
                 'empty_data'  => null

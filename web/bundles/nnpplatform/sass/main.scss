@@ -375,6 +375,12 @@
 				margin-right: 10px;
 			}
 		}
+
+		.formulaire{
+			label{
+				width: 30%;
+			}
+		}
 	}
 }
 
@@ -402,7 +408,7 @@
 }
 
 
-#app_user_registration{
+#app_user_registration, .formulaire{
 	padding: 20px;
 	font-family: 'Inconsolata', monospace;
 	div{
@@ -417,6 +423,13 @@
 			width: 65%;
 			padding: 10px;
 			@include ombrage($grisClair);
+		}
+
+		#ndem_categories{
+			width: 65%;
+			height: 150px;
+			padding: 10px;
+			vertical-align: top;
 		}
 
 		textarea{

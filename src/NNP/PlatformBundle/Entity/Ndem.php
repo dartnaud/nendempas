@@ -71,6 +71,7 @@ class Ndem
 
     public function __construct(){
         $this->dateCreation = new \DateTime();
+        $this->dateModification = new \DateTime();
         $this->categories = new ArrayCollection();
     }
 
@@ -179,7 +180,7 @@ class Ndem
      *
      * @return Ndem
      */
-    public function setDateModification($dateModification)
+    public function setDateModification(\DateTime $dateModification)
     {
         $this->dateModification = $dateModification;
 

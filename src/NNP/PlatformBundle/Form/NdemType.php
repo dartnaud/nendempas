@@ -3,6 +3,7 @@
 namespace NNP\PlatformBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -21,13 +22,17 @@ class NdemType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        //$utilisateur= $this->container->get('security.context')->getToken()->getUser()->getId();
         $builder
             ->add('titre', TextType::class)
             ->add('texte', TextareaType::class)
-            ->add('dateCreation', DateTimeType::class)
-            ->add('dateModification', DateTimeType::class)
-            ->add('statut', TextType::class)
-            ->add('user')
+            ->add('statut', ChoiceType::class, array(
+                'choices'  => array(
+                    'activer' => '1',
+                    'desactiver' => '0',
+                ),
+            ))
+            ->add('user', array('data'=>'1' ))
             ->add('categories')
             ->add('save', SubmitType::class, array('label'=>'Enregistrer'));
         ;

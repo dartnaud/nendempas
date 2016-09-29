@@ -6,8 +6,9 @@
         <a data-toggle="dropdown" href="#">{{ app.user.username }}  <b class="caret"></b></a>
         <ul class="dropdown-menu jqueryFadeIn">
             <li><a href="{{ path('nnp_platform_profil', {'id': app.user.id }) }}">Mon profil</a></li>
-            <li><a href="#">Consulter mes ndems</a></li>
-            <li><a href="#">Créer un ndem</a></li>        
+            <li><a href="{{ path('nnp_platform_mesNdems') }}">Consulter mes ndems</a></li>
+            <li><a href="{{ path('nnp_platform_creerNdem') }}">Créer un ndem</a></li>
+            <li><a href="{{ path('nnp_platform_modifierPassword') }}">Modifier le mot de passe</a></li>        
             <li class="divider"></li>
             <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
         </ul>
@@ -31,7 +32,8 @@
 				<div class="liens">
 					<button onclick="location.href='{{ path('nnp_platform_mesNdems') }}';">Voir tous mes sujets</button>
 					<button onclick="location.href='{{ path('nnp_platform_creerNdem') }}';">Créer un nouveau sujet</button>
-					<button onclick="location.href='{{ path('nnp_platform_editerProfil', {'id': app.user.id }) }}';">Modifier mon profil</button>
+					<button onclick="location.href='{{ path('nnp_platform_editerProfil') }}';">Modifier mon profil</button>
+					<button onclick="location.href='{{ path('nnp_platform_modifierPassword') }}';">Modifier le mot de passe</button>
 				</div>
 				
 			</div>

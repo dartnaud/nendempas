@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new NNP\PlatformBundle\NNPPlatformBundle(),
             new NNP\UserBundle\NNPUserBundle(),
-            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

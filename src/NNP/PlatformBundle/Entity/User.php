@@ -48,12 +48,12 @@ class User extends BaseUser
      */
     private $dateCreation;
 
-    /**
-     * @var text
+   /**
+     * @var string
      *
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @ORM\Column(name="texte", type="text")
      */
-    private $description;
+    private $texte;
 
     /**
      * @var string
@@ -178,27 +178,27 @@ class User extends BaseUser
     }
 
     /**
-     * Set description
+     * Set texte
      *
-     * @param string $description
+     * @param string $texte
      *
      * @return User
      */
-    public function setDescription($description)
+    public function setTexte($texte)
     {
-        $this->description = $description;
+        $this->texte = $texte;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get texte
      *
      * @return string
      */
-    public function getDescription()
+    public function getTexte()
     {
-        return $this->description;
+        return $this->texte;
     }
 
     /**

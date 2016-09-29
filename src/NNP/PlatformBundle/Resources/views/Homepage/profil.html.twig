@@ -6,8 +6,9 @@
         <a data-toggle="dropdown" href="#">{{ app.user.username }}  <b class="caret"></b></a>
         <ul class="dropdown-menu jqueryFadeIn">
             <li><a href="{{ path('nnp_platform_profil', {'id': app.user.id }) }}">Mon profil</a></li>
-            <li><a href="#">Consulter mes ndems</a></li>
-            <li><a href="#">Créer un ndem</a></li>        
+            <li><a href="{{ path('nnp_platform_mesNdems') }}">Consulter mes ndems</a></li>
+            <li><a href="{{ path('nnp_platform_creerNdem') }}">Créer un ndem</a></li>
+            <li><a href="{{ path('nnp_platform_modifierPassword') }}">Modifier le mot de passe</a></li>        
             <li class="divider"></li>
             <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
         </ul>
@@ -23,15 +24,15 @@
 					<img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
 				</div>
 				<div class="identite">
-					<div class="nom">{{ user.prenom }} {{ user.nom|upper }}</div>
-					<div class="nom">Pseudo : <b>{{ user.pseudo }}</b></div>
-					
+					<div class="nom">{{ app.user.prenom }} {{ app.user.nom|upper }}</div>
+					<div class="nom">Pseudo : <b>{{ app.user.pseudo }}</b></div>
 				</div>
 				<div class="divider"></div>
 				<div class="liens">
 					<button onclick="location.href='{{ path('nnp_platform_mesNdems') }}';">Voir tous mes sujets</button>
 					<button onclick="location.href='{{ path('nnp_platform_creerNdem') }}';">Créer un nouveau sujet</button>
-					<button onclick="location.href='{{ path('nnp_platform_editerProfil', {'id': app.user.id }) }}';">Modifier mon profil</button>
+					<button onclick="location.href='{{ path('nnp_platform_editerProfil') }}';">Modifier mon profil</button>
+					<button onclick="location.href='{{ path('nnp_platform_modifierPassword') }}">Modifier le mot de passe</button>
 				</div>
 				
 			</div>
@@ -39,14 +40,14 @@
 				<div class="description">
 					<h1>A propos de vous</h1>
 					<p>
-						{{ user.description|raw }}
+						{{ app.user.texte|raw }}
 					</p>
 				</div>
 				<div class="divider"></div>
 				<div class="info">
 					<h1>Vos stats</h1>
 					<div class="bloc">
-						<p><span class="glyphicon glyphicon-pencil chiffre"></span><span class="chiffre">23</span> sujets postés</p>
+						<p><span class="glyphicon glyphicon-pencil chiffre"></span><span class="chiffre"><a href="{{ path('nnp_platform_mesNdems') }}">{{ nbrNdem }}</a></span> sujet(s) posté(s)</p>
 						<p><span class="glyphicon glyphicon-comment chiffre"></span><span class="chiffre">14</span> commentaires</p>
 					</div>
 					<div class="bloc">

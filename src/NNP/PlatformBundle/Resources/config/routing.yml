@@ -7,11 +7,9 @@ nnp_platform_presentation:
     defaults: { _controller: NNPPlatformBundle:Homepage:presentation }
 
 nnp_platform_profil:
-    path:     /mon-profil/{id}
+    path:     /mon-profil
     defaults:  
         _controller: NNPPlatformBundle:Homepage:profil 
-    requirements:
-        id: \d+
 
 nnp_platform_mesNdems:
     path:     /mon-profil/mes-sujets/
@@ -19,11 +17,14 @@ nnp_platform_mesNdems:
         _controller: NNPPlatformBundle:Homepage:mesNdems 
 
 nnp_platform_editerProfil:
-    path:     /mon-profil/editer/{id}
+    path:     /mon-profil/editer/
     defaults:  
         _controller: NNPPlatformBundle:Homepage:editerProfil 
-    requirements:
-        id: \d+
+
+nnp_platform_modifierPassword:
+    path:     /mon-profil/modifier-password
+    defaults:  
+        _controller: NNPPlatformBundle:Homepage:modifierPassword
 
 nnp_platform_creerNdem:
     path:     /mon-profil/cree-ndem

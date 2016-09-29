@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -52,24 +53,31 @@ class HomepageController extends Controller
         return new Response($content);
     }
 
-    public function profilAction($id)
+    public function profilAction()
     {
         $repository = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('NNPPlatformBundle:User');
+                      ->getManager()
+                      ->getRepository('NNPPlatformBundle:User');
 
-        $user = $repository->find($id); //var_dump($user); exit();
+        $repositoryNdem = $this->getDoctrine()
+                          ->getManager()
+                          ->getRepository('NNPPlatformBundle:Ndem')
+        ;
+        $listeNdem = $repositoryNdem->findByUser($this->getUser());
+        $nbrNdem = sizeof($listeNdem);
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profil.html.twig', array('idUser'=>$id, 'user'=>$user));
+        $user = $repository->find($this->getUser()->getId()); //var_dump($user); exit();
+
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profil.html.twig', array('nbrNdem'=>$nbrNdem));
         return new Response($content);
     }
 
-    public function editerProfilAction($id, Request $request)
+    public function editerProfilAction( Request $request)
     {
         $user = $this->getDoctrine()
                 ->getManager()
                 ->getRepository('NNPPlatformBundle:User')
-                ->find($id);
+                ->find($this->getUser()->getId());
 
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $user)
             ->add('prenom', TextType::class)
@@ -84,7 +92,7 @@ class HomepageController extends Controller
                 'empty_data'  => null
             ))
             ->add('photo', FileType::class, array('label' => 'Photo de profil','required'=>false, 'data_class'=>null))
-            ->add('description', CKEditorType::class, array(
+            ->add('texte', CKEditorType::class, array(
                 'config' => array(
                     'uiColor' => '#ffffff',
                     //...
@@ -121,7 +129,7 @@ class HomepageController extends Controller
           return $this->redirectToRoute('nnp_platform_profil', array('id' => $user->getId()));
         }
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:editerProfil.html.twig', array('id'=>$id, 'form' => $form->createView()));
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:editerProfil.html.twig', array('form' => $form->createView()));
         return new Response($content);
     }
 
@@ -166,5 +174,39 @@ class HomepageController extends Controller
 
         $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:creerNdem.html.twig', array('form'=>$form->createView()));
         return new Response($content);
+    }
+
+    public function modifierPasswordAction(Request $request)
+    {
+      $user = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('NNPPlatformBundle:User')
+                ->find($this->getUser()->getId());
+
+      $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $user)
+          ->add('email',     TextType::class)
+          ->add('username',     TextType::class)
+          ->add('plainPassword',     PasswordType::class)
+
+      //$form = $this->get('form.factory')->create(UserType::class,$user)
+             // ->add('username', TextType::class, array('label'=>'Identifiant'))
+              ->add('save', SubmitType::class, array('label'=>'Enregistrer'));
+
+      $form = $formBuilder->getForm();
+
+      if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        $request->getSession()->getFlashBag()->add('notice', 'Infos bien enregistrées.');
+
+        return $this->redirectToRoute('nnp_platform_profil', array('id' => $user->getId()));
+      }
+
+      $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:modifierPassword.html.twig', array('form' => $form->createView()));
+      return new Response($content);
+
     }
 }

@@ -29,34 +29,35 @@
                     </div>
                     <div class="divider"></div>
                     <div class="liens">
-                        <button>Voir tous mes sujets</button>
+                        <button onclick="location.href='{{ path('nnp_platform_mesNdems') }}';">Voir tous mes sujets</button>
                         <button >Créer un nouveau sujet</button>
                         <button onclick="location.href='{{ path('nnp_platform_editerProfil', {'id': app.user.id }) }}';">Modifier mon profil</button>
                     </div>
                     
                 </div>
                 <div class="col-md-8 center"> 
-                    <h1>Nouveau sujet</h1>
                     <div class="formulaire">
-
                         <div class="ndem">
-                          {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                          {{ form(form) }}
+                        </div>
+                        {# <div class="ndem"> #}
+                         {#  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }} #}
 
                           {# Les erreurs générales du formulaire. #}
-                          {{ form_errors(form) }}
+                          {# {{ form_errors(form) }} #}
 
                           {# Génération du label + error + widget pour un champ. #}
-                          {{ form_row(form.titre) }}
+                          {# {{ form_row(form.titre) }}
                           {{ form_row(form.texte) }}
-                          {{ form_row(form.statut) }}
-                          <div>
+                          {{ form_row(form.statut) }} #}
+                          {# <div> #}
                             {# Génération du label. #}
-                            {{ form_label(form.user) }}
+                            {# {{ form_label(form.user) }} #}
                             {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.user) }}
+                           {#  {{ form_errors(form.user) }} #}
                             {# Génération de l'input. #}
-                             {{ form_widget(form.user, {'attr': {'class': 'user','selected': app.user.id }}) }} 
-                            {# <select name="ndem[user]" id="ndem_user">
+                             {# {{ form_widget(form.user, {'attr': {'class': 'user','selected': app.user.id }}) }}  #}
+                          {#   <select name="ndem[user]" id="ndem_user">
                                 {% for key,val in form.user.vars.choices %}
                                     <option value="{{ val.value }}" 
                                             {% if  val.value  ==  app.user.id %}
@@ -65,21 +66,21 @@
                                             {{ val.label | trans }}
                                     </option>
                                 {% endfor %}
-                            </select> #}
-                          </div>
-                          {{ form_row(form.categories) }}
+                            </select>
+                          </div> #}
+                          {# {{ form_row(form.categories) }} #}
 
                           {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
-                          {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                          {# {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }} #}
 
                           {# Génération automatique des champs pas encore écrits.
                              Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
                              et tous les champs cachés (type « hidden »). #}
-                          {{ form_rest(form) }}
+                        {#   {{ form_rest(form) }} #}
 
                           {# Fermeture de la balise <form> du formulaire HTML #}
-                          {{ form_end(form) }}
-                        </div>
+                          {# {{ form_end(form) }}
+                        </div> #}
                     </div>
                 </div>
             </div>

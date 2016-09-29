@@ -25,7 +25,7 @@ class UserType extends AbstractType
         $builder
             //->add('username', TextType::class, array('label'=>'Identifiant'))
             //->add('plainPassword', PasswordType::class, array('label'=>'Mot de passe'))
-            ->add('prenom', TextType::class)
+            /*->add('prenom', TextType::class)
             ->add('nom', TextType::class)
             ->add('pseudo', TextType::class, array('label'=>'Pseudo (Votre nom sur \'NeNdemPlus\' )'))
             ->add('sexe', ChoiceType::class, array(
@@ -38,7 +38,7 @@ class UserType extends AbstractType
             ))
             ->add('photo', FileType::class, array('label' => 'Photo de profil','required'=>false, 'data_class'=>null))
             ->add('description', TextareaType::class)
-            ->add('save', SubmitType::class, array('label'=>'Enregistrer'));
+            ->add('save', SubmitType::class, array('label'=>'Enregistrer'));*/
         ;
     }
 
@@ -64,10 +64,10 @@ class UserType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    /*public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'NNP\PlatformBundle\Entity\User'
         ));
-    }*/
+    }
 }

@@ -22,11 +22,11 @@
             {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
             {% block fos_user_content %}
             {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-			    {{ form_widget(form) }}
-			    <div>
-			        <input type="submit" value="{{ 'Enregister'|trans }}" />
-			    </div>
-			{{ form_end(form) }}
+      			    {{ form_widget(form) }}
+      			    <div>
+      			        <input type="submit" value="{{ 'Enregister'|trans }}" />
+      			    </div>
+      			{{ form_end(form) }}
             {% endblock fos_user_content %}
 
           </div>

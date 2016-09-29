@@ -233,35 +233,37 @@
 			color: $bordeau;
 		}
 
-		.liste-ndem{
-			padding: 10px;
-			.ndem{
-				padding: 10px;
-				//border: 1px solid $bleuBouton;
+		
+	}
+}
 
-				.titre{
-					background-color: $bleuBouton;
-					padding: 5px;
-					color: $white;
-					font-family: 'Baloo Bhaina', cursive;
-					padding-top: 13px;
-				}
+.bloc-ndem{
+	padding: 10px;
+	.ndem{
+		padding: 10px;
+		//border: 1px solid $bleuBouton;
 
-				p{
-					padding: 5px;
-					border: 2px solid $bleuBouton;
-				}
+		.titre{
+			background-color: $bleuBouton;
+			padding: 5px;
+			color: $white;
+			font-family: 'Baloo Bhaina', cursive;
+			padding-top: 13px;
+		}
 
-				.info-ndem{
-					text-align: right;
-					background-color: $grisClair;
-					.commentaire {
-						font-style: italic;
-						margin-right: 5px;
-						display: inline-block;
-						color: $bordeau;
-					}
-				}
+		p{
+			padding: 15px;
+			border: 2px solid $bleuBouton;
+		}
+
+		.info-ndem{
+			text-align: right;
+			background-color: $grisClair;
+			.commentaire {
+				font-style: italic;
+				margin-right: 5px;
+				display: inline-block;
+				color: $bordeau;
 			}
 		}
 	}
@@ -425,7 +427,7 @@
 			@include ombrage($grisClair);
 		}
 
-		#ndem_categories{
+		#form_categories{
 			width: 65%;
 			height: 150px;
 			padding: 10px;

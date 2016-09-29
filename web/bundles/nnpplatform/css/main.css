@@ -303,41 +303,42 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-color: #e3e1e1;
   color: #fa4a6b;
 }
-/* line 236, ../sass/main.scss */
-.home-1 .bloc .liste-ndem {
-  padding: 10px;
-}
-/* line 238, ../sass/main.scss */
-.home-1 .bloc .liste-ndem .ndem {
+
+/* line 240, ../sass/main.scss */
+.bloc-ndem {
   padding: 10px;
 }
 /* line 242, ../sass/main.scss */
-.home-1 .bloc .liste-ndem .ndem .titre {
+.bloc-ndem .ndem {
+  padding: 10px;
+}
+/* line 246, ../sass/main.scss */
+.bloc-ndem .ndem .titre {
   background-color: #5BC0DE;
   padding: 5px;
   color: #ffffff;
   font-family: 'Baloo Bhaina', cursive;
   padding-top: 13px;
 }
-/* line 250, ../sass/main.scss */
-.home-1 .bloc .liste-ndem .ndem p {
-  padding: 5px;
+/* line 254, ../sass/main.scss */
+.bloc-ndem .ndem p {
+  padding: 15px;
   border: 2px solid #5BC0DE;
 }
-/* line 255, ../sass/main.scss */
-.home-1 .bloc .liste-ndem .ndem .info-ndem {
+/* line 259, ../sass/main.scss */
+.bloc-ndem .ndem .info-ndem {
   text-align: right;
   background-color: #e3e1e1;
 }
-/* line 258, ../sass/main.scss */
-.home-1 .bloc .liste-ndem .ndem .info-ndem .commentaire {
+/* line 262, ../sass/main.scss */
+.bloc-ndem .ndem .info-ndem .commentaire {
   font-style: italic;
   margin-right: 5px;
   display: inline-block;
   color: #fa4a6b;
 }
 
-/* line 271, ../sass/main.scss */
+/* line 273, ../sass/main.scss */
 .profil .sidebar {
   background-color: #7b7b7b;
   padding: 20px;
@@ -349,11 +350,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-box-shadow: 0px 4px 9px 0px #656565;
   box-shadow: 0px 4px 9px 0px #656565;
 }
-/* line 279, ../sass/main.scss */
+/* line 281, ../sass/main.scss */
 .profil .sidebar p {
   margin-bottom: 10px;
 }
-/* line 283, ../sass/main.scss */
+/* line 285, ../sass/main.scss */
 .profil .sidebar button {
   padding: 10px;
   width: 100%;
@@ -364,7 +365,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 20px;
   margin-bottom: 10px;
 }
-/* line 294, ../sass/main.scss */
+/* line 296, ../sass/main.scss */
 .profil .sidebar h1 {
   color: #fa4a6b;
   font-size: 18px;
@@ -373,13 +374,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 10px;
   padding: 5px;
 }
-/* line 305, ../sass/main.scss */
+/* line 307, ../sass/main.scss */
 .profil .sidebar .identite {
   margin: 10px 0;
   color: #ffffff;
   font-size: 20px;
 }
-/* line 309, ../sass/main.scss */
+/* line 311, ../sass/main.scss */
 .profil .sidebar .identite .nom {
   margin-bottom: 10px;
   font-weight: bold;
@@ -387,14 +388,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 10px;
   color: #000000;
 }
-/* line 317, ../sass/main.scss */
+/* line 319, ../sass/main.scss */
 .profil .sidebar .identite .description {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 16px;
   text-align: justify;
 }
-/* line 325, ../sass/main.scss */
+/* line 327, ../sass/main.scss */
 .profil .sidebar .info p {
   margin-top: 10px;
   color: #fa4a6b;
@@ -403,11 +404,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 10px;
   padding: 5px;
 }
-/* line 333, ../sass/main.scss */
+/* line 335, ../sass/main.scss */
 .profil .sidebar .info p .chiffre {
   margin-right: 10px;
 }
-/* line 340, ../sass/main.scss */
+/* line 342, ../sass/main.scss */
 .profil .center {
   background-color: #ffffff;
   padding: 20px;
@@ -416,7 +417,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-box-shadow: 0px 4px 9px 0px #656565;
   box-shadow: 0px 4px 9px 0px #656565;
 }
-/* line 344, ../sass/main.scss */
+/* line 346, ../sass/main.scss */
 .profil .center h1 {
   padding: 10px;
   text-align: left;
@@ -426,7 +427,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #fa4a6b;
   margin-bottom: 20px;
 }
-/* line 354, ../sass/main.scss */
+/* line 356, ../sass/main.scss */
 .profil .center .divider {
   height: 2px;
   width: 100%;
@@ -434,45 +435,45 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 20px;
   margin-top: 20px;
 }
-/* line 362, ../sass/main.scss */
+/* line 364, ../sass/main.scss */
 .profil .center .bloc {
   display: inline-block;
   width: 45%;
 }
-/* line 365, ../sass/main.scss */
+/* line 367, ../sass/main.scss */
 .profil .center .bloc p {
   margin-bottom: 10px;
 }
-/* line 367, ../sass/main.scss */
+/* line 369, ../sass/main.scss */
 .profil .center .bloc p .chiffre {
   margin-right: 10px;
 }
-/* line 374, ../sass/main.scss */
+/* line 376, ../sass/main.scss */
 .profil .center .follower img {
   margin-right: 10px;
 }
-/* line 380, ../sass/main.scss */
+/* line 382, ../sass/main.scss */
 .profil .center .formulaire label {
   width: 30%;
 }
 
-/* line 387, ../sass/main.scss */
+/* line 389, ../sass/main.scss */
 .bande-stat {
   margin-top: 50px;
 }
-/* line 389, ../sass/main.scss */
+/* line 391, ../sass/main.scss */
 .bande-stat .stat {
   font-family: 'Oswald', sans-serif;
   text-align: center;
   font-size: 25px;
 }
-/* line 395, ../sass/main.scss */
+/* line 397, ../sass/main.scss */
 .bande-stat .stat .chf {
   color: #fa4a6b;
   font-size: 45px;
 }
 
-/* line 402, ../sass/main.scss */
+/* line 404, ../sass/main.scss */
 .footer {
   background-color: #000000;
   padding: 10px;
@@ -481,7 +482,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 0;
 }
 
-/* line 411, ../sass/main.scss */
+/* line 413, ../sass/main.scss */
 #app_user_registration, .formulaire {
   padding: 20px;
   font-family: 'Inconsolata', monospace;
@@ -491,16 +492,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     margin-top: 20px;
   }  */
 }
-/* line 414, ../sass/main.scss */
+/* line 416, ../sass/main.scss */
 #app_user_registration div, .formulaire div {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 417, ../sass/main.scss */
+/* line 419, ../sass/main.scss */
 #app_user_registration div label, .formulaire div label {
   width: 30%;
 }
-/* line 422, ../sass/main.scss */
+/* line 424, ../sass/main.scss */
 #app_user_registration div input, .formulaire div input {
   width: 65%;
   padding: 10px;
@@ -509,21 +510,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-box-shadow: 0px 4px 9px 0px #e3e1e1;
   box-shadow: 0px 4px 9px 0px #e3e1e1;
 }
-/* line 428, ../sass/main.scss */
-#app_user_registration div #ndem_categories, .formulaire div #ndem_categories {
+/* line 430, ../sass/main.scss */
+#app_user_registration div #form_categories, .formulaire div #form_categories {
   width: 65%;
   height: 150px;
   padding: 10px;
   vertical-align: top;
 }
-/* line 435, ../sass/main.scss */
+/* line 437, ../sass/main.scss */
 #app_user_registration div textarea, .formulaire div textarea {
   width: 65%;
   height: 200px;
   padding: 10px;
   vertical-align: top;
 }
-/* line 442, ../sass/main.scss */
+/* line 444, ../sass/main.scss */
 #app_user_registration div button, .formulaire div button {
   padding: 10px;
   width: 100%;

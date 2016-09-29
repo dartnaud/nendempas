@@ -13,6 +13,11 @@ nnp_platform_profil:
     requirements:
         id: \d+
 
+nnp_platform_mesNdems:
+    path:     /mon-profil/mes-sujets/
+    defaults:  
+        _controller: NNPPlatformBundle:Homepage:mesNdems 
+
 nnp_platform_editerProfil:
     path:     /mon-profil/editer/{id}
     defaults:  

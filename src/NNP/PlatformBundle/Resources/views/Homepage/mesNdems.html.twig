@@ -1,0 +1,85 @@
+{% extends "NNPPlatformBundle::template.html.twig" %}
+{% block title %}Homepage{% endblock %}
+{% block menuUser %}
+<ul class="nav navbar-nav">
+    <li class="dropdown"> 
+        <a data-toggle="dropdown" href="#">{{ app.user.username }}  <b class="caret"></b></a>
+        <ul class="dropdown-menu jqueryFadeIn">
+            <li><a href="{{ path('nnp_platform_profil', {'id': app.user.id }) }}">Mon profil</a></li>
+            <li><a href="#">Consulter mes ndems</a></li>
+            <li><a href="#">Créer un ndem</a></li>        
+            <li class="divider"></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+        </ul>
+    </li> 
+</ul>
+{% endblock %}
+{% block body %}
+<div class="container">
+	<section class="profil">
+		<div class="row">
+			<div class="col-md-4 sidebar">
+				<div class="photo">
+					<img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
+				</div>
+				<div class="identite">
+					<div class="nom">{{ app.user.prenom }} {{ app.user.nom|upper }}</div>
+					<div class="nom">Pseudo : <b>{{ app.user.pseudo }}</b></div>
+					
+				</div>
+				<div class="divider"></div>
+				<div class="liens">
+					<button onclick="location.href='{{ path('nnp_platform_mesNdems') }}';">Voir tous mes sujets</button>
+					<button onclick="location.href='{{ path('nnp_platform_creerNdem') }}';">Créer un nouveau sujet</button>
+					<button onclick="location.href='{{ path('nnp_platform_editerProfil', {'id': app.user.id }) }}';">Modifier mon profil</button>
+				</div>
+				
+			</div>
+			<div class="col-md-8 center">
+				<h1>Mes sujets</h1>
+				<div class="listeNdem">
+					{% for ndem in ndems %}
+	                    <div class="bloc-ndem">
+	                    	<div class="categorie">CARRIERE</div>
+	                        <div class="ndem">
+	                            <div class="titre">{{ ndem.titre }} posté le {{ ndem.dateCreation|date("m/d/Y") }}</div>
+	                            <p>
+	                            	{% autoescape %}
+	                            	{{ ndem.texte|raw|slice(0, 250)  }}
+	                            	{% endautoescape %}
+	                            </p>
+	                            <!-- Trigger the modal with a button -->
+	                            <div class="info-ndem">
+	                                <div class="commentaire">23 commentaires -</div>
+	                                <div class="commentaire">3 coachs ont réagis</div>
+	                                <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Voir son ndem</button>
+	                            </div>
+
+	                            <!-- Modal -->
+	                            <div class="modal fade" id="myModal" role="dialog">
+	                                <div class="modal-dialog">
+	                                    <!-- Modal content-->
+	                                    <div class="modal-content">
+	                                        <div class="modal-header">
+	                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	                                          <h4 class="modal-title">{{ ndem.titre }} posté le {{ ndem.dateCreation|date("m/d/Y") }}</h4>
+	                                        </div>
+	                                        <div class="modal-body">
+	                                          <p>{{ ndem.texte }}</p>
+	                                        </div>
+	                                        <div class="modal-footer">
+	                                            <button type="button" class="btn btn-default" data-dismiss="modal">Réagir au Ndem</button>
+	                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                {% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+{% endblock %}

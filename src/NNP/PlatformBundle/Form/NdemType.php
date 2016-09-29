@@ -32,7 +32,7 @@ class NdemType extends AbstractType
                     'desactiver' => '0',
                 ),
             ))
-            ->add('user', array('data'=>'1' ))
+            ->add('user')
             ->add('categories')
             ->add('save', SubmitType::class, array('label'=>'Enregistrer'));
         ;

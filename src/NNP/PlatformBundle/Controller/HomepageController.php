@@ -79,6 +79,18 @@ class HomepageController extends Controller
         $ndem = new Ndem();
         $form = $this->get('form.factory')->create(NdemType::class, $ndem);
 
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($ndem);
+          $em->flush();
+
+          $request->getSession()->getFlashBag()->add('notice', 'Ndem bien enregistrée.');
+
+          return $this->redirectToRoute('nnp_platform_profil', array('id' => $this->getUser()->getId()));
+        }
+
+
         $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:creerNdem.html.twig', array('form'=>$form->createView()));
         return new Response($content);
     }

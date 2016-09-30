@@ -51,7 +51,7 @@ class User extends BaseUser
    /**
      * @var string
      *
-     * @ORM\Column(name="texte", type="text")
+     * @ORM\Column(name="texte", type="text", nullable=true)
      */
     private $texte;
 
@@ -73,6 +73,12 @@ class User extends BaseUser
      *      mimeTypesMessage = "Only the file types image are allowed.")
      */
     private $photo;
+
+    /**
+     *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\Profil")
+     *@ORM\JoinColumn(nullable=true)
+     */
+    private $profil;
 
 
     public function __construct()
@@ -249,7 +255,26 @@ class User extends BaseUser
         return $this->photo;
     }
 
+    /**
+     * Set profil
+     *
+     */
+    public function setProfil(User $profil)
+    {
+        $this->profil = $profil;
 
+        return $this;
+    }
+
+    /**
+     * Get profil
+     *
+     *
+     */
+    public function getProfil()
+    {
+        return $this->profil;
+    }
 
 
 }

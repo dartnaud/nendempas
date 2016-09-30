@@ -139,6 +139,7 @@ class HomepageController extends Controller
         //$form = $this->get('form.factory')->create(NdemType::class, $ndem);
 
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $ndem)
+          ->add('categories', null ,array('label' => 'Choisir la catégorie'))
           ->add('titre',     TextType::class)
           ->add('texte',   CKEditorType::class, array(
                 'config' => array(
@@ -151,7 +152,7 @@ class HomepageController extends Controller
                     'desactiver' => '0',
                 ),
             ))
-          ->add('categories')
+          
           ->add('save', SubmitType::class, array('label'=>'Enregistrer'))
         ;
 
@@ -184,9 +185,11 @@ class HomepageController extends Controller
                 ->find($this->getUser()->getId());
 
       $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $user)
+
+
           ->add('email',     TextType::class)
           ->add('username',     TextType::class)
-          ->add('plainPassword',     PasswordType::class)
+          ->add('password',     PasswordType::class)
 
       //$form = $this->get('form.factory')->create(UserType::class,$user)
              // ->add('username', TextType::class, array('label'=>'Identifiant'))
@@ -195,14 +198,18 @@ class HomepageController extends Controller
       $form = $formBuilder->getForm();
 
       if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
         
+        $password = $form['password']->getData(); 
+        $user->setPlainPassword($password);
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
         $em->flush();
 
         $request->getSession()->getFlashBag()->add('notice', 'Infos bien enregistrées.');
 
-        return $this->redirectToRoute('nnp_platform_profil', array('id' => $user->getId()));
+        return $this->redirectToRoute('nnp_platform_profil');
       }
 
       $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:modifierPassword.html.twig', array('form' => $form->createView()));

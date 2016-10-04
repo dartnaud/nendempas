@@ -4,6 +4,7 @@ namespace NNP\PlatformBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ndem
@@ -56,6 +57,30 @@ class Ndem
      * @ORM\Column(name="statut", type="string", length=255, nullable=true)
      */
     private $statut;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstphoto", type="string", length=255, nullable=true)
+     * @Assert\File(
+     *      maxSize = "5M",
+     *      mimeTypes = {"image/jpeg", "image/gif", "image/png", "image/tiff"},
+     *      maxSizeMessage = "The maximum allowed file size is 5MB.",
+     *      mimeTypesMessage = "Only the file types image are allowed.")
+     */
+    private $firstphoto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="secondphoto", type="string", length=255, nullable=true)
+     * @Assert\File(
+     *      maxSize = "5M",
+     *      mimeTypes = {"image/jpeg", "image/gif", "image/png", "image/tiff"},
+     *      maxSizeMessage = "The maximum allowed file size is 5MB.",
+     *      mimeTypesMessage = "Only the file types image are allowed.")
+     */
+    private $secondphoto;
 
     /**
      *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\User")
@@ -222,6 +247,54 @@ class Ndem
     }
 
     /**
+     * Set firstphoto
+     *
+     * @param string $firstphoto
+     *
+     * @return User
+     */
+    public function setFirstphoto($photo)
+    {
+        $this->firstphoto = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get firstphoto
+     *
+     * @return string
+     */
+    public function getFirstphoto()
+    {
+        return $this->firstphoto;
+    }
+
+     /**
+     * Set secondphoto
+     *
+     * @param string $secondphoto
+     *
+     * @return User
+     */
+    public function setSecondphoto($photo)
+    {
+        $this->secondphoto = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo2
+     *
+     * @return string
+     */
+    public function getSecondphoto()
+    {
+        return $this->secondphoto;
+    }
+
+    /**
      * Set user
      *
      */
@@ -241,5 +314,11 @@ class Ndem
     {
         return $this->user;
     }
+
+    public function __toString() {
+        return $this->titre;
+    }
+
+
 }
 

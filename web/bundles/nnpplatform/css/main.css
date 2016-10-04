@@ -73,79 +73,96 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 14, ../sass/main.scss */
+.container-fluid {
+  padding: 0;
+}
+
+/* line 18, ../sass/main.scss */
 .alignCenter {
   text-align: center;
 }
 
-/* line 18, ../sass/main.scss */
+/* line 22, ../sass/main.scss */
 .top-header {
   background-color: #fa4a6b;
-  margin-bottom: 20px;
   font-family: 'Oswald', sans-serif;
 }
-/* line 25, ../sass/main.scss */
+/* line 28, ../sass/main.scss */
 .top-header .top-menu a {
   color: #ffffff;
 }
-/* line 27, ../sass/main.scss */
+/* line 30, ../sass/main.scss */
 .top-header .top-menu a:hover {
   color: #fa4a6b;
 }
-/* line 33, ../sass/main.scss */
+/* line 36, ../sass/main.scss */
 .top-header .reseaux {
   text-align: right;
   color: #ffffff;
 }
-/* line 36, ../sass/main.scss */
+/* line 39, ../sass/main.scss */
 .top-header .reseaux .icon {
   width: 30px;
   height: 30px;
   display: inline-block;
   margin-left: 8px;
 }
-/* line 43, ../sass/main.scss */
+/* line 46, ../sass/main.scss */
 .top-header .reseaux .info-user {
   display: inline-block;
 }
-/* line 47, ../sass/main.scss */
+/* line 50, ../sass/main.scss */
 .top-header .reseaux .info-user .nav li {
   color: #ffffff;
 }
-/* line 49, ../sass/main.scss */
+/* line 52, ../sass/main.scss */
 .top-header .reseaux .info-user .nav li .caret {
   margin-left: 20px;
   zoom: document;
 }
-/* line 53, ../sass/main.scss */
+/* line 56, ../sass/main.scss */
 .top-header .reseaux .info-user .nav li.open {
   background-color: #fa4a6b;
 }
-/* line 55, ../sass/main.scss */
+/* line 58, ../sass/main.scss */
 .top-header .reseaux .info-user .nav li.open a {
   color: #fa4a6b;
 }
-/* line 58, ../sass/main.scss */
+/* line 61, ../sass/main.scss */
 .top-header .reseaux .info-user .nav li.open ul {
   background-color: #7b7b7b;
 }
-/* line 61, ../sass/main.scss */
+/* line 64, ../sass/main.scss */
 .top-header .reseaux .info-user .nav li.open ul li a {
   color: #ffffff;
 }
-/* line 63, ../sass/main.scss */
+/* line 66, ../sass/main.scss */
 .top-header .reseaux .info-user .nav li.open ul li a:hover {
   color: #fa4a6b;
 }
-/* line 72, ../sass/main.scss */
+/* line 75, ../sass/main.scss */
 .top-header .reseaux .info-user .nav li a {
   color: #ffffff;
 }
-/* line 74, ../sass/main.scss */
+/* line 77, ../sass/main.scss */
 .top-header .reseaux .info-user .nav li a:hover {
   color: #fa4a6b;
 }
 
-/* line 84, ../sass/main.scss */
+/* line 86, ../sass/main.scss */
+.header {
+  background-image: url("http://localhost/nendempas/web/bundles/nnpplatform/images/top-banner.jpg");
+  width: 100%;
+  height: 150px;
+}
+
+/* line 92, ../sass/main.scss */
+.bloclendem {
+  background-image: url("http://localhost/nendempas/web/bundles/nnpplatform/images/fondndem.jpg");
+  width: 100%;
+}
+
+/* line 98, ../sass/main.scss */
 .bande {
   background-color: #fa4a6b;
   -moz-box-shadow: 0px 4px 9px 0px #656565;
@@ -153,49 +170,49 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-box-shadow: 0px 4px 9px 0px #656565;
   box-shadow: 0px 4px 9px 0px #656565;
 }
-/* line 87, ../sass/main.scss */
+/* line 101, ../sass/main.scss */
 .bande .menu-central {
   text-align: right;
   font-family: 'Oswald', sans-serif;
   font-size: 20px;
 }
-/* line 92, ../sass/main.scss */
+/* line 106, ../sass/main.scss */
 .bande .menu-central a {
   color: #ffffff;
 }
-/* line 94, ../sass/main.scss */
+/* line 108, ../sass/main.scss */
 .bande .menu-central a:hover {
   color: #fa4a6b;
 }
-/* line 99, ../sass/main.scss */
+/* line 113, ../sass/main.scss */
 .bande .menu-central .glyphicon {
   color: #ffffff;
 }
-/* line 101, ../sass/main.scss */
+/* line 115, ../sass/main.scss */
 .bande .menu-central .glyphicon:hover {
   color: #fa4a6b;
 }
 
-/* line 109, ../sass/main.scss */
-.slider {
-  background-image: url("http://localhost/nendempas/web/bundles/nnpplatform/images/banniere1.jpg");
-  width: 100%;
-  height: 500px;
-  -moz-box-shadow: 0px 4px 9px 0px #656565;
-  -webkit-box-shadow: 0px 4px 9px 0px #656565;
-  -o-box-shadow: 0px 4px 9px 0px #656565;
-  box-shadow: 0px 4px 9px 0px #656565;
+/* line 123, ../sass/main.scss */
+.logo {
+  position: absolute;
+  top: 16px;
+  left: 260px;
+  z-index: 22;
 }
-/* line 121, ../sass/main.scss */
-.slider .connexion {
+
+/* line 131, ../sass/main.scss */
+.connexion {
   width: 480px;
   background-color: rgba(250, 74, 107, 0.7);
-  margin-top: 130px;
   padding-top: 20px;
   padding-bottom: 20px;
+  position: absolute;
+  bottom: 209px;
+  right: 148px;
 }
-/* line 129, ../sass/main.scss */
-.slider .connexion .logwith {
+/* line 141, ../sass/main.scss */
+.connexion .logwith {
   width: 42%;
   margin-left: 5%;
   border-radius: 5px;
@@ -205,16 +222,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 10px;
   margin-top: 10px;
 }
-/* line 138, ../sass/main.scss */
-.slider .connexion .logwith.fbk {
+/* line 150, ../sass/main.scss */
+.connexion .logwith.fbk {
   background-color: #3B5998;
 }
-/* line 141, ../sass/main.scss */
-.slider .connexion .logwith.gml {
+/* line 153, ../sass/main.scss */
+.connexion .logwith.gml {
   background-color: #DF4A32;
 }
-/* line 146, ../sass/main.scss */
-.slider .connexion .loggin {
+/* line 158, ../sass/main.scss */
+.connexion .loggin {
   width: 89%;
   float: left;
   margin-left: 5%;
@@ -223,21 +240,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-radius: 5px;
   padding: 15px;
 }
-/* line 156, ../sass/main.scss */
-.slider .connexion .loggin label {
+/* line 168, ../sass/main.scss */
+.connexion .loggin label {
   width: 45%;
   padding-bottom: 7px;
   padding-top: 7px;
 }
-/* line 162, ../sass/main.scss */
-.slider .connexion .loggin input {
+/* line 174, ../sass/main.scss */
+.connexion .loggin input {
   background-color: #e3e1e1;
   border: 1px solid #adadad;
   padding: 5px;
   width: 50%;
 }
-/* line 169, ../sass/main.scss */
-.slider .connexion .loggin input[type=submit] {
+/* line 181, ../sass/main.scss */
+.connexion .loggin input[type=submit] {
   margin-left: 50%;
   margin-top: 10px;
   background-color: #3B5998;
@@ -248,18 +265,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #ffffff;
   border-radius: 3px solid #40affc;
 }
-/* line 183, ../sass/main.scss */
-.slider .connexion .loggin #fos_user_registration_form div {
+/* line 195, ../sass/main.scss */
+.connexion .loggin #fos_user_registration_form div {
   margin-bottom: 5px;
 }
-/* line 187, ../sass/main.scss */
-.slider .connexion .loggin #fos_user_registration_form input {
+/* line 199, ../sass/main.scss */
+.connexion .loggin #fos_user_registration_form input {
   width: 55%;
   background-color: #e3e1e1;
   border: 1px solid #adadad;
 }
-/* line 195, ../sass/main.scss */
-.slider .connexion .newlog {
+/* line 207, ../sass/main.scss */
+.connexion .newlog {
   width: 89%;
   float: left;
   margin-left: 5%;
@@ -270,49 +287,124 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 10px;
   font-size: 18px;
 }
-/* line 206, ../sass/main.scss */
-.slider .connexion .newlog a {
+/* line 218, ../sass/main.scss */
+.connexion .newlog a {
   color: #ffffff;
 }
-/* line 208, ../sass/main.scss */
-.slider .connexion .newlog a:hover {
+/* line 220, ../sass/main.scss */
+.connexion .newlog a:hover {
   color: #ffffff;
 }
 
-/* line 217, ../sass/main.scss */
-.home-1 {
-  margin-top: 20px;
-}
-/* line 219, ../sass/main.scss */
-.home-1 .bloc {
-  float: left;
-  padding: 10px;
-  width: 23%;
-  margin-left: 20px;
+/* line 227, ../sass/main.scss */
+.slider {
+  background-image: url("http://localhost/nendempas/web/bundles/nnpplatform/images/banniere1.jpg");
+  width: 100%;
+  height: 500px;
   -moz-box-shadow: 0px 4px 9px 0px #656565;
   -webkit-box-shadow: 0px 4px 9px 0px #656565;
   -o-box-shadow: 0px 4px 9px 0px #656565;
   box-shadow: 0px 4px 9px 0px #656565;
 }
-/* line 227, ../sass/main.scss */
-.home-1 .bloc .categorie {
+
+/* line 243, ../sass/main.scss */
+.home-1 {
+  margin-top: 20px;
+  padding: 20px 0;
+}
+/* line 246, ../sass/main.scss */
+.home-1 .theme {
+  float: left;
+  margin-left: 10px;
+  width: 30%;
+  -moz-box-shadow: 0px 4px 9px 0px #656565;
+  -webkit-box-shadow: 0px 4px 9px 0px #656565;
+  -o-box-shadow: 0px 4px 9px 0px #656565;
+  box-shadow: 0px 4px 9px 0px #656565;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  position: relative;
+}
+/* line 255, ../sass/main.scss */
+.home-1 .theme.carriere {
+  background-image: url("http://localhost/nendempas/web/bundles/nnpplatform/images/carriere.jpg");
+  width: 100%;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* line 263, ../sass/main.scss */
+.home-1 .theme.njoka {
+  background-image: url("http://localhost/nendempas/web/bundles/nnpplatform/images/njoka.jpg");
+  width: 100%;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* line 271, ../sass/main.scss */
+.home-1 .theme.mode {
+  background-image: url("http://localhost/nendempas/web/bundles/nnpplatform/images/mode.jpg");
+  width: 100%;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* line 279, ../sass/main.scss */
+.home-1 .theme.amour {
+  background-image: url("http://localhost/nendempas/web/bundles/nnpplatform/images/amour.jpg");
+  width: 100%;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* line 287, ../sass/main.scss */
+.home-1 .theme.religion {
+  background-image: url("http://localhost/nendempas/web/bundles/nnpplatform/images/religion.jpg");
+  width: 100%;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* line 295, ../sass/main.scss */
+.home-1 .theme.kwatt {
+  background-image: url("http://localhost/nendempas/web/bundles/nnpplatform/images/kwatt.jpg");
+  width: 100%;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* line 303, ../sass/main.scss */
+.home-1 .theme .titre {
   padding: 10px;
-  text-align: left;
+  text-align: center;
   font-family: 'Oswald', sans-serif;
   font-size: 25px;
-  background-color: #e3e1e1;
-  color: #fa4a6b;
+  background-color: #fa4a6b;
+  color: #ffffff;
+  width: 70%;
+  position: absolute;
+  bottom: 30%;
+  left: 15%;
 }
 
-/* line 240, ../sass/main.scss */
+/* line 320, ../sass/main.scss */
 .bloc-ndem {
   padding: 10px;
 }
-/* line 242, ../sass/main.scss */
+/* line 322, ../sass/main.scss */
 .bloc-ndem .ndem {
   padding: 10px;
 }
-/* line 246, ../sass/main.scss */
+/* line 326, ../sass/main.scss */
+.bloc-ndem .ndem .categorie {
+  color: #fa4a6b;
+  font-size: 18px;
+  background-color: #e3e1e1;
+  width: initial;
+  font-family: 'Baloo Bhaina', cursive;
+  padding: 10px;
+}
+/* line 335, ../sass/main.scss */
 .bloc-ndem .ndem .titre {
   background-color: #5BC0DE;
   padding: 5px;
@@ -320,25 +412,27 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-family: 'Baloo Bhaina', cursive;
   padding-top: 13px;
 }
-/* line 254, ../sass/main.scss */
+/* line 343, ../sass/main.scss */
 .bloc-ndem .ndem p {
   padding: 15px;
   border: 2px solid #5BC0DE;
+  background-color: #ffffff;
 }
-/* line 259, ../sass/main.scss */
+/* line 349, ../sass/main.scss */
 .bloc-ndem .ndem .info-ndem {
   text-align: right;
-  background-color: #e3e1e1;
+  background-color: #ffffff;
 }
-/* line 262, ../sass/main.scss */
+/* line 353, ../sass/main.scss */
 .bloc-ndem .ndem .info-ndem .commentaire {
   font-style: italic;
   margin-right: 5px;
   display: inline-block;
   color: #fa4a6b;
+  font-family: 'Baloo Bhaina', cursive;
 }
 
-/* line 273, ../sass/main.scss */
+/* line 365, ../sass/main.scss */
 .profil .sidebar {
   background-color: #7b7b7b;
   padding: 20px;
@@ -350,11 +444,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-box-shadow: 0px 4px 9px 0px #656565;
   box-shadow: 0px 4px 9px 0px #656565;
 }
-/* line 281, ../sass/main.scss */
+/* line 373, ../sass/main.scss */
 .profil .sidebar p {
   margin-bottom: 10px;
 }
-/* line 285, ../sass/main.scss */
+/* line 377, ../sass/main.scss */
 .profil .sidebar button {
   padding: 10px;
   width: 100%;
@@ -365,7 +459,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 20px;
   margin-bottom: 10px;
 }
-/* line 296, ../sass/main.scss */
+/* line 388, ../sass/main.scss */
 .profil .sidebar h1 {
   color: #fa4a6b;
   font-size: 18px;
@@ -374,13 +468,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 10px;
   padding: 5px;
 }
-/* line 307, ../sass/main.scss */
+/* line 399, ../sass/main.scss */
 .profil .sidebar .identite {
   margin: 10px 0;
   color: #ffffff;
   font-size: 20px;
 }
-/* line 311, ../sass/main.scss */
+/* line 403, ../sass/main.scss */
 .profil .sidebar .identite .nom {
   margin-bottom: 10px;
   font-weight: bold;
@@ -388,14 +482,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 10px;
   color: #000000;
 }
-/* line 319, ../sass/main.scss */
+/* line 411, ../sass/main.scss */
 .profil .sidebar .identite .description {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 16px;
   text-align: justify;
 }
-/* line 327, ../sass/main.scss */
+/* line 419, ../sass/main.scss */
 .profil .sidebar .info p {
   margin-top: 10px;
   color: #fa4a6b;
@@ -404,11 +498,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 10px;
   padding: 5px;
 }
-/* line 335, ../sass/main.scss */
+/* line 427, ../sass/main.scss */
 .profil .sidebar .info p .chiffre {
   margin-right: 10px;
 }
-/* line 342, ../sass/main.scss */
+/* line 434, ../sass/main.scss */
 .profil .center {
   background-color: #ffffff;
   padding: 20px;
@@ -417,7 +511,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-box-shadow: 0px 4px 9px 0px #656565;
   box-shadow: 0px 4px 9px 0px #656565;
 }
-/* line 346, ../sass/main.scss */
+/* line 438, ../sass/main.scss */
 .profil .center h1 {
   padding: 10px;
   text-align: left;
@@ -427,62 +521,148 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #fa4a6b;
   margin-bottom: 20px;
 }
-/* line 356, ../sass/main.scss */
-.profil .center .divider {
-  height: 2px;
-  width: 100%;
-  background-color: #000000;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-/* line 364, ../sass/main.scss */
+/* line 450, ../sass/main.scss */
 .profil .center .bloc {
   display: inline-block;
   width: 45%;
 }
-/* line 367, ../sass/main.scss */
+/* line 453, ../sass/main.scss */
 .profil .center .bloc p {
   margin-bottom: 10px;
 }
-/* line 369, ../sass/main.scss */
+/* line 455, ../sass/main.scss */
 .profil .center .bloc p .chiffre {
   margin-right: 10px;
 }
-/* line 376, ../sass/main.scss */
+/* line 462, ../sass/main.scss */
 .profil .center .follower img {
   margin-right: 10px;
 }
-/* line 382, ../sass/main.scss */
+/* line 468, ../sass/main.scss */
 .profil .center .formulaire label {
   width: 30%;
 }
 
-/* line 389, ../sass/main.scss */
+/* line 475, ../sass/main.scss */
+.divider {
+  height: 2px;
+  width: 100%;
+  background-color: #000000;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* line 483, ../sass/main.scss */
+.sidebarNdem {
+  background-color: #e3e1e1;
+  padding: 20px;
+}
+/* line 486, ../sass/main.scss */
+.sidebarNdem h2 {
+  padding: 10px;
+  text-align: left;
+  font-family: 'Oswald', sans-serif;
+  font-size: 25px;
+  background-color: #e3e1e1;
+  color: #fa4a6b;
+  margin-bottom: 20px;
+}
+
+/* line 498, ../sass/main.scss */
+.leNdem .date {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #adadad;
+  padding-bottom: 10px;
+}
+
+/* line 507, ../sass/main.scss */
+.comment {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #e3e1e1;
+}
+/* line 512, ../sass/main.scss */
+.comment label {
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* line 518, ../sass/main.scss */
+.comment textarea {
+  width: 100%;
+  height: 90px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+/* line 525, ../sass/main.scss */
+.comment button {
+  padding: 10px;
+  width: 30%;
+  background-color: #fa4a6b;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  margin-left: 65%;
+  margin-bottom: 10px;
+}
+/* line 536, ../sass/main.scss */
+.comment .leComment {
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* line 543, ../sass/main.scss */
+.liste {
+  width: 100%;
+  padding: 20px;
+  min-height: 600px;
+  height: 100%;
+}
+/* line 550, ../sass/main.scss */
+.liste h1 {
+  color: #fa4a6b;
+  font-size: 18px;
+  background-color: #ffffff;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: 'Oswald', sans-serif;
+}
+/* line 560, ../sass/main.scss */
+.liste .bloc-ndem {
+  width: 46%;
+  margin-left: 20px;
+  float: left;
+}
+
+/* line 567, ../sass/main.scss */
 .bande-stat {
   margin-top: 50px;
 }
-/* line 391, ../sass/main.scss */
+/* line 569, ../sass/main.scss */
 .bande-stat .stat {
   font-family: 'Oswald', sans-serif;
   text-align: center;
   font-size: 25px;
 }
-/* line 397, ../sass/main.scss */
+/* line 575, ../sass/main.scss */
 .bande-stat .stat .chf {
   color: #fa4a6b;
   font-size: 45px;
 }
 
-/* line 404, ../sass/main.scss */
+/* line 582, ../sass/main.scss */
 .footer {
   background-color: #000000;
   padding: 10px;
-  margin-top: 40px;
   color: #adadad;
   margin-bottom: 0;
 }
 
-/* line 413, ../sass/main.scss */
+/* line 590, ../sass/main.scss */
 #app_user_registration, .formulaire {
   padding: 20px;
   font-family: 'Inconsolata', monospace;
@@ -492,16 +672,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     margin-top: 20px;
   }  */
 }
-/* line 416, ../sass/main.scss */
+/* line 593, ../sass/main.scss */
 #app_user_registration div, .formulaire div {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 419, ../sass/main.scss */
+/* line 596, ../sass/main.scss */
 #app_user_registration div label, .formulaire div label {
   width: 30%;
 }
-/* line 424, ../sass/main.scss */
+/* line 601, ../sass/main.scss */
 #app_user_registration div input, .formulaire div input {
   width: 65%;
   padding: 10px;
@@ -510,21 +690,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-box-shadow: 0px 4px 9px 0px #e3e1e1;
   box-shadow: 0px 4px 9px 0px #e3e1e1;
 }
-/* line 430, ../sass/main.scss */
+/* line 607, ../sass/main.scss */
 #app_user_registration div #form_categories, .formulaire div #form_categories {
   width: 65%;
   height: 150px;
   padding: 10px;
   vertical-align: top;
 }
-/* line 437, ../sass/main.scss */
+/* line 614, ../sass/main.scss */
 #app_user_registration div textarea, .formulaire div textarea {
   width: 65%;
   height: 200px;
   padding: 10px;
   vertical-align: top;
 }
-/* line 444, ../sass/main.scss */
+/* line 621, ../sass/main.scss */
 #app_user_registration div button, .formulaire div button {
   padding: 10px;
   width: 100%;

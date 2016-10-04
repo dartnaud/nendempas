@@ -259,7 +259,7 @@ class User extends BaseUser
      * Set profil
      *
      */
-    public function setProfil(User $profil)
+    public function setProfil(Profil $profil)
     {
         $this->profil = $profil;
 
@@ -269,12 +269,13 @@ class User extends BaseUser
     /**
      * Get profil
      *
-     *
      */
     public function getProfil()
     {
         return $this->profil;
     }
 
-
+    /*public function __toString() {
+        return $this->pseudo;
+    }*/
 }

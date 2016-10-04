@@ -30,3 +30,15 @@ nnp_platform_creerNdem:
     path:     /mon-profil/cree-ndem
     defaults:  
         _controller: NNPPlatformBundle:Homepage:creerNdem
+
+nnp_platform_leNdem:
+    path:     /sujet/{id}
+    defaults:  
+        _controller: NNPPlatformBundle:Homepage:leNdem
+    requirements:
+        id: \d+
+
+nnp_platform_liste:
+    path:     /categorie
+    defaults:  
+        _controller: NNPPlatformBundle:Homepage:liste

@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: bedingueohtop.mysql.db
+    database_port: 3306
+    database_name: bedingueohtop
+    database_user: bedingueohtop
+    database_password: 8hiN88sG
+    mailer_transport: smtp
+    mailer_host: bedingueohtop.mysql.db
+    mailer_user: null
+    mailer_password: null
+    secret: a9d0d9b6fb790cdb40c215c2204b3d97aee54797

@@ -15,12 +15,68 @@
     </li> 
 </ul>
 {% endblock %}
+
 {% block body %}
 <div class="container-fluid">
-	<section>
+	<section class="home-1">
         <div class="row">
-            <div class="col-md-12 home-1">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <a href="{{ path('nnp_platform_liste', {nom:'CARRIERE'}) }}">
+                            <div class="theme carriere">
+                                <div class="titre">CARRIERE</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{{ path('nnp_platform_liste', {nom:'NJOKA'}) }}">
+                            <div class="theme njoka">
+                                <div class="titre">NJOKA</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{{ path('nnp_platform_liste', {nom:'RELIGION'}) }}">
+                            <div class="theme religion">
+                                <div class="titre">RELIGION</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <a href="{{ path('nnp_platform_liste', {nom:'MODE'}) }}">
+                            <div class="theme mode">
+                                <div class="titre">MODE</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{{ path('nnp_platform_liste', {nom:'AMOUR'}) }}">
+                            <div class="theme amour">
+                                <div class="titre">AMOUR</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{{ path('nnp_platform_liste', {nom:'KWATT'}) }}">
+                            <div class="theme kwatt">
+                                <div class="titre">KWATT</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>  
+            
         </div>
 	</section>
 </div>

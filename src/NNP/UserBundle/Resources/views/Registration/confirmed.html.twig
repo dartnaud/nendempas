@@ -1,13 +1,8 @@
 
 {% extends "::base.html.twig" %}
 {% block title %}Homepage{% endblock %}
-{% block body %}
-<div class="container-fluid">
-  <section class="slider">
-      <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-5"></div>
-        <div class="col-lg-4 connexion">
+{% block connexion %}
+<div class="connexion">
           <div class="newlog">Inscription</div>
           <div class="loggin">
 
@@ -21,20 +16,19 @@
             {% endfor %}
             {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
             {% block fos_user_content %}
-                <p>{{ 'Inscription confirmée'|trans({'%username%': user.username}) }}</p>
+                <p>{{ 'Terminer votre inscription en paramétrant votre espace personnel'|trans({'%username%': user.username}) }}</p>
                 {% if targetUrl %}
                 <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
                 {% endif %}
             {% endblock fos_user_content %}
 
           </div>
-          <div class="logwith fbk">Consultez les ndems</div>
-          <div class="logwith gml">Accedez à votre espace</div>
+          <div class="logwith fbk"><a href="{{ path('nnp_platform_homepage') }}">Consultez les ndems</a></div>
+          <div class="logwith gml"><a href="{{ path('nnp_platform_profil') }}">Accedez à votre espace</a></div>
         </div>
-        <div class="col-lg-1"></div>
-      </div>
-    </section>
-</div>
+{% endblock %}
+{% block body %}
+
 <div class="container">
   <section>
     <div class="row bande-stat">

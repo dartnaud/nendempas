@@ -11,13 +11,16 @@
 	font-family: 'Inconsolata', monospace;
 }
 
+.container-fluid{
+	padding: 0;
+}
+
 .alignCenter{
 	text-align: center;
 }
 
 .top-header{
 	background-color: $bordeau;
-	margin-bottom: 20px;
 	//font-family: 'Baloo Bhaina', cursive;
 	font-family: 'Oswald', sans-serif;
 	.top-menu{
@@ -80,6 +83,17 @@
 	}
 }
 
+.header{
+	background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/top-banner.jpg');
+	width: 100%;
+	height: 150px;
+}
+
+.bloclendem{
+	background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/fondndem.jpg');
+	width: 100%;
+}
+
 
 .bande{
 	background-color: $bordeau;
@@ -106,6 +120,110 @@
 
 }
 
+.logo{
+	position: absolute;
+    top: 16px;
+    left: 260px;
+    z-index: 22;
+}
+
+
+.connexion{
+	width: 480px;
+	//background-color: $bordeau;
+	background-color: rgba(250, 74, 107, 0.70); 
+	padding-top: 20px;
+	padding-bottom: 20px;
+	position: absolute;
+	bottom: 209px;
+    right: 148px;
+
+	.logwith{
+		width: 42%;
+		margin-left: 5%;
+		border-radius: 5px;
+		color: $white;
+		text-align: center;
+		float: left;
+		padding: 10px;
+		margin-top: 10px;
+		&.fbk{
+			background-color: $facebook;
+		}
+		&.gml{
+			background-color: $twitter;
+		}
+	}
+
+	.loggin{
+		width: 89%;
+		//height: 180px;
+		float: left;
+		margin-left: 5%;
+		background-color: $white;
+		margin-top: 10px;
+		border-radius: 5px;
+		padding: 15px;
+
+		label{
+			width: 45%;
+			padding-bottom: 7px;
+			padding-top: 7px;
+		}
+
+		input{
+			background-color: $grisClair;
+			border: 1px solid $gris;
+			padding: 5px;
+			width: 50%;
+		}
+
+		input[type=submit]{
+			margin-left: 50%;
+			margin-top: 10px;
+			background-color: $facebook;
+			border-radius: 5px;
+			-moz-border-radius: 5px;
+			-o-border-radius: 5px;
+			padding: 6px;
+			color: $white;
+			border-radius: 3px solid $bleuciel;
+		}
+
+		#fos_user_registration_form{
+
+			div{
+				margin-bottom: 5px;
+			}
+
+			input{
+				width: 55%;
+				background-color: $grisClair;
+				border: 1px solid $gris;
+			}
+		}
+	}
+
+	.newlog{
+		width: 89%;
+		float: left;
+		margin-left: 5%;
+		background-color: $bleuciel;
+		margin-top: 10px;
+		text-align: center;
+		color: $white;
+		padding: 10px;
+		font-size: 18px;
+
+		a{
+			color: $white;
+			&:hover{
+				color: $white;
+			}
+		}
+	}
+}
+
 .slider{
 	//background-color: $bordeau;
 	background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/banniere1.jpg');
@@ -118,119 +236,81 @@
 	.inscription{
 
 	}
-	.connexion{
-		width: 480px;
-		//background-color: $bordeau;
-		background-color: rgba(250, 74, 107, 0.70); 
-		margin-top: 130px;
-		padding-top: 20px;
-		padding-bottom: 20px;
-
-		.logwith{
-			width: 42%;
-			margin-left: 5%;
-			border-radius: 5px;
-			color: $white;
-			text-align: center;
-			float: left;
-			padding: 10px;
-			margin-top: 10px;
-			&.fbk{
-				background-color: $facebook;
-			}
-			&.gml{
-				background-color: $twitter;
-			}
-		}
-
-		.loggin{
-			width: 89%;
-			//height: 180px;
-			float: left;
-			margin-left: 5%;
-			background-color: $white;
-			margin-top: 10px;
-			border-radius: 5px;
-			padding: 15px;
-
-			label{
-				width: 45%;
-				padding-bottom: 7px;
-				padding-top: 7px;
-			}
-
-			input{
-				background-color: $grisClair;
-				border: 1px solid $gris;
-				padding: 5px;
-				width: 50%;
-			}
-
-			input[type=submit]{
-				margin-left: 50%;
-				margin-top: 10px;
-				background-color: $facebook;
-				border-radius: 5px;
-				-moz-border-radius: 5px;
-				-o-border-radius: 5px;
-				padding: 6px;
-				color: $white;
-				border-radius: 3px solid $bleuciel;
-			}
-
-			#fos_user_registration_form{
-
-				div{
-					margin-bottom: 5px;
-				}
-
-				input{
-					width: 55%;
-					background-color: $grisClair;
-					border: 1px solid $gris;
-				}
-			}
-		}
-
-		.newlog{
-			width: 89%;
-			float: left;
-			margin-left: 5%;
-			background-color: $bleuciel;
-			margin-top: 10px;
-			text-align: center;
-			color: $white;
-			padding: 10px;
-			font-size: 18px;
-
-			a{
-				color: $white;
-				&:hover{
-					color: $white;
-				}
-			}
-		}
-	}
+	
 
 }
 
 .home-1{
 	margin-top: 20px;
-	.bloc{
+	padding: 20px 0;
+	.theme{
 		float: left;
-		padding: 10px;
-		width: 23%;
-		margin-left: 20px;
-		//border: 3px solid $bordeau;
+		margin-left: 10px;
+		width: 30%;
 		@include ombrage($couleurOmbre);
+		border-radius: 5px;
+		margin-bottom: 20px;
+		position: relative;
 
-		.categorie{
+		&.carriere{
+			background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/carriere.jpg');
+			width: 100%;
+			height: 300px;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		&.njoka{
+			background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/njoka.jpg');
+			width: 100%;
+			height: 300px;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		&.mode{
+			background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/mode.jpg');
+			width: 100%;
+			height: 300px;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		&.amour{
+			background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/amour.jpg');
+			width: 100%;
+			height: 300px;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		&.religion{
+			background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/religion.jpg');
+			width: 100%;
+			height: 300px;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		&.kwatt{
+			background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/kwatt.jpg');
+			width: 100%;
+			height: 300px;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		.titre{
 			padding: 10px;
-			text-align: left;
+			text-align: center;
 			font-family: 'Oswald', sans-serif;
 			font-size: 25px;
-			background-color: $grisClair;
-			color: $bordeau;
+			background-color: $bordeau;
+			color: $white;
+			width: 70%;
+			position: absolute;
+			bottom: 30%;
+			left: 15%;
 		}
 
 		
@@ -243,6 +323,15 @@
 		padding: 10px;
 		//border: 1px solid $bleuBouton;
 
+		.categorie{
+			color: $bordeau;
+			font-size: 18px;
+			background-color: $grisClair;
+			width: initial;
+			font-family: 'Baloo Bhaina', cursive;
+			padding: 10px;
+		}
+
 		.titre{
 			background-color: $bleuBouton;
 			padding: 5px;
@@ -254,16 +343,19 @@
 		p{
 			padding: 15px;
 			border: 2px solid $bleuBouton;
+			background-color: $white;
 		}
 
 		.info-ndem{
 			text-align: right;
-			background-color: $grisClair;
+			background-color: $white;
+
 			.commentaire {
 				font-style: italic;
 				margin-right: 5px;
 				display: inline-block;
 				color: $bordeau;
+				font-family: 'Baloo Bhaina', cursive;
 			}
 		}
 	}
@@ -353,13 +445,7 @@
 			margin-bottom: 20px;
 		}
 
-		.divider{
-			height: 2px;
-			width: 100%;
-			background-color: $black;
-			margin-bottom: 20px;
-			margin-top: 20px;
-		}
+		
 
 		.bloc{
 			display: inline-block;
@@ -386,6 +472,98 @@
 	}
 }
 
+.divider{
+	height: 2px;
+	width: 100%;
+	background-color: $black;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.sidebarNdem{
+	background-color: $grisClair;
+	padding: 20px;
+	h2{
+		padding: 10px;
+			text-align: left;
+			font-family: 'Oswald', sans-serif;
+			font-size: 25px;
+			background-color: $grisClair;
+			color: $bordeau;
+			margin-bottom: 20px;
+	}
+}
+
+.leNdem{
+	.date{
+		width: 100%;
+		text-align: right;
+		margin-bottom: 10px;
+		border-bottom: 1px solid $gris;
+		padding-bottom: 10px;
+	}
+}
+
+.comment{
+	margin-top: 50px;
+	padding: 20px;
+	background-color: $grisClair;
+
+	label{
+		width: 100%;
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+
+	textarea{
+		width: 100%;
+		height: 90px;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+
+	button{
+		padding: 10px;
+		width: 30%;
+		background-color: $bordeau;
+		color: $white;
+		border-radius: 10px;
+		border: none;
+		margin-left: 65%;
+		margin-bottom: 10px;
+	}
+
+	.leComment{
+		background-color: $white;
+		padding:10px;
+		margin-bottom: 10px;
+	}
+}
+
+.liste{
+	
+	width: 100%;
+	padding: 20px;
+	min-height: 600px;
+	height: 100%;
+
+	h1{
+		color: $bordeau;
+		font-size: 18px;
+		background-color: $white;
+		width: 100%;
+		margin-bottom: 10px;
+		padding: 10px;
+		font-family: 'Oswald', sans-serif;
+	}
+
+	.bloc-ndem{
+		width: 46%;
+		margin-left: 20px;
+		float: left;
+	}
+}
+
 .bande-stat{
 	margin-top: 50px;
 	.stat{
@@ -404,7 +582,6 @@
 .footer {
 	background-color: $black;
 	padding: 10px;
-	margin-top: 40px;
 	color: $gris;
 	margin-bottom: 0;
 }

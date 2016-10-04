@@ -10,4 +10,5 @@ namespace NNP\PlatformBundle\Repository;
  */
 class CategorieNdemRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

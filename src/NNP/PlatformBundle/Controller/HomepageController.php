@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use NNP\PlatformBundle\Entity\User ;
 use NNP\PlatformBundle\Entity\Ndem ;
 use NNP\PlatformBundle\Entity\Categorie ;
+use NNP\PlatformBundle\Entity\Commentaire ;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use NNP\PlatformBundle\Form\UserType ;
 use NNP\PlatformBundle\Form\NdemType ;
@@ -53,20 +54,57 @@ class HomepageController extends Controller
         return new Response($content);
     }
 
-    public function profilAction()
+    public function leNdemAction($id, Request $request)
     {
-        $repository = $this->getDoctrine()
-                      ->getManager()
-                      ->getRepository('NNPPlatformBundle:User');
+        
 
-        $repositoryNdem = $this->getDoctrine()
-                          ->getManager()
-                          ->getRepository('NNPPlatformBundle:Ndem')
+        $repository = $this
+          ->getDoctrine()
+          ->getManager()
+          ->getRepository('NNPPlatformBundle:Ndem')
         ;
-        $listeNdem = $repositoryNdem->findByUser($this->getUser());
+        $ndem = $repository->find($id);
+
+        $comment = new Commentaire();
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $comment)
+            ->add('commentaire', TextareaType::class, array('label'=>'Laissez un commentaire'))
+            ->add('save', SubmitType::class, array('label'=>'Envoyer'));
+
+        $form = $formBuilder->getForm();
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+          $comment->setUser($this->getUser());
+          $comment->setNdem($ndem);
+
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($comment);
+          $em->flush();
+
+          $request->getSession()->getFlashBag()->add('notice', 'Merci pour votre commentaire.');
+
+          return $this->redirectToRoute('nnp_platform_leNdem', array('id'=>$id));
+        }
+
+        $repoComment = $this
+          ->getDoctrine()
+          ->getManager()
+          ->getRepository('NNPPlatformBundle:Commentaire')
+        ;
+        $listeComments = $repoComment->findByNdem($ndem->getId());
+
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:leNdem.html.twig', array('ndem'=> $ndem,'comments'=>$listeComments,'form' => $form->createView()));
+        return new Response($content);
+    }
+
+    public function profilAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager(); 
+        $listeNdem = $em->getRepository('NNPPlatformBundle:Ndem')->findByUser($this->getUser());
         $nbrNdem = sizeof($listeNdem);
 
-        $user = $repository->find($this->getUser()->getId()); //var_dump($user); exit();
+        $user = $em->getRepository('NNPPlatformBundle:User')
+                   ->find($this->getUser()->getId()); 
 
         $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profil.html.twig', array('nbrNdem'=>$nbrNdem));
         return new Response($content);
@@ -126,7 +164,7 @@ class HomepageController extends Controller
 
           $request->getSession()->getFlashBag()->add('notice', 'Infos bien enregistrées.');
 
-          return $this->redirectToRoute('nnp_platform_profil', array('id' => $user->getId()));
+          return $this->redirectToRoute('nnp_platform_profil');
         }
 
         $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:editerProfil.html.twig', array('form' => $form->createView()));
@@ -214,6 +252,41 @@ class HomepageController extends Controller
 
       $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:modifierPassword.html.twig', array('form' => $form->createView()));
       return new Response($content);
+
+    }
+
+    public function listeAction(Request $request)
+    { 
+        $categorie = $request->query->get('nom');
+        $repoCat = $this
+          ->getDoctrine()
+          ->getManager()
+          ->getRepository('NNPPlatformBundle:Categorie')
+        ;
+        $idcat = $repoCat->findOneBy(array('nom'=>$categorie)); 
+        $repo = $this
+          ->getDoctrine()
+          ->getManager()
+          ->getRepository('NNPPlatformBundle:Ndem')
+        ;
+        $ndems= $repo->findAll();
+
+        if($ndems){
+          $listeNdems = array();
+          foreach ($ndems as $key => $value) {
+              $categories = $value->getCategories();
+              foreach ($categories as $value2) {
+                if ($value2 == $idcat){
+                    $listeNdems[] = $value;
+                }
+              }
+          }
+        }else {
+            $listeNdems = null ;
+        }
+
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:liste.html.twig', array('listeNdems' => $listeNdems,'categorie'=> $categorie ));
+        return new Response($content);
 
     }
 }

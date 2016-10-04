@@ -1,0 +1,64 @@
+{% extends "NNPPlatformBundle::template.html.twig" %}
+{% block title %}Homepage{% endblock %}
+{% block menuUser %}
+<ul class="nav navbar-nav">
+    <li class="dropdown"> 
+        <a data-toggle="dropdown" href="#">{{ app.user.username }}  <b class="caret"></b></a>
+        <ul class="dropdown-menu jqueryFadeIn">
+            <li><a href="{{ path('nnp_platform_profil', {'id': app.user.id }) }}">Mon profil</a></li>
+            <li><a href="{{ path('nnp_platform_mesNdems') }}">Consulter mes ndems</a></li>
+            <li><a href="{{ path('nnp_platform_creerNdem') }}">Créer un ndem</a></li>
+            <li><a href="{{ path('nnp_platform_modifierPassword') }}">Modifier le mot de passe</a></li>        
+            <li class="divider"></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+        </ul>
+    </li> 
+</ul>
+{% endblock %}
+{% block body %}
+<div class="container-fluid">
+	<section class="profil bloclendem">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-6 center leNdem">
+				<div>
+					<h1>{{ ndem.titre }}</h1>
+					<p class="date">
+						<i>Posté le {{ ndem.dateCreation|date("d/m/Y") }} 
+							dans la catégorie 
+							{% for categorie in ndem.categories %}
+                    			{{ categorie }} |
+                    		{% endfor %}
+                    	</i>
+                    </p>
+					<p class="texte">{{ ndem.texte|raw }}</p>
+					<div class='divider'></div>
+					<p class="nrbCom">{{ comments|length }} commentaire(s)</p>
+				</div>
+				
+				<div class="comment">
+					{{ form(form)  }}
+					{% for comment in comments %}
+						<div class="leComment">
+							<label>{{ comment.user }} a laissé un commentaire le {{ comment.dateCreation|date('d/m/Y') }}</label>
+							<div class="post">{{ comment.commentaire }}</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-md-2 sidebarNdem">
+				<h2>Auteur : {{ ndem.user }}</h2>
+				<div class="photo">
+					{% if (app.user.photo != null) %}
+						<img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
+					{% endif %}
+				</div>
+				<div class="liens">
+					
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</section>
+</div>
+{% endblock %}

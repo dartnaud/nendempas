@@ -18,6 +18,7 @@ use NNP\PlatformBundle\Entity\User ;
 use NNP\PlatformBundle\Entity\Ndem ;
 use NNP\PlatformBundle\Entity\Categorie ;
 use NNP\PlatformBundle\Entity\Commentaire ;
+use NNP\PlatformBundle\Entity\Follower ;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use NNP\PlatformBundle\Form\UserType ;
 use NNP\PlatformBundle\Form\NdemType ;
@@ -28,6 +29,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class HomepageController extends Controller
 {
+    
+
     public function indexAction()
     {
     	$content = $this->get('templating')->render('NNPPlatformBundle:Homepage:index.html.twig');
@@ -40,8 +43,24 @@ class HomepageController extends Controller
     	return new Response($content);
     }
 
+    public function ndemVisiteAction(Request $request)
+    {
+        $idVisite = $request->query->get('idVisite');
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('NNPPlatformBundle:Ndem');
+
+        $listeNdem = $repository->findByUser($idVisite);
+
+        $userVisite = $em->getRepository('NNPPlatformBundle:User')
+                   ->findOneById($idVisite); 
+
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:ndemVisite.html.twig', array('ndems'=> $listeNdem, 'userVisite'=> $userVisite));
+        return new Response($content);
+    }
+
     public function mesNdemsAction(Request $request)
     {
+        
         $repository = $this
           ->getDoctrine()
           ->getManager()
@@ -56,14 +75,31 @@ class HomepageController extends Controller
 
     public function leNdemAction($id, Request $request)
     {
-        
+        $em = $this->getDoctrine()->getManager();
+        $idfollower = $request->query->get('idAFollow');
 
-        $repository = $this
-          ->getDoctrine()
-          ->getManager()
-          ->getRepository('NNPPlatformBundle:Ndem')
-        ;
+        if ($idfollower){
+          $newfollower = new Follower();
+          $newfollower->setIdFollower($idfollower);
+          $newfollower->setUser($this->getUser());
+          $em->persist($newfollower);
+          $em->flush();
+        }
+
+        $repository = $em->getRepository('NNPPlatformBundle:Ndem');
         $ndem = $repository->find($id);
+
+        $repoFollow = $em->getRepository('NNPPlatformBundle:Follower');
+        $followersUser = $repoFollow->findByUser($this->getUser());
+        $statutFollow = 0;
+        foreach ($followersUser as $key => $value) {
+          if ($value->getIdFollower() == $ndem->getUser()->getId()) {
+            $statutFollow = 1;
+          }
+        }
+
+        $followersAuteur = sizeof($repoFollow->findByIdFollower($ndem->getUser()->getId()));
+
 
         $comment = new Commentaire();
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $comment)
@@ -93,20 +129,61 @@ class HomepageController extends Controller
         ;
         $listeComments = $repoComment->findByNdem($ndem->getId());
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:leNdem.html.twig', array('ndem'=> $ndem,'comments'=>$listeComments,'form' => $form->createView()));
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:leNdem.html.twig', array('ndem'=> $ndem,'comments'=>$listeComments,'form' => $form->createView(),'statutFollow'=> $statutFollow, 'followersAuteur' => $followersAuteur));
+        return new Response($content);
+    }
+
+    public function profilVisiteAction(Request $request)
+    {
+        $idVisiteur = $request->query->get('idVisiteur');
+        $em = $this->getDoctrine()->getManager(); 
+        $listeNdem = $em->getRepository('NNPPlatformBundle:Ndem')->findByUser($idVisiteur);
+        $nbrNdem = sizeof($listeNdem);
+
+        $listeCom = $em->getRepository('NNPPlatformBundle:Commentaire')->findByUser($idVisiteur);
+        $nbrCom = sizeof($listeCom);
+
+        $user = $em->getRepository('NNPPlatformBundle:User')
+                   ->findOneBy(array('id'=>$idVisiteur)); 
+
+        $repoFollow = $em->getRepository('NNPPlatformBundle:Follower');
+        $followersUserRepo = $em->getRepository('NNPPlatformBundle:User');
+        $followersUser = array();
+        $followersList = $repoFollow->findByIdFollower($user);//
+
+        foreach ($followersList as $key => $value) {
+          $follower = $followersUserRepo->findOneBy(array('id'=>$value->getUser()->getId()));
+          $followersUser[] = $follower;
+        }//var_dump($followersUser); exit();
+
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profilVisite.html.twig', array('nbrNdem'=>$nbrNdem, 'nbrCom'=>$nbrCom,'idVisiteur' => $idVisiteur,'user'=>$user, 'followers' => $followersUser));
         return new Response($content);
     }
 
     public function profilAction(Request $request)
     {
+        $idVisiteur = $request->query->get('idVisiteur');
         $em = $this->getDoctrine()->getManager(); 
         $listeNdem = $em->getRepository('NNPPlatformBundle:Ndem')->findByUser($this->getUser());
         $nbrNdem = sizeof($listeNdem);
 
+        $listeCom = $em->getRepository('NNPPlatformBundle:Commentaire')->findByUser($this->getUser());
+        $nbrCom = sizeof($listeCom);
+
         $user = $em->getRepository('NNPPlatformBundle:User')
                    ->find($this->getUser()->getId()); 
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profil.html.twig', array('nbrNdem'=>$nbrNdem));
+        $repoFollow = $em->getRepository('NNPPlatformBundle:Follower');
+        $followersUserRepo = $em->getRepository('NNPPlatformBundle:User');
+        $followersUser = array();
+        $followersList = $repoFollow->findByIdFollower($user);//
+
+        foreach ($followersList as $key => $value) {
+          $follower = $followersUserRepo->findOneBy(array('id'=>$value->getUser()->getId()));
+          $followersUser[] = $follower;
+        }//var_dump($followersUser); exit();
+
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profil.html.twig', array('nbrNdem'=>$nbrNdem, 'nbrCom'=>$nbrCom, 'followers' => $followersUser));
         return new Response($content);
     }
 
@@ -120,7 +197,15 @@ class HomepageController extends Controller
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $user)
             ->add('prenom', TextType::class)
             ->add('nom', TextType::class)
-            ->add('pseudo', TextType::class, array('label'=>'Pseudo (Votre nom sur \'NeNdemPlus\' )'))
+            ->add('pseudo', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => '0',
+                    'Oui' => '1'
+                ),
+                'required'    => false,
+                'label' => 'Masquer votre identité (nom et prénom)',
+                'empty_data'  => null
+            ))
             ->add('sexe', ChoiceType::class, array(
                 'choices' => array(
                     'Masculin' => 'm',
@@ -226,7 +311,7 @@ class HomepageController extends Controller
 
 
           ->add('email',     TextType::class)
-          ->add('username',     TextType::class)
+          ->add('username',     TextType::class, array('label'=>'Username(Pseudo)'))
           ->add('password',     PasswordType::class)
 
       //$form = $this->get('form.factory')->create(UserType::class,$user)

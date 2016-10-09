@@ -24,8 +24,8 @@
 				<div>
 					<h1>{{ ndem.titre }}</h1>
 					<p class="date">
-						<i>Posté le {{ ndem.dateCreation|date("d/m/Y") }} 
-							dans la catégorie 
+						<i>Posté le {{ ndem.dateCreation|date("d/m/Y") }} |
+							Catégorie : 
 							{% for categorie in ndem.categories %}
                     			{{ categorie }} |
                     		{% endfor %}
@@ -40,21 +40,44 @@
 					{{ form(form)  }}
 					{% for comment in comments %}
 						<div class="leComment">
-							<label>{{ comment.user }} a laissé un commentaire le {{ comment.dateCreation|date('d/m/Y') }}</label>
+							<div class="date">{{ comment.dateCreation|date('d/m/Y h:i') }}</div>
+							<div class="user">{{ comment.user }} a dit : </div>
 							<div class="post">{{ comment.commentaire }}</div>
 						</div>
 					{% endfor %}
 				</div>
 			</div>
 			<div class="col-md-2 sidebarNdem">
-				<h2>Auteur : {{ ndem.user }}</h2>
+				<h2><span class="intitule">Auteur : </span>{{ ndem.user }}</h2>
 				<div class="photo">
 					{% if (app.user.photo != null) %}
-						<img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
+						<img src="{{ asset('uploads/images/photoProfil/' ~ ndem.user.photo) }}" width="100%" />
 					{% endif %}
 				</div>
 				<div class="liens">
 					
+						<p class="infoAuteur">
+							{% if followersAuteur %}
+							{{ followersAuteur }} <span class="intitule"> follower(s)</span> |
+							{% endif %} 
+							<span>
+								{% if (app.user.id != ndem.user.id) %}
+									<a href="{{ path('nnp_platform_profilVisite', {'idVisiteur': ndem.user.id }) }}">
+										Voir le profil
+									</a>
+							    {% else %}
+							    	<a href="{{ path('nnp_platform_profil', {'idVisiteur': ndem.user.id }) }}">
+										Voir le profil
+									</a>
+								{% endif %}
+							</span>
+						</p>
+					
+					{% if ((app.user.id != ndem.user.id)  and (statutFollow != 1 )) %}
+					<a href="{{ path('nnp_platform_leNdem',{'id': ndem.id,'idAFollow' : ndem.user.id }) }}">
+						<div class="lien follow">Suivre l'auteur</div>
+					</a>
+					{% endif %}
 				</div>
 			</div>
 			<div class="col-md-2"></div>

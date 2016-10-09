@@ -85,6 +85,7 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->dateCreation = new \DateTime();
+        $this->pseudo = 0;
     }
 
      /**

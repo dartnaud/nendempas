@@ -1,8 +1,14 @@
 
 {% extends "::base.html.twig" %}
 {% block title %}Homepage{% endblock %}
-{% block connexion %}
-<div class="connexion">
+
+{% block body %}
+<div class="container-fluid">
+  <section class="slider">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-5"></div>
+        <div class="col-lg-4 connexion">
           <div class="newlog">Inscription</div>
           <div class="loggin">
 
@@ -23,12 +29,13 @@
             {% endblock fos_user_content %}
 
           </div>
-          <div class="logwith fbk"><a href="{{ path('nnp_platform_homepage') }}">Consultez les ndems</a></div>
-          <div class="logwith gml"><a href="{{ path('nnp_platform_profil') }}">Accedez à votre espace</a></div>
+          <div class="logwith fbk"><a href="{{ path('nnp_platform_creerNdem') }}">Postez votre 1er sujet</a></div>
+          <div class="logwith gml"><a href="{{ path('nnp_platform_editerProfil') }}">Parametrez votre espace</a></div>
         </div>
-{% endblock %}
-{% block body %}
-
+        <div class="col-lg-1"></div>
+      </div>
+    </section>
+</div>
 <div class="container">
   <section>
     <div class="row bande-stat">

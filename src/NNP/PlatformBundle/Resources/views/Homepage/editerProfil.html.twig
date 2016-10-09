@@ -24,11 +24,14 @@
 					<img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
 				</div>
 				<div class="identite">
-					<div class="nom">{{ app.user.prenom }} {{ app.user.nom|upper }}</div>
-					<div class="nom">Pseudo : <b>{{ app.user.pseudo }}</b></div>
+					<div class="nom">
+					{% if app.user.pseudo == 0 %}
+						{{ app.user.prenom }} {{ app.user.nom|upper }}
+					{% endif %}
+					</div>
+					<div class="nom"><span class="intitule">Pseudo : </span><b>{{ app.user.username }}</b></div>
 					
 				</div>
-				<div class="divider"></div>
 				<div class="liens">
 					<button onclick="location.href='{{ path('nnp_platform_mesNdems') }}';">Voir tous mes sujets</button>
 					<button onclick="location.href='{{ path('nnp_platform_creerNdem') }}';">Créer un nouveau sujet</button>

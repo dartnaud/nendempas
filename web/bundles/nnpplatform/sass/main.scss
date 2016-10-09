@@ -127,7 +127,6 @@
     z-index: 22;
 }
 
-
 .connexion{
 	width: 480px;
 	//background-color: $bordeau;
@@ -152,6 +151,10 @@
 		}
 		&.gml{
 			background-color: $twitter;
+		}
+
+		a{
+			color: $white;
 		}
 	}
 
@@ -321,7 +324,7 @@
 	padding: 10px;
 	.ndem{
 		padding: 10px;
-		//border: 1px solid $bleuBouton;
+		border: 1px solid $grisClair;
 
 		.categorie{
 			color: $bordeau;
@@ -340,9 +343,18 @@
 			padding-top: 13px;
 		}
 
+		.date{
+			background-color: $bleuBouton;
+			color: $white;
+			font-style: italic;
+			text-align: right;
+			padding-right: 5px;
+			padding-bottom: 5px;
+		}
+
 		p{
 			padding: 15px;
-			border: 2px solid $bleuBouton;
+			//border: 2px solid $bleuBouton;
 			background-color: $white;
 		}
 
@@ -356,6 +368,10 @@
 				display: inline-block;
 				color: $bordeau;
 				font-family: 'Baloo Bhaina', cursive;
+			}
+
+			button {
+				margin: 5px;
 			}
 		}
 	}
@@ -405,7 +421,7 @@
 				font-weight: bold;
 				background-color: $white;
 				padding: 10px;
-				color: $black;
+				color: $bordeau;
 			}
 
 			.description {
@@ -413,6 +429,10 @@
 				margin-bottom: 10px;
 				font-size: 16px;
 				text-align: justify;
+			}
+
+			.intitule{
+				color: $gris;
 			}
 		}
 		.info{
@@ -483,6 +503,9 @@
 .sidebarNdem{
 	background-color: $grisClair;
 	padding: 20px;
+	.intitule{
+			color: $gris;
+		}
 	h2{
 		padding: 10px;
 			text-align: left;
@@ -492,7 +515,38 @@
 			color: $bordeau;
 			margin-bottom: 20px;
 	}
+
+	.liens{
+		padding: 10px;
+		width: 100%;
+		a{
+			color: $white;
+		}
+
+		.lien {
+			font-family: 'Oswald', sans-serif;
+			padding: 10px;
+			text-align: center;
+			border-radius: 2px;
+			background-color: $bordeau;
+			width: inherit;
+			margin-bottom: 5px;
+			margin-top: 8px;
+			font-size: 20px;
+		}
+
+		.infoAuteur{
+			font-family: 'Oswald', sans-serif;
+			color: $bordeau;
+
+			a{
+				color: $bordeau;
+			}
+		}
+	}
 }
+
+
 
 .leNdem{
 	.date{
@@ -501,6 +555,24 @@
 		margin-bottom: 10px;
 		border-bottom: 1px solid $gris;
 		padding-bottom: 10px;
+		font-weight: bold;
+		font-style: italic;
+	}
+
+	.nrbCom{
+		font-family: 'Oswald', sans-serif;
+		color: $bordeau;
+	}
+
+	.user{
+		background-color: $bleuciel;
+		color: $white;
+		padding: 5px;
+	}
+
+	.post{
+		padding: 10px;
+		border-left: 2px solid $bleuciel;
 	}
 }
 

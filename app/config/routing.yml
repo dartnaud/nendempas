@@ -1,3 +1,7 @@
+nnp_admin:
+    resource: "@NNPAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin-platform
+
 nnp_user:
     resource: "@NNPUserBundle/Resources/config/routing.yml"
     prefix:   /

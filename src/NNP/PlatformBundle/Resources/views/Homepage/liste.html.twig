@@ -38,21 +38,20 @@
 				{% for ndem in listeNdems %}
 				<div class="bloc-ndem">	
 					<div class="ndem">
-	                    <div class="titre">{{ ndem.titre }} posté le {{ ndem.dateCreation|date("m/d/Y") }} par {{ ndem.user }}</div>
+	                    <div class="titre">{{ ndem.titre }}</div>
+	                    <div class="date">posté le {{ ndem.dateCreation|date("m/d/Y") }} |<strong> Auteur : </strong>{{ ndem.user }}</div>
 	                    <p>
-	                    	{% autoescape %}
-	                    	{{ ndem.texte|raw|slice(0, 250)  }}
-	                    	{% endautoescape %}
+	                    	{{ ndem.texte|raw|slice(0, 180)  }}
 	                    </p>
 	                    <!-- Trigger the modal with a button -->
 	                    <div class="info-ndem">
-	                        <div class="commentaire">23 commentaires -</div>
-	                        <div class="commentaire">3 coachs ont réagis</div>
-	                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Voir son ndem</button>
+	                        {# <div class="commentaire">23 commentaires -</div>
+	                        <div class="commentaire">3 coachs ont réagis</div> #}
+	                        <button onclick="location.href='{{ path('nnp_platform_leNdem', {id: ndem.id}) }}';" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Voir son ndem</button>
 	                    </div>
 
 	                    <!-- Modal -->
-	                    <div class="modal fade" id="myModal" role="dialog">
+	                    {# <div class="modal fade" id="myModal" role="dialog">
 	                        <div class="modal-dialog">
 	                            <!-- Modal content-->
 	                            <div class="modal-content">
@@ -76,7 +75,7 @@
 	                                </div>
 	                            </div>
 	                        </div>
-	                    </div>
+	                    </div> #}
 	                </div>
 	            </div>
 				{% endfor %}

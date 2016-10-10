@@ -21,7 +21,11 @@
 		<div class="row">
 			<div class="col-md-4 sidebar">
 				<div class="photo">
-					<img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
+					{% if app.user.photo != null or app.user.photo != '' %}
+						<img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
+					{% else %}
+						<img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="100%" />
+					{% endif %}
 				</div>
 				<div class="identite">
 					{% if app.user.pseudo == 0 %}
@@ -60,7 +64,11 @@
 					<h1>Ils vous suivent</h1>
 					{% for follower in followers %}
 					<a href="{{ path('nnp_platform_profilVisite', {'idVisiteur': follower.id }) }}">
-						<img src="{{ asset('uploads/images/photoProfil/' ~ follower.photo) }}" width="80px" />
+						{% if follower.photo != null or follower.photo != '' %}
+						<img src="{{ asset('uploads/images/photoProfil/' ~ follower.photo) }}" width="80px"  title="{{ follower.username }}" alt="{{ follower.username }}"/>
+						{% else %}
+							<img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="80px" alt="{{ follower.username }}" title="{{ follower.username }}"/>
+						{% endif %}
 					</a>
 					{% endfor %}
 				</div>

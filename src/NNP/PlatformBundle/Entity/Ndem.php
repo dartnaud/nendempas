@@ -84,7 +84,7 @@ class Ndem
 
     /**
      *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\User")
-     *@ORM\JoinColumn(nullable=false)
+     *@ORM\JoinColumn(nullable=true)
      */
     private $user;
 

@@ -50,8 +50,8 @@ class Follower
     private $statut;
 
     /**
-     *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\User")
-     *@ORM\JoinColumn(nullable=false)
+     *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\User", cascade={"persist", "remove"})
+     *@ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $user;
 

@@ -41,7 +41,7 @@
 	                    <div class="titre">{{ ndem.titre }}</div>
 	                    <div class="date">posté le {{ ndem.dateCreation|date("m/d/Y") }} |<strong> Auteur : </strong>{{ ndem.user }}</div>
 	                    <p>
-	                    	{{ ndem.texte|raw|slice(0, 180)  }}
+	                    	{{ ndem.texte|striptags|slice(0, 180)  }}
 	                    </p>
 	                    <!-- Trigger the modal with a button -->
 	                    <div class="info-ndem">

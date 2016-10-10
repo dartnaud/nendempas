@@ -1,3 +1,43 @@
 nnp_admin_homepage:
     path:     /
     defaults: { _controller: NNPAdminBundle:Admin:index }
+
+nnp_admin_gestionUser:
+    path:     /gestion-utilisateur
+    defaults: { _controller: NNPAdminBundle:Admin:gestionUser }
+
+nnp_admin_editerUser:
+    path:     /editer-utilisateur
+    defaults: { _controller: NNPAdminBundle:Admin:editerUser }
+
+nnp_admin_editerUserlogin:
+    path:     /editer-utilisateur-login
+    defaults: { _controller: NNPAdminBundle:Admin:editerUserLogin }
+
+nnp_admin_gestionProfil:
+    path:     /gestion-profil
+    defaults: { _controller: NNPAdminBundle:Admin:gestionProfil }
+
+nnp_admin_creerProfil:
+    path:     /creer-profil
+    defaults: { _controller: NNPAdminBundle:Admin:creerProfil }
+
+nnp_admin_editerProfil:
+    path:     /editer-profil
+    defaults: { _controller: NNPAdminBundle:Admin:editerProfil }
+
+nnp_admin_gestionNdem:
+    path:     /gestion-ndem
+    defaults: { _controller: NNPAdminBundle:Admin:gestionNdem }
+
+nnp_admin_editerNdem:
+    path:     /editer-ndem
+    defaults: { _controller: NNPAdminBundle:Admin:editerNdem }
+
+nnp_admin_gestionComment:
+    path:     /gestion-comment
+    defaults: { _controller: NNPAdminBundle:Admin:gestionComment }
+
+nnp_admin_editerComment:
+    path:     /editer-comment
+    defaults: { _controller: NNPAdminBundle:Admin:editerComment }

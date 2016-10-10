@@ -44,6 +44,11 @@ class Profil
     private $dateCreation;
 
 
+    public function __construct()
+    {
+        $this->dateCreation = new \DateTime();
+    }
+
     /**
      * Get id
      *
@@ -124,6 +129,10 @@ class Profil
     public function getDateCreation()
     {
         return $this->dateCreation;
+    }
+
+    public function __toString() {
+        return $this->nom;
     }
 }
 

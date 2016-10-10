@@ -6,6 +6,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <link rel="stylesheet" href="{{ asset('bundles/nnpplatform/css/full-slider.css') }}" type="text/css" /> 
         <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
@@ -136,8 +137,10 @@
         
         {% block javascripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="{{ asset('bundles/nnpplatform/js/bootstrap.min.js') }}" ></script>
+        <script src="{{ asset('bundles/nnpplatform/js/main.js') }}" ></script>
         <script src="{{ asset('bundles/nnpplatform/bootstrap/js/main.css') }}"></script>
         <!-- Script to Activate the Carousel -->
         <script>

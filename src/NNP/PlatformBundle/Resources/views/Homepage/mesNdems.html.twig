@@ -21,7 +21,11 @@
 		<div class="row">
 			<div class="col-md-4 sidebar">
 				<div class="photo">
-					<img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
+					{% if app.user.photo != null or app.user.photo != '' %}
+						<img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
+					{% else %}
+						<img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="100%" />
+					{% endif %}
 				</div>
 				<div class="identite">
 					<div class="nom">
@@ -53,7 +57,7 @@
 	                            <div class="titre">{{ ndem.titre }} </div>
 	                            <div class="date">Posté le {{ ndem.dateCreation|date("m/d/Y") }}</div>
 	                            <p>
-	                            	{{ ndem.texte|raw|slice(0, 250)  }}
+	                            	{{ ndem.texte|striptags|slice(0, 250)  }}
 	                            </p>
 	                            <!-- Trigger the modal with a button -->
 	                            <div class="info-ndem">

@@ -1,0 +1,73 @@
+{% extends "NNPAdminBundle::template.html.twig" %}
+{% block title %}Homepage{% endblock %}
+{% block menuUser %}
+<ul class="nav navbar-nav">
+    <li class="dropdown"> 
+        <a data-toggle="dropdown" href="#">{{ app.user.username }}  <b class="caret"></b></a>
+        <ul class="dropdown-menu jqueryFadeIn">
+            <li><a href="{{ path('nnp_platform_modifierPassword') }}">Modifier le mot de passe</a></li>        
+            <li class="divider"></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+        </ul>
+    </li> 
+</ul>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+	<section class="profil">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10 center">
+				<h1>Gestion des utilisateurs</h1>
+				<div>
+					<table id="table-platform" class="display table table-striped table-bordered" cellspacing="0" width="100%" data-order='[[ 1, "asc" ]]' data-page-length='25'>
+						<thead>
+							<tr>
+								<th>N°</th>
+								<th>Prenom</th>
+								<th>Nom</th>
+								<th>Username (pseudo)</th>
+								<th>Sexe</th>
+								<th>Email</th>
+								<th>Date de creation</th>
+								<th>Dernière connexion</th>
+								<th>Profil</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for user in users %}
+								<tr>
+									<td>{{ user.id }}</td>
+									<td>{{ user.prenom }}</td>
+									<td>{{ user.nom }}</td>
+									<td>{{ user.username }}</td>
+									<td>
+										{% if user.sexe == 'm' %}
+										Homme
+										{% elseif user.sexe == 'f' %}
+										Femme
+										{% endif %}
+									</td>
+									<td>{{ user.email }}</td>
+									<td>{{ user.dateCreation|date('d-m-Y H:i') }}</td>
+									<td>{{ user.lastLogin|date('d-m-Y H:i') }}</td>
+									<td>{{ user.profil }}</td>
+									<td>
+										<a href="{{ path('nnp_admin_editerUserlogin', {'id': user.id })}}">Editer login/password</a><br/>
+										<a href="{{ path('nnp_admin_editerUser', {'id': user.id })}}">Editer ces infos</a><br/>
+										<a href="{{ path('nnp_admin_gestionUser', {'supprimeid': user.id })}}">Supprimer</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</section>
+	
+</div>
+{% endblock %}

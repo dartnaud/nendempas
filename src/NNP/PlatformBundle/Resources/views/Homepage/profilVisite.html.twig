@@ -21,7 +21,11 @@
 		<div class="row">
 			<div class="col-md-4 sidebar">
 				<div class="photo">
-					<img src="{{ asset('uploads/images/photoProfil/' ~ user.photo) }}" width="100%" />
+					{% if user.photo != null or user.photo != '' %}
+						<img src="{{ asset('uploads/images/photoProfil/' ~ user.photo) }}" width="100%" />
+					{% else %}
+						<img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="100%" />
+					{% endif %}
 				</div>
 				<div class="identite">
 					{% if user.pseudo == 0 %}
@@ -45,7 +49,7 @@
 				<div class="info">
 					<h1>Vos stats</h1>
 					<div class="bloc">
-						<p><span class="glyphicon glyphicon-pencil chiffre"></span><span class="chiffre"><a href="{{ path('nnp_platform_mesNdems') }}">{{ nbrNdem }}</a></span> sujet(s) posté(s)</p>
+						<p><span class="glyphicon glyphicon-pencil chiffre"></span><span class="chiffre"><a href="{{ path('nnp_platform_ndemVisite',{'idVisite': user.id }) }}">{{ nbrNdem }}</a></span> sujet(s) posté(s)</p>
 						<p><span class="glyphicon glyphicon-comment chiffre"></span><span class="chiffre">{{ nbrCom }}</span> commentaires</p>
 					</div>
 					<div class="bloc">
@@ -57,7 +61,11 @@
 					<h1>Ils vous suivent</h1>
 					{% for follower in followers %}
 					<a href="{{ path('nnp_platform_profilVisite', {'idVisiteur': follower.id }) }}">
-						<img src="{{ asset('uploads/images/photoProfil/' ~ follower.photo) }}" width="80px" />
+						{% if follower.photo != null or follower.photo != '' %}
+						<img  src="{{ asset('uploads/images/photoProfil/' ~ follower.photo) }}" width="80px"  title="{{ follower.username }}" alt="{{ follower.username }}"/>
+						{% else %}
+							<img  src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="80px" alt="{{ follower.username }}" title="{{ follower.username }}"/>
+						{% endif %}
 					</a>
 					{% endfor %}
 				</div>

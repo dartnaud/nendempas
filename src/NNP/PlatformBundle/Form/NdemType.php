@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class NdemType extends AbstractType
 {
@@ -25,7 +26,11 @@ class NdemType extends AbstractType
         //$utilisateur= $this->container->get('security.context')->getToken()->getUser()->getId();
         $builder
             ->add('titre', TextType::class)
-            ->add('texte', TextareaType::class)
+            ->add('texte', CKEditorType::class, array(
+                'config' => array(
+                    'uiColor' => '#ffffff',
+                    //...
+                ),))
             ->add('statut', ChoiceType::class, array(
                 'choices'  => array(
                     'activer' => '1',
@@ -33,7 +38,6 @@ class NdemType extends AbstractType
                 ),
             ))
             ->add('user')
-            ->add('profil')
             ->add('categories')
             ->add('save', SubmitType::class, array('label'=>'Enregistrer'));
         ;

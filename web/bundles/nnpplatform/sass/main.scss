@@ -7,6 +7,10 @@
 @import "_variables";
 @import "_mixins";
 
+img{
+	vertical-align: middle;
+}
+
 .container{
 	font-family: 'Inconsolata', monospace;
 }
@@ -134,8 +138,8 @@
 	padding-top: 20px;
 	padding-bottom: 20px;
 	position: absolute;
-	bottom: 209px;
-    right: 148px;
+	bottom: 251px;
+    right: 200px;
 
 	.logwith{
 		width: 42%;
@@ -538,7 +542,7 @@
 		.infoAuteur{
 			font-family: 'Oswald', sans-serif;
 			color: $bordeau;
-
+			margin-top: 7px;
 			a{
 				color: $bordeau;
 			}
@@ -570,9 +574,28 @@
 		padding: 5px;
 	}
 
+	.userCoach{
+		background-color: $bordeau;
+		color: white;
+		padding: 5px;
+		&::before{
+			content: "LE COACH";
+			color: $bordeau;
+			background-color: $white;
+			padding: 10px;
+			margin: 10px;
+			font-family: 'Oswald', sans-serif;
+		}
+	}
+
 	.post{
 		padding: 10px;
 		border-left: 2px solid $bleuciel;
+	}
+
+	.postCoach{
+		padding: 10px;
+		border-left: 2px solid $bordeau;
 	}
 }
 

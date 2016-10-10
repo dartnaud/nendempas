@@ -1,0 +1,64 @@
+{% extends "NNPAdminBundle::template.html.twig" %}
+{% block title %}Homepage{% endblock %}
+{% block menuUser %}
+<ul class="nav navbar-nav">
+    <li class="dropdown"> 
+        <a data-toggle="dropdown" href="#">{{ app.user.username }}  <b class="caret"></b></a>
+        <ul class="dropdown-menu jqueryFadeIn">
+            <li><a href="{{ path('nnp_platform_modifierPassword') }}">Modifier le mot de passe</a></li>        
+            <li class="divider"></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+        </ul>
+    </li> 
+</ul>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+	<section class="profil">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10 center">
+				<h1>Gestion des ndems</h1>
+				<div>
+					<table id="table-platform" class="display table table-striped table-bordered" cellspacing="0" width="100%" data-order='[[ 1, "asc" ]]' data-page-length='25'>
+						<thead>
+							<tr>
+								<th>N°</th>
+								<th>Titre</th>
+								<th>Texte</th>
+								<th>Date de Creation</th>
+								<th>Catégorie</th>
+								<th>Auteur</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for ndem in ndems %}
+								<tr>
+									<td>{{ ndem.id }}</td>
+									<td>{{ ndem.titre }}</td>
+									<td>{{ ndem.texte|striptags|slice(0,120) }}</td>
+									<td>{{ ndem.dateCreation|date('d-m-Y H:i') }}</td>
+									<td>
+										{% for categorie in ndem.categories %}
+			                    			{{ categorie }} |
+			                    		{% endfor %}
+			                    	</td>
+									<td>{{ ndem.user }}</td>
+									<td>
+										<a href="{{ path('nnp_admin_editerNdem', {'id': ndem.id })}}">Editer</a><br/>
+										<a href="{{ path('nnp_admin_gestionNdem', {'supprimeid': ndem.id })}}">Supprimer</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</section>
+	
+</div>
+{% endblock %}

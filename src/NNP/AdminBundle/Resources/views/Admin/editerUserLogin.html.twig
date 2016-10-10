@@ -1,0 +1,32 @@
+{% extends "NNPAdminBundle::template.html.twig" %}
+{% block title %}Homepage{% endblock %}
+{% block menuUser %}
+<ul class="nav navbar-nav">
+    <li class="dropdown"> 
+        <a data-toggle="dropdown" href="#">{{ app.user.username }}  <b class="caret"></b></a>
+        <ul class="dropdown-menu jqueryFadeIn">
+            <li><a href="{{ path('nnp_platform_modifierPassword') }}">Modifier le mot de passe</a></li>        
+            <li class="divider"></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+        </ul>
+    </li> 
+</ul>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+	<section class="profil">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10 center">
+				<h1>Editer les infos de connexion</h1>
+				<div class="formulaire">
+				  	{{ form(form) }}
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</section>
+	
+</div>
+{% endblock %}

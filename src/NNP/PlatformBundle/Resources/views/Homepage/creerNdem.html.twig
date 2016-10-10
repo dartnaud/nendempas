@@ -21,7 +21,11 @@
             <div class="row">
                 <div class="col-md-4 sidebar">
                     <div class="photo">
-                        <img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
+                        {% if app.user.photo != null or app.user.photo != '' %}
+                          <img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
+                        {% else %}
+                          <img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="100%" />
+                        {% endif %}
                     </div>
                     <div class="identite">
                         <div class="nom">

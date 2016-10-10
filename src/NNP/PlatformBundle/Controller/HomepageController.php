@@ -117,7 +117,7 @@ class HomepageController extends Controller
           $em->persist($comment);
           $em->flush();
 
-          $request->getSession()->getFlashBag()->add('notice', 'Merci pour votre commentaire.');
+          //$request->getSession()->getFlashBag()->add('notice', 'Merci pour votre commentaire.');
 
           return $this->redirectToRoute('nnp_platform_leNdem', array('id'=>$id));
         }
@@ -129,7 +129,14 @@ class HomepageController extends Controller
         ;
         $listeComments = $repoComment->findByNdem($ndem->getId());
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:leNdem.html.twig', array('ndem'=> $ndem,'comments'=>$listeComments,'form' => $form->createView(),'statutFollow'=> $statutFollow, 'followersAuteur' => $followersAuteur));
+        $nbrCoach = 0;
+        foreach ($listeComments as $key => $value) {
+          if ($value->getUser()->getProfil() == 'COACH') {
+            $nbrCoach++ ;
+          }
+        }
+
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:leNdem.html.twig', array('nbrCoach'=>$nbrCoach,'ndem'=> $ndem,'comments'=>$listeComments,'form' => $form->createView(),'statutFollow'=> $statutFollow, 'followersAuteur' => $followersAuteur));
         return new Response($content);
     }
 
@@ -169,6 +176,7 @@ class HomepageController extends Controller
 
         $listeCom = $em->getRepository('NNPPlatformBundle:Commentaire')->findByUser($this->getUser());
         $nbrCom = sizeof($listeCom);
+
 
         $user = $em->getRepository('NNPPlatformBundle:User')
                    ->find($this->getUser()->getId()); 
@@ -247,7 +255,7 @@ class HomepageController extends Controller
           $em->persist($user);
           $em->flush();
 
-          $request->getSession()->getFlashBag()->add('notice', 'Infos bien enregistrées.');
+          //$request->getSession()->getFlashBag()->add('notice', 'Infos bien enregistrées.');
 
           return $this->redirectToRoute('nnp_platform_profil');
         }
@@ -290,7 +298,7 @@ class HomepageController extends Controller
           $em->persist($ndem);
           $em->flush();
 
-          $request->getSession()->getFlashBag()->add('notice', 'Ndem bien enregistrée.');
+          //$request->getSession()->getFlashBag()->add('notice', 'Ndem bien enregistrée.');
 
           return $this->redirectToRoute('nnp_platform_profil', array('id' => $this->getUser()->getId()));
         }
@@ -330,7 +338,7 @@ class HomepageController extends Controller
         $em->persist($user);
         $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Infos bien enregistrées.');
+        //$request->getSession()->getFlashBag()->add('notice', 'Infos bien enregistrées.');
 
         return $this->redirectToRoute('nnp_platform_profil');
       }

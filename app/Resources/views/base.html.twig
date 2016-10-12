@@ -25,15 +25,19 @@
                     <div class="col-md-2"></div>
                     <div class="col-md-6 ">
                         <ul class="nav navbar-nav top-menu">
-                          <li><a href="{{ path('nnp_platform_presentation') }}">Qui sommes-nous ?</a></li>
-                          <li><a href="#">Comment ça marche !</a></li>
-                          <li><a href="#">Nous contacter</a></li>
+                            <li><a href="{{ path('nnp_platform_presentation') }}">Qui sommes-nous ?</a></li>
+                            <li><a href="#">Comment ça marche !</a></li>
+                            <li><a href="#">Nous contacter</a></li>
+                            {% if is_granted("ROLE_ADMIN") %}
+                                    <li><a href="{{ path('nnp_admin_homepage') }}">Espace administration</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                     <div class="col-md-2 reseaux">
                         <!-- <div class="icon"><img src="{{ asset('bundles/nnpplatform/images/facebook.png')}}" /></div>
                         <div class="icon"><img src="{{ asset('bundles/nnpplatform/images/twitter.png')}}" /></div> -->
                         <div class="info-user">
+
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 {% block menuUser %}
                                 {% endblock %}

@@ -1,0 +1,27 @@
+@media screen and (max-width: 1100px) {
+  /* line 3, ../sass/responsivemain.scss */
+  .connexion {
+    bottom: 98px;
+    right: 18px;
+  }
+  /* line 8, ../sass/responsivemain.scss */
+  .connexion.register {
+    bottom: 40px;
+  }
+
+  /* line 13, ../sass/responsivemain.scss */
+  .logo {
+    left: 26px;
+  }
+}
+@media screen and (min-width: 1380px) {
+  /* line 20, ../sass/responsivemain.scss */
+  .connexion {
+    bottom: 363px;
+    right: 235px;
+  }
+  /* line 25, ../sass/responsivemain.scss */
+  .connexion.register {
+    bottom: 237px;
+  }
+}

@@ -13,6 +13,7 @@
         <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/nnpplatform/css/main.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('bundles/nnpplatform/css/responsivemain.css') }}" type="text/css" />
         {# {% stylesheets "{{ asset('bundles/nnpplatform/css/main.css') }}"  %}
           <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
         {% endstylesheets %} #}
@@ -52,14 +53,15 @@
                 </div>
             </section>
         </div>
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.request.attributes.get('_route') != 'fos_user_registration_confirmed' %}
         <div class="container-fluid">
             <header class="header">
                 <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-6"><a href="{{ path('nnp_platform_homepage') }}"><img src="{{ asset('bundles/nnpplatform/images/logo.png')}}" width="300px" /></a></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-7"><a href="{{ path('nnp_platform_homepage') }}"><img src="{{ asset('bundles/nnpplatform/images/logo.png')}}" width="300px" /></a></div>
                     <div class="col-md-2">
-
+                        {% block photoConnecte %}
+                        {% endblock %}
                     </div>
                     <div class="col-md-2"></div>
                 </div>

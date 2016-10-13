@@ -1,10 +1,19 @@
 {% extends "::base.html.twig" %}
+{% block photoConnecte %}
+    <div class="photoConnecte">
+        {% if app.user.photo != null or app.user.photo != '' %}
+                        <img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
+                    {% else %}
+                        <img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="100%" />
+                    {% endif %}
+    </div>
+{% endblock %}
 
 {% block bande %}
 <div class="container-fluid">
 	<section class="bande">
 		<div class="row">
-			<div class="col-md-2"></div>
+			<div class="col-md-1"></div>
             <div class="col-md-7 menu-central">
             	{% block menu %}
         		<ul class="nav navbar-nav">
@@ -18,7 +27,7 @@
                 </ul>
                 {% endblock %}
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-md-2"></div>
             <div class="col-md-2"></div>
 		</div>
 	</section>

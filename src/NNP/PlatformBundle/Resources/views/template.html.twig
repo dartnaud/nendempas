@@ -1,11 +1,12 @@
 {% extends "::base.html.twig" %}
+
 {% block photoConnecte %}
     <div class="photoConnecte">
         {% if app.user.photo != null or app.user.photo != '' %}
-                        <img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" width="100%" />
-                    {% else %}
-                        <img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="100%" />
-                    {% endif %}
+            <img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" height="150px" />
+        {% else %}
+            <img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" height="150px" />
+        {% endif %}
     </div>
 {% endblock %}
 
@@ -14,7 +15,7 @@
 	<section class="bande">
 		<div class="row">
 			<div class="col-md-1"></div>
-            <div class="col-md-7 menu-central">
+            <div class="col-md-8 menu-central">
             	{% block menu %}
         		<ul class="nav navbar-nav">
         			<li><a href="{{ path('nnp_platform_homepage') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
@@ -27,8 +28,26 @@
                 </ul>
                 {% endblock %}
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-2"></div>
+            <div class="col-md-2 menu-user">
+                <div class="info-user">
+                {% block menuUser %}
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown"> 
+                            <a data-toggle="dropdown" href="#">{{ app.user.username }}  <b class="caret"></b></a>
+                            <ul class="dropdown-menu jqueryFadeIn">
+                                <li><a href="{{ path('nnp_platform_profil') }}">Mon profil</a></li>
+                                <li><a href="{{ path('nnp_platform_mesNdems') }}">Consulter mes ndems</a></li>
+                                <li><a href="{{ path('nnp_platform_creerNdem') }}">Créer un ndem</a></li>
+                                <li><a href="{{ path('nnp_platform_modifierPassword') }}">Modifier le mot de passe</a></li>        
+                                <li class="divider"></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                            </ul>
+                        </li> 
+                    </ul>
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="col-md-1"></div>
 		</div>
 	</section>
 </div>

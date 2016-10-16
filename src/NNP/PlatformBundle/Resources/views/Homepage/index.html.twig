@@ -1,21 +1,5 @@
 {% extends "NNPPlatformBundle::template.html.twig" %}
 {% block title %}Homepage{% endblock %}
-{% block menuUser %}
-<ul class="nav navbar-nav">
-    <li class="dropdown"> 
-        <a data-toggle="dropdown" href="#">{{ app.user.username }}  <b class="caret"></b></a>
-        <ul class="dropdown-menu jqueryFadeIn">
-            <li><a href="{{ path('nnp_platform_profil') }}">Mon profil</a></li>
-            <li><a href="{{ path('nnp_platform_mesNdems') }}">Consulter mes ndems</a></li>
-            <li><a href="{{ path('nnp_platform_creerNdem') }}">Créer un ndem</a></li>
-            <li><a href="{{ path('nnp_platform_modifierPassword') }}">Modifier le mot de passe</a></li>        
-            <li class="divider"></li>
-            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-        </ul>
-    </li> 
-</ul>
-{% endblock %}
-
 {% block body %}
 <div class="container-fluid">
 	<section class="home-1">
@@ -25,22 +9,40 @@
                 <div class="col-md-12">
                     <div class="col-md-4">
                         <a href="{{ path('nnp_platform_liste', {nom:'CARRIERE'}) }}">
-                            <div class="theme carriere">
+                            <div class="theme carriere {% if maxNdem == 'carriere' %} maxNdem{% endif %}">
                                 <div class="titre">CARRIERE</div>
+                                <div class="info-categorie">{{ listeNdemsCarriere|length }} ndem(s) | {{ listeComCarriere }} réaction(s)</div>
+                                <div class="info-ndemeur">
+                                    {% for ndemeur in ndemeurCarriere %}
+                                        {{ ndemeur.username }} |
+                                    {% endfor %}
+                                </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-md-4">
                         <a href="{{ path('nnp_platform_liste', {nom:'NJOKA'}) }}">
-                            <div class="theme njoka">
+                            <div class="theme njoka {% if maxNdem == 'njoka' %} maxNdem{% endif %}">
                                 <div class="titre">NJOKA</div>
+                                <div class="info-categorie">{{ listeNdemsNjoka|length }} ndem(s) | {{ listeComNjoka }} réaction(s)</div>
+                                <div class="info-ndemeur">
+                                    {% for ndemeur in ndemeurNjoka %}
+                                        {{ ndemeur.username }} |
+                                    {% endfor %}
+                                </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-md-4">
                         <a href="{{ path('nnp_platform_liste', {nom:'RELIGION'}) }}">
-                            <div class="theme religion">
+                            <div class="theme religion {% if maxNdem == 'religion' %} maxNdem{% endif %}">
                                 <div class="titre">RELIGION</div>
+                                <div class="info-categorie">{{ listeNdemsReligion|length }} ndem(s) | {{ listeComReligion }} réaction(s)</div>
+                                <div class="info-ndemeur">
+                                    {% for ndemeur in ndemeurReligion %}
+                                        {{ ndemeur.username }} |
+                                    {% endfor %}
+                                </div>
                             </div>
                         </a>
                     </div>
@@ -54,22 +56,40 @@
                 <div class="col-md-12">
                     <div class="col-md-4">
                         <a href="{{ path('nnp_platform_liste', {nom:'MODE'}) }}">
-                            <div class="theme mode">
+                            <div class="theme mode {% if maxNdem == 'mode' %} maxNdem{% endif %}">
                                 <div class="titre">MODE</div>
+                                <div class="info-categorie">{{ listeNdemsMode|length }} ndem(s) | {{ listeComMode }} réaction(s)</div>
+                                <div class="info-ndemeur">
+                                    {% for ndemeur in ndemeurMode %}
+                                        {{ ndemeur.username }} |
+                                    {% endfor %}
+                                </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-md-4">
                         <a href="{{ path('nnp_platform_liste', {nom:'AMOUR'}) }}">
-                            <div class="theme amour">
+                            <div class="theme amour {% if maxNdem == 'amour' %} maxNdem{% endif %}">
                                 <div class="titre">AMOUR</div>
+                                <div class="info-categorie">{{ listeNdemsAmour|length }} ndem(s) | {{ listeComAmour }} réaction(s)</div>
+                                <div class="info-ndemeur">
+                                    {% for ndemeur in ndemeurAmour %}
+                                        {{ ndemeur.username }} |
+                                    {% endfor %}
+                                </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-md-4">
                         <a href="{{ path('nnp_platform_liste', {nom:'KWATT'}) }}">
-                            <div class="theme kwatt">
+                            <div class="theme kwatt {% if maxNdem == 'kwatt' %} maxNdem{% endif %}">
                                 <div class="titre">KWATT</div>
+                                <div class="info-categorie">{{ listeNdemsKwatt|length }} ndem(s) | {{ listeComKwatt }} réaction(s)</div>
+                                <div class="info-ndemeur">
+                                    {% for ndemeur in ndemeurKwatt %}
+                                        {{ ndemeur.username }} |
+                                    {% endfor %}
+                                </div>
                             </div>
                         </a>
                     </div>

@@ -29,11 +29,157 @@ use Symfony\Component\HttpFoundation\Request;
 
 class HomepageController extends Controller
 {
+
+    /*public function menuAction(){
+      $em = $this->getDoctrine()->getManager();
+      $repository = $em->getRepository('NNPPlatformBundle:Ndem');
+    }*/
     
 
     public function indexAction()
     {
-    	$content = $this->get('templating')->render('NNPPlatformBundle:Homepage:index.html.twig');
+      $em = $this->getDoctrine()->getManager();
+
+      
+
+      $repoCat = $em->getRepository('NNPPlatformBundle:Categorie');
+      $idCarriere = $repoCat->findOneBy(array('nom'=>'CARRIERE'));
+      $idNjoka = $repoCat->findOneBy(array('nom'=>'NJOKA'));
+      $idReligion = $repoCat->findOneBy(array('nom'=>'RELIGION'));
+      $idMode = $repoCat->findOneBy(array('nom'=>'MODE'));
+      $idAmour = $repoCat->findOneBy(array('nom'=>'AMOUR'));
+      $idKwatt = $repoCat->findOneBy(array('nom'=>'KWATT'));
+
+      $repo = $em->getRepository('NNPPlatformBundle:Ndem');
+      $ndems= $repo->findAll();
+
+      if($ndems){
+        $listeNdemsCarriere = array();
+        $listeNdemsNjoka = array();
+        $listeNdemsReligion = array();
+        $listeNdemsMode = array();
+        $listeNdemsAmour = array();
+        $listeNdemsKwatt = array();
+        foreach ($ndems as $key => $value) {
+            $categories = $value->getCategories();
+            foreach ($categories as $value2) {
+              if ($value2 == $idCarriere){
+                  $listeNdemsCarriere[] = $value;
+                  $ndemeurCarriere[] = $value->getUser();
+              }
+              else if ($value2 == $idNjoka){
+                  $listeNdemsNjoka[] = $value;
+                  $ndemeurNjoka[] = $value->getUser();
+              }
+              else if ($value2 == $idReligion){
+                  $listeNdemsReligion[] = $value;
+                  $ndemeurReligion[] = $value->getUser();
+              }
+              else if ($value2 == $idMode){
+                  $listeNdemsMode[] = $value;
+                  $ndemeurMode[] = $value->getUser();
+              }
+              else if ($value2 == $idAmour){
+                  $listeNdemsAmour[] = $value;
+                  $ndemeurAmour[] = $value->getUser();
+              }
+              else if ($value2 == $idKwatt){
+                  $listeNdemsKwatt[] = $value;
+                  $ndemeurKwatt[] = $value->getUser();
+              }
+            }
+        }
+      }else {
+          $listeNdemsCarriere = null ;
+          $listeNdemsNjoka = null ;
+          $listeNdemsReligion = null ;
+          $listeNdemsMode = null ;
+          $listeNdemsAmour = null ;
+          $listeNdemsKwatt = null ;
+      }
+
+      $ndemeurCarriere = array_unique($ndemeurCarriere); 
+      $ndemeurNjoka = array_unique($ndemeurNjoka);
+      $ndemeurReligion = array_unique($ndemeurReligion);
+      $ndemeurMode = array_unique($ndemeurMode);
+      $ndemeurAmour = array_unique($ndemeurAmour);
+      $ndemeurKwatt = array_unique($ndemeurKwatt);
+ 
+      $listeComCarriere = 0;
+      if (isset ($listeNdemsCarriere) ){
+        foreach ($listeNdemsCarriere as $key => $value) {
+           $listeComCarriere = $listeComCarriere + sizeof($em->getRepository('NNPPlatformBundle:Commentaire')
+                     ->findByNdem($value->getId()));
+        }
+      }
+
+      $listeComNjoka = 0;
+      if (isset ($listeNdemsNjoka) ){
+        foreach ($listeNdemsNjoka as $key => $value) {
+           $listeComNjoka = $listeComNjoka + sizeof($em->getRepository('NNPPlatformBundle:Commentaire')
+                     ->findByNdem($value->getId()));
+        }
+      }
+
+      $listeComReligion = 0;
+      if (isset ($listeNdemsReligion) ){
+        foreach ($listeNdemsReligion as $key => $value) {
+           $listeComReligion = $listeComReligion + sizeof($em->getRepository('NNPPlatformBundle:Commentaire')
+                     ->findByNdem($value->getId()));
+        }
+      }
+
+      $listeComMode = 0;
+      if (isset ($listeNdemsMode) ){
+        foreach ($listeNdemsMode as $key => $value) {
+           $listeComMode = $listeComMode + sizeof($em->getRepository('NNPPlatformBundle:Commentaire')
+                     ->findByNdem($value->getId()));
+        }
+      }
+
+      $listeComAmour = 0;
+      if (isset ($listeNdemsAmour) ){
+        foreach ($listeNdemsAmour as $key => $value) {
+           $listeComAmour = $listeComAmour + sizeof($em->getRepository('NNPPlatformBundle:Commentaire')
+                     ->findByNdem($value->getId()));
+        }
+      }
+
+      $listeComKwatt = 0;
+      if (isset ($listeNdemsKwatt) ){
+        foreach ($listeNdemsKwatt as $key => $value) {
+           $listeComKwatt = $listeComKwatt + sizeof($em->getRepository('NNPPlatformBundle:Commentaire')
+                     ->findByNdem($value->getId()));
+        }
+      }
+
+      $maxCom = max(sizeof($listeNdemsCarriere).'-carriere', sizeof($listeNdemsNjoka).'-njoka', sizeof($listeNdemsReligion).'-religion', sizeof($listeNdemsMode).'-mode', sizeof($listeNdemsAmour).'-amour', sizeof($listeNdemsKwatt).'-kwatt' ); 
+
+      $tabMaxCom = explode('-', $maxCom);
+      $categorieMax = $tabMaxCom[1];
+
+    	$content = $this->get('templating')->render('NNPPlatformBundle:Homepage:index.html.twig', 
+        array(
+          'listeNdemsCarriere' => $listeNdemsCarriere,
+          'listeNdemsNjoka' => $listeNdemsNjoka,
+          'listeNdemsReligion' => $listeNdemsReligion,
+          'listeNdemsMode' => $listeNdemsMode,
+          'listeNdemsAmour' => $listeNdemsAmour,
+          'listeNdemsKwatt' => $listeNdemsKwatt,
+          'listeComCarriere'=>$listeComCarriere,
+          'listeComNjoka'=>$listeComNjoka,
+          'listeComReligion'=>$listeComReligion,
+          'listeComMode'=>$listeComMode,
+          'listeComAmour'=>$listeComAmour,
+          'listeComKwatt'=>$listeComKwatt,
+          'maxNdem' => $categorieMax,
+          'ndemeurCarriere'=> $ndemeurCarriere,
+          'ndemeurNjoka'=> $ndemeurNjoka,
+          'ndemeurReligion'=> $ndemeurReligion,
+          'ndemeurMode'=> $ndemeurMode,
+          'ndemeurAmour'=> $ndemeurAmour,
+          'ndemeurKwatt'=> $ndemeurKwatt
+          ));
     	return new Response($content);
     }
 

@@ -12,3 +12,49 @@
 	border-radius: $taille;
 }
 
+@mixin scale-avant(){
+	-webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1); 
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1); 
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1); 
+}
+
+@mixin scale-apres(){
+	z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.3); 
+}
+
+@mixin animation-box($nom, $time, $period){
+	-o-animation-name: $nom;
+	-o-animation-duration: $time;
+	-o-animation-iteration-count: $period;
+	-moz-animation-name: $nom;
+	-moz-animation-duration: $time;
+	-moz-animation-iteration-count: $period;
+	-webkit-animation-name: $nom;
+	-webkit-animation-duration: $time;
+	-webkit-animation-iteration-count: $period;
+	animation-name: $nom;
+	animation-duration: $time;
+	animation-iteration-count: $period;
+}
+
+@mixin animation-box-keyframes(){
+	0%   {border: 5px solid $bordeau;}
+    25%  {border: 7px solid $bordeau;}
+    50%  {border: 9px solid $bleuciel;}
+    75%  {border: 11px solid $bordeau;}
+    100% {border: 13px solid $bordeau;}
+}
+

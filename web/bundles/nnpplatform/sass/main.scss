@@ -40,42 +40,11 @@ img{
 	.reseaux{
 		text-align: right;
 		color: $white;
-		.icon{
-			width: 30px;
-			height: 30px;
-			//background-color:$gris;
-			display: inline-block;
-			margin-left: 8px;
-		}
+		
+
 		.info-user{
 			display: inline-block;
-			
-			 
 			.nav li{
-				color: $white;
-				.caret{
-					margin-left: 20px;
-    				zoom: document;
-				}
-				&.open{
-					background-color: $bordeau;
-					a{
-						color: $bordeau;
-					}
-					ul{
-						background-color: $fondProfil;
-						li{
-							a{
-								color: $white;
-								&:hover{
-									color: $bordeau;
-								}
-							}
-						}
-					}
-
-				}
-				
 				a{
 				color: $white;
 					&:hover{
@@ -84,6 +53,7 @@ img{
 				}
 			}
 		}
+		
 	}
 }
 
@@ -94,7 +64,7 @@ img{
 
 	.photoConnecte{
 		text-align: right;
-    	background-color: #fa4a6b;
+    	border-right: 5px solid #fa4a6b;
     	padding: 10px;
 	}
 }
@@ -127,7 +97,45 @@ img{
 			}
 		}
 	}
+	.menu-user{
+		text-align: right;
+		.info-user{
+			display: inline-block;
+			background-color: $white;
+			.nav li{
+				color: $bordeau;
+				.caret{
+					margin-left: 20px;
+    				zoom: document;
+				}
+				&.open{
+					background-color: $bordeau;
+					a{
+						color: $bordeau;
+					}
+					ul{
+						background-color: $fondProfil;
+						li{
+							a{
+								color: $white;
+								&:hover{
+									color: $bordeau;
+								}
+							}
+						}
+					}
 
+				}
+				
+				a{
+				color: $bordeau;
+					&:hover{
+						color: $bordeau;
+					}
+				}
+			}
+		}
+	}
 }
 
 .logo{
@@ -206,6 +214,9 @@ img{
 			@include border-radius(5px);
 			padding: 8px;
 			color: $white;
+			&:hover{
+				background-color: $bordeau;
+			}
 		}
 
 		#fos_user_registration_form{
@@ -242,8 +253,15 @@ img{
 		a{
 			color: $white;
 			&:hover{
-				color: $white;
+				color: $bordeau;
 				text-decoration: none;
+			}
+		}
+
+		&:hover{
+			background: $bordeau;
+			a{
+				color: $white;
 			}
 		}
 	}
@@ -265,6 +283,22 @@ img{
 
 }
 
+@-o-keyframes backplay {
+    @include animation-box-keyframes();
+}
+
+@-moz-keyframes backplay {
+    @include animation-box-keyframes();
+}
+
+@-webkit-keyframes backplay {
+    @include animation-box-keyframes();
+}
+
+@keyframes backplay {
+    @include animation-box-keyframes();
+}
+
 .home-1{
 	margin-top: 20px;
 	padding: 20px 0;
@@ -283,6 +317,22 @@ img{
 			height: 300px;
 			background-repeat: no-repeat;
 			background-size: cover;
+			border: 5px solid $bordeau;
+			@include scale-avant(); 
+
+		    &:hover{
+			    @include scale-apres();
+			    .info-categorie{
+					display: block;
+				}
+				.info-ndemeur{
+					display: block;
+				}
+		    }
+
+		    &.maxNdem{
+		    	@include animation-box(backplay,1s,infinite);
+		    }
 		}
 
 		&.njoka{
@@ -291,6 +341,21 @@ img{
 			height: 300px;
 			background-repeat: no-repeat;
 			background-size: cover;
+			@include scale-avant(); 
+
+		    &:hover{
+			    @include scale-apres();
+			    .info-categorie{
+					display: block;
+				}
+				.info-ndemeur{
+					display: block;
+				}
+		    }
+
+		    &.maxNdem{
+		    	@include animation-box(backplay,1s,infinite);
+		    }
 		}
 
 		&.mode{
@@ -299,6 +364,21 @@ img{
 			height: 300px;
 			background-repeat: no-repeat;
 			background-size: cover;
+			@include scale-avant(); 
+
+		    &:hover{
+			    @include scale-apres();
+			    .info-categorie{
+					display: block;
+				}
+				.info-ndemeur{
+					display: block;
+				}
+		    }
+
+		    &.maxNdem{
+		    	@include animation-box(backplay,1s,infinite);
+		    }
 		}
 
 		&.amour{
@@ -307,6 +387,21 @@ img{
 			height: 300px;
 			background-repeat: no-repeat;
 			background-size: cover;
+			@include scale-avant(); 
+
+		    &:hover{
+			    @include scale-apres();
+			    .info-categorie{
+					display: block;
+				}
+				.info-ndemeur{
+					display: block;
+				}
+		    }
+
+		    &.maxNdem{
+		    	@include animation-box(backplay,1s,infinite);
+		    }
 		}
 
 		&.religion{
@@ -315,6 +410,21 @@ img{
 			height: 300px;
 			background-repeat: no-repeat;
 			background-size: cover;
+			@include scale-avant(); 
+
+		    &:hover{
+			    @include scale-apres();
+			    .info-categorie{
+					display: block;
+				}
+				.info-ndemeur{
+					display: block;
+				}
+		    }
+
+		    &.maxNdem{
+		    	@include animation-box(backplay,1s,infinite);
+		    }
 		}
 
 		&.kwatt{
@@ -323,6 +433,21 @@ img{
 			height: 300px;
 			background-repeat: no-repeat;
 			background-size: cover;
+			@include scale-avant(); 
+
+		    &:hover{
+			    @include scale-apres();
+			    .info-categorie{
+					display: block;
+				}
+				.info-ndemeur{
+					display: block;
+				}
+		    }
+
+		    &.maxNdem{
+		    	@include animation-box(backplay,1s,infinite);
+		    }
 		}
 
 		.titre{
@@ -338,7 +463,34 @@ img{
 			left: 15%;
 		}
 
-		
+		.info-categorie{
+			display: none;
+			padding: 8px;
+			text-align: center;
+			font-family: 'Oswald', sans-serif;
+			font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+			font-size: 16px;
+			background-color: $white;
+			color: $bordeau;
+			width: 70%;
+			position: absolute;
+			bottom: 20%;
+			left: 15%;
+		}
+
+		.info-ndemeur{
+			display: none;
+			padding: 8px;
+			text-align: center;
+			font-family: 'Oswald', sans-serif;
+			font-size: 14px;
+			background-color: $bleuciel;
+			color: $white;
+			width: 70%;
+			position: absolute;
+			bottom: 10%;
+			left: 15%;
+		}		
 	}
 }
 
@@ -689,6 +841,18 @@ img{
 			color: $bordeau;
 			font-size: 45px;
 		}
+	}
+}
+
+.topfooter{
+	background-color: $grisSombre;
+	padding: 20px;
+	.icon{
+		width: 30px;
+		height: 30px;
+		background-color:$bordeau;
+		display: inline-block;
+		margin-left: 8px;
 	}
 }
 

@@ -1,32 +1,34 @@
 {% extends "::base.html.twig" %}
-
+{% block menu %}
+<ul class="nav navbar-nav">
+    {# <li><a href="{{ path('nnp_platform_homepage') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li> #}
+    <li><a href="{{ path('nnp_platform_liste', {nom:'CARRIERE'}) }}">CARRIERE</a></li>
+    <li><a href="{{ path('nnp_platform_liste', {nom:'NJOKA'}) }}">NJOKA</a></li>
+    <li><a href="{{ path('nnp_platform_liste', {nom:'AMOUR'}) }}">AMOUR</a></li>
+    <li><a href="{{ path('nnp_platform_liste', {nom:'MODE'}) }}">MODE</a></li>
+    <li><a href="{{ path('nnp_platform_liste', {nom:'RELIGION'}) }}">RELIGION</a></li>
+    <li><a href="{{ path('nnp_platform_liste', {nom:'KWATT'}) }}">KWATT</a></li>
+</ul>
+{% endblock %}
 {% block photoConnecte %}
-    <div class="photoConnecte">
-        {% if app.user.photo != null or app.user.photo != '' %}
-            <img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" height="150px" />
-        {% else %}
-            <img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" height="150px" />
-        {% endif %}
-    </div>
+    <li >
+        <div class="photoConnecte">
+            {% if app.user.photo != null or app.user.photo != '' %}
+                <a href="{{ path('nnp_platform_profil') }}"><img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" height="80px" /></a>
+            {% else %}
+                <a href="{{ path('nnp_platform_profil') }}"><img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" height="80px" /></a>
+            {% endif %}
+        </div>
+    </li>
 {% endblock %}
 
 {% block bande %}
-<div class="container-fluid">
+{# <div class="container-fluid">
 	<section class="bande">
 		<div class="row">
 			<div class="col-md-1"></div>
             <div class="col-md-8 menu-central">
-            	{% block menu %}
-        		<ul class="nav navbar-nav">
-        			<li><a href="{{ path('nnp_platform_homepage') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
-                  	<li><a href="{{ path('nnp_platform_liste', {nom:'CARRIERE'}) }}">CARRIERE</a></li>
-				    <li><a href="{{ path('nnp_platform_liste', {nom:'NJOKA'}) }}">NJOKA</a></li>
-				    <li><a href="{{ path('nnp_platform_liste', {nom:'AMOUR'}) }}">AMOUR</a></li>
-				    <li><a href="{{ path('nnp_platform_liste', {nom:'MODE'}) }}">MODE</a></li>
-                    <li><a href="{{ path('nnp_platform_liste', {nom:'RELIGION'}) }}">RELIGION</a></li>
-                    <li><a href="{{ path('nnp_platform_liste', {nom:'KWATT'}) }}">KWATT</a></li>
-                </ul>
-                {% endblock %}
+            	
             </div>
             <div class="col-md-2 menu-user">
                 <div class="info-user">
@@ -50,5 +52,12 @@
             <div class="col-md-1"></div>
 		</div>
 	</section>
-</div>
+</div> #}
+{% endblock %}
+
+{% block bigBody %}
+    <div class="corps">
+        {% block body %}
+        {% endblock %}
+    </div>
 {% endblock %}

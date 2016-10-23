@@ -11,6 +11,14 @@ img{
 	vertical-align: middle;
 }
 
+.carousel{
+	margin-top: 80px;
+}
+
+.corps{
+	margin-top: 80px;
+}
+
 .container{
 	font-family: 'Inconsolata', monospace;
 }
@@ -27,6 +35,9 @@ img{
 	background-color: $bordeau;
 	//font-family: 'Baloo Bhaina', cursive;
 	font-family: 'Oswald', sans-serif;
+	position: fixed;
+    width: 100%;
+    z-index: 1000;
 	.top-menu{
 
 		a{
@@ -40,17 +51,27 @@ img{
 	.reseaux{
 		text-align: right;
 		color: $white;
-		
 
 		.info-user{
 			display: inline-block;
 			.nav li{
 				a{
-				color: $white;
+					color: $white;
+					padding-top: 29px;
 					&:hover{
-						color: $bordeau;
+						color: $white;
+						background: none;
+						font-size: 30px;
 					}
 				}
+			}
+
+			.photoConnecte{
+		    	
+		    	img{
+		    		@include border-radius(50%);
+		    		border-left: 5px solid $white;
+		    	}
 			}
 		}
 		
@@ -61,12 +82,7 @@ img{
 	//background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/top-banner.jpg');
 	width: 100%;
 	height: 150px;
-
-	.photoConnecte{
-		text-align: right;
-    	border-right: 5px solid #fa4a6b;
-    	padding: 10px;
-	}
+	
 }
 
 .bloclendem{
@@ -97,44 +113,51 @@ img{
 			}
 		}
 	}
-	.menu-user{
-		text-align: right;
-		.info-user{
-			display: inline-block;
-			background-color: $white;
-			.nav li{
-				color: $bordeau;
-				.caret{
-					margin-left: 20px;
-    				zoom: document;
+	
+}
+
+.menu-user{
+	text-align: right;
+	padding-top: 20px;
+
+	a{
+		color: $white;
+		&:hover{
+			color: $bordeau;
+			background-color: $grisClair;
+		}
+	}
+	.info-user{
+		display: inline-block;
+		background-color: $white;
+		.nav li{
+			color: $bordeau;
+			.caret{
+				margin-left: 20px;
+				zoom: document;
+			}
+			&.open{
+				background-color: $bordeau;
+				a{
+					color: $bordeau;
 				}
-				&.open{
-					background-color: $bordeau;
-					a{
-						color: $bordeau;
-					}
-					ul{
-						background-color: $fondProfil;
-						li{
-							a{
-								color: $white;
-								&:hover{
-									color: $bordeau;
-								}
+				ul{
+					background-color: $fondProfil;
+					li{
+						a{
+							color: $white;
+							&:hover{
+								color: $bordeau;
 							}
 						}
 					}
+				}
 
-				}
-				
-				a{
-				color: $bordeau;
-					&:hover{
-						color: $bordeau;
-					}
-				}
 			}
+			
+			
 		}
+
 	}
 }
 
@@ -269,7 +292,7 @@ img{
 
 .slider{
 	//background-color: $bordeau;
-	background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/banniere1.jpg');
+	background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/banniere1.jpg');
 	width: 100%;
 	height: 500px;
 	//border-top: 5px solid $bordeau;
@@ -312,7 +335,7 @@ img{
 		position: relative;
 
 		&.carriere{
-			background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/carriere.jpg');
+			background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/carriere.jpg');
 			width: 100%;
 			height: 300px;
 			background-repeat: no-repeat;
@@ -336,7 +359,7 @@ img{
 		}
 
 		&.njoka{
-			background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/njoka.jpg');
+			background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/njoka.jpg');
 			width: 100%;
 			height: 300px;
 			background-repeat: no-repeat;
@@ -359,7 +382,7 @@ img{
 		}
 
 		&.mode{
-			background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/mode.jpg');
+			background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/mode.jpg');
 			width: 100%;
 			height: 300px;
 			background-repeat: no-repeat;
@@ -382,7 +405,7 @@ img{
 		}
 
 		&.amour{
-			background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/amour.jpg');
+			background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/amour.jpg');
 			width: 100%;
 			height: 300px;
 			background-repeat: no-repeat;
@@ -405,7 +428,7 @@ img{
 		}
 
 		&.religion{
-			background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/religion.jpg');
+			background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/religion.jpg');
 			width: 100%;
 			height: 300px;
 			background-repeat: no-repeat;
@@ -428,7 +451,7 @@ img{
 		}
 
 		&.kwatt{
-			background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/kwatt.jpg');
+			background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/kwatt.jpg');
 			width: 100%;
 			height: 300px;
 			background-repeat: no-repeat;
@@ -491,6 +514,73 @@ img{
 			bottom: 10%;
 			left: 15%;
 		}		
+	}
+}
+
+.clear{
+	clear: both;
+}
+
+.zone-ndem{
+	margin-bottom: 10px;
+	margin-top: 20px;
+	background-color: $white;
+	@include border-radius(15px);
+	.nd{
+		float: left;
+		padding: 10px;
+
+		&.photo-ndem{
+		}
+
+		&.msg-ndem{
+			width: 75%;
+			font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+			.titre-ndem{
+				font-family: 'Oswald', sans-serif;
+				padding: 10px;
+				float: left;
+				width: 60%;
+			}
+
+			.texte-ndem{
+				background-color: $grisClair;
+				padding: 10px;
+				color: $black;
+				margin-left: 15px;
+				float: left;
+				width: 75%;
+			}
+
+			img{
+				float: left;
+				width: 100px;
+			}
+		}
+
+		&.date-ndem{
+			width: 10%;
+			background-color: $bordeau;
+			vertical-align: middle;
+			color: $white;
+			font-family: 'Oswald', sans-serif;
+		} 
+
+		&.btn-ndem{
+			padding-top: 45px;
+			width: 10%;
+		}
+
+		.btn-info{
+			background-color: $bordeau;
+			border-color: $bordeau;
+
+			&:hover{
+				background-color: $bleuciel;
+				color: $white;
+				border-color: $bleuciel;
+			}
+		}
 	}
 }
 
@@ -846,13 +936,31 @@ img{
 
 .topfooter{
 	background-color: $grisSombre;
-	padding: 20px;
 	.icon{
 		width: 30px;
 		height: 30px;
 		background-color:$bordeau;
 		display: inline-block;
 		margin-left: 8px;
+
+		i {
+			color: $white;
+			padding: 7px;
+		}
+	}
+
+	.foot-menu{
+
+		a{
+			color: $white;
+			&:hover{
+				color: $bordeau;
+			}
+		}
+	}
+
+	.foot-social{
+		padding-top: 10px;
 	}
 }
 

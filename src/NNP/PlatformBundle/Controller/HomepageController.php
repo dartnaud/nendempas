@@ -496,6 +496,15 @@ class HomepageController extends Controller
 
     public function listeAction(Request $request)
     { 
+
+        $ndemPost = new Ndem();
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $ndemPost)
+          ->add('categories')
+          ->add('texte',   TextareaType::class,array('attr'=>array('placeholder'=>'Ecrire un nouveau ndem')))
+          ->add('save', SubmitType::class, array('label'=>'Poster'))
+        ;
+        $form = $formBuilder->getForm();
+
         $categorie = $request->query->get('nom');
         $repoCat = $this
           ->getDoctrine()
@@ -524,7 +533,22 @@ class HomepageController extends Controller
             $listeNdems = null ;
         }
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:liste.html.twig', array('listeNdems' => $listeNdems,'categorie'=> $categorie ));
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) { 
+        //var_dump($form->getData()); exit();
+
+          $ndemPost->setUser($this->getUser());
+          $ndemPost->setTitre('New post');
+
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($ndemPost);
+          $em->flush();
+
+          //$request->getSession()->getFlashBag()->add('notice', 'Ndem bien enregistrée.');
+
+          return $this->redirectToRoute('nnp_platform_liste', array('nom'=>$categorie));
+        }
+
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:liste.html.twig', array('listeNdems' => $listeNdems,'categorie'=> $categorie, 'form'=>$form->createView() ));
         return new Response($content);
 
     }

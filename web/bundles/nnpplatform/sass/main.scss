@@ -290,6 +290,50 @@ img{
 	}
 }
 
+.formulaire {
+
+	.ndemFormCat {
+		text-align: right;
+		margin-top: 0;
+		label{
+			display: none;
+		}
+
+		div{
+			display: inline-block;
+			float: left;
+			margin: 0;
+			&:first-child{
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			& ~ div{
+				width: 50%
+			}
+			&:last-child{
+				width: 50%;
+
+			}
+		}
+
+		#form_texte{
+			width: 100%
+		}
+
+		#form_save{
+			width: 50%;
+
+		}
+		#form_categories{
+			height: 100%;
+    		width: 100%;
+		}
+	}
+	
+}
+
+
+
 .slider{
 	//background-color: $bordeau;
 	background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/banniere1.jpg');

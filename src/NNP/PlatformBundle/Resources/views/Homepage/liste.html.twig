@@ -34,6 +34,18 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-8 center">
 			<h1>{{ categorie }}</h1>
+			<div class="formulaire">
+                <div class="ndemFormCat">
+                  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                  {{ form_errors(form) }}
+                  {{ form_row(form.texte) }}
+                  {{ form_row(form.categories) }}
+                  {{ form_rest(form) }}
+                  {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                  {{ form_end(form) }}
+                </div>
+            </div>
+            <div class="clear"></div>
 			{% if listeNdems != null  %}
 				{% for ndem in listeNdems %}
 	            <div class="zone-ndem">

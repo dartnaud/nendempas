@@ -32,12 +32,12 @@
                     	</i>
                     </p>
 					<p class="texte">{{ ndem.texte|raw }}</p>
-					<div class='divider'></div>
-					<p class="nrbCom"><span>{{ comments|length }} </span><span class="intitule">commentaire(s)</span> | <span>{{ nbrCoach }} reaction(s) de coach(s) </span></p>
+					
+					{# <p class="nrbCom"><span>{{ comments|length }} </span><span class="intitule">commentaire(s)</span> | <span>{{ nbrCoach }} reaction(s) de coach(s) </span></p> #}
 				</div>
 				
 				<div class="comment">
-					{{ form(form)  }}
+					
 					{% for comment in comments %}
 						<div class="leComment">
 							<div class="date">{{ comment.dateCreation|date('d/m/Y h:i') }}</div>
@@ -50,20 +50,21 @@
 							{% endif %}
 						</div>
 					{% endfor %}
+					{{ form(form)  }}
 				</div>
 			</div>
 			<div class="col-md-2 sidebarNdem">
-				<h2><span class="intitule">Auteur : </span>{{ ndem.user }}</h2>
+				<h2><span class="intitule">De : </span><a href="{{ path('nnp_platform_profilVisite', {'idVisiteur': ndem.user.id }) }}">{{ ndem.user }}</a></h2>
 				<div class="photo">
 						{% if ndem.user.photo != null or ndem.user.photo != '' %}
-							<img src="{{ asset('uploads/images/photoProfil/' ~ ndem.user.photo) }}" width="100%" />
+							<a href="{{ path('nnp_platform_profilVisite', {'idVisiteur': ndem.user.id }) }}"><img src="{{ asset('uploads/images/photoProfil/' ~ ndem.user.photo) }}" width="100%" /></a>
 						{% else %}
-							<img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="100%" />
+							<a href="{{ path('nnp_platform_profilVisite', {'idVisiteur': ndem.user.id }) }}"><img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="100%" /></a>
 						{% endif %}
 				</div>
 				<div class="liens">
 					
-						<p class="infoAuteur">
+						{# <p class="infoAuteur">
 							{% if followersAuteur %}
 							{{ followersAuteur }} <span class="intitule"> follower(s)</span> |
 							{% endif %} 
@@ -78,7 +79,7 @@
 									</a>
 								{% endif %}
 							</span>
-						</p>
+						</p> #}
 					
 					{% if ((app.user.id != ndem.user.id)  and (statutFollow != 1 )) %}
 					<a href="{{ path('nnp_platform_leNdem',{'id': ndem.id,'idAFollow' : ndem.user.id }) }}">

@@ -30,10 +30,76 @@ use Symfony\Component\HttpFoundation\Request;
 class HomepageController extends Controller
 {
 
-    /*public function menuAction(){
+    public function menuAction(){
       $em = $this->getDoctrine()->getManager();
       $repository = $em->getRepository('NNPPlatformBundle:Ndem');
-    }*/
+
+      $repoCat = $em->getRepository('NNPPlatformBundle:Categorie');
+      $idCarriere = $repoCat->findOneBy(array('nom'=>'CARRIERE'));
+      $idNjoka = $repoCat->findOneBy(array('nom'=>'NJOKA'));
+      $idReligion = $repoCat->findOneBy(array('nom'=>'RELIGION'));
+      $idMode = $repoCat->findOneBy(array('nom'=>'MODE'));
+      $idAmour = $repoCat->findOneBy(array('nom'=>'AMOUR'));
+      $idKwatt = $repoCat->findOneBy(array('nom'=>'KWATT'));
+
+      $repo = $em->getRepository('NNPPlatformBundle:Ndem');
+      $ndems= $repo->findAll();
+
+      if($ndems){
+        $listeNdemsCarriere = array();
+        $listeNdemsNjoka = array();
+        $listeNdemsReligion = array();
+        $listeNdemsMode = array();
+        $listeNdemsAmour = array();
+        $listeNdemsKwatt = array();
+        foreach ($ndems as $key => $value) {
+            $categories = $value->getCategories();
+            foreach ($categories as $value2) {
+              if ($value2 == $idCarriere){
+                  $listeNdemsCarriere[] = $value;
+              }
+              else if ($value2 == $idNjoka){
+                  $listeNdemsNjoka[] = $value;
+              }
+              else if ($value2 == $idReligion){
+                  $listeNdemsReligion[] = $value;
+              }
+              else if ($value2 == $idMode){
+                  $listeNdemsMode[] = $value;
+              }
+              else if ($value2 == $idAmour){
+                  $listeNdemsAmour[] = $value;
+              }
+              else if ($value2 == $idKwatt){
+                  $listeNdemsKwatt[] = $value;
+              }
+            }
+        }
+      }else {
+          $listeNdemsCarriere = null ;
+          $listeNdemsNjoka = null ;
+          $listeNdemsReligion = null ;
+          $listeNdemsMode = null ;
+          $listeNdemsAmour = null ;
+          $listeNdemsKwatt = null ;
+      }
+
+      $nbrNdemCarrriere = sizeof($listeNdemsCarriere);
+      $nbrNdemNjoka = sizeof($listeNdemsNjoka);
+      $nbrNdemReligion = sizeof($listeNdemsReligion);
+      $nbrNdemMode = sizeof($listeNdemsMode);
+      $nbrNdemAmour = sizeof($listeNdemsAmour);
+      $nbrNdemKwatt = sizeof($listeNdemsKwatt);
+
+      return $this->render('NNPPlatformBundle:Homepage:menu.html.twig', array(
+            'nbrNdemCarrriere'=>$nbrNdemCarrriere,
+            'nbrNdemNjoka' => $nbrNdemNjoka,
+            'nbrNdemReligion'=>$nbrNdemReligion,
+            'nbrNdemMode' => $nbrNdemMode,
+            'nbrNdemAmour'=>$nbrNdemAmour,
+            'nbrNdemKwatt' => $nbrNdemKwatt,
+        ));
+    }
     
 
     public function indexAction()
@@ -249,8 +315,8 @@ class HomepageController extends Controller
 
         $comment = new Commentaire();
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $comment)
-            ->add('commentaire', TextareaType::class, array('label'=>'Laissez un commentaire'))
-            ->add('save', SubmitType::class, array('label'=>'Envoyer'));
+            ->add('commentaire', TextareaType::class, array('attr'=>array('placeholder'=>'Votre commentaire')))
+            ->add('save', SubmitType::class, array('label'=>'Poster'));
 
         $form = $formBuilder->getForm();
 
@@ -418,18 +484,7 @@ class HomepageController extends Controller
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $ndem)
           ->add('categories', null ,array('label' => 'Choisir la catégorie'))
           ->add('titre',     TextType::class)
-          ->add('texte',   CKEditorType::class, array(
-                'config' => array(
-                    'uiColor' => '#ffffff',
-                    //...
-                ),))
-          ->add('statut', ChoiceType::class, array(
-                'choices'  => array(
-                    'activer' => '1',
-                    'desactiver' => '0',
-                ),
-            ))
-          
+          ->add('texte',   TextareaType::class)
           ->add('save', SubmitType::class, array('label'=>'Enregistrer'))
         ;
 
@@ -437,12 +492,12 @@ class HomepageController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) { 
           //var_dump($form->getData());
-
+          $cats = $form["categories"]->getData(); var_dump($cats);
           $ndem->setUser($this->getUser());
 
-          $em = $this->getDoctrine()->getManager();
+          /*$em = $this->getDoctrine()->getManager();
           $em->persist($ndem);
-          $em->flush();
+          $em->flush();*/
 
           //$request->getSession()->getFlashBag()->add('notice', 'Ndem bien enregistrée.');
 
@@ -500,7 +555,7 @@ class HomepageController extends Controller
         $ndemPost = new Ndem();
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $ndemPost)
           ->add('categories')
-          ->add('texte',   TextareaType::class,array('attr'=>array('placeholder'=>'Ecrire un nouveau ndem')))
+          ->add('texte',   TextareaType::class, array('attr'=>array('placeholder'=>'Ecris un nouveau ndem et choisis les catégories correspondantes')))
           ->add('save', SubmitType::class, array('label'=>'Poster'))
         ;
         $form = $formBuilder->getForm();
@@ -537,7 +592,7 @@ class HomepageController extends Controller
         //var_dump($form->getData()); exit();
 
           $ndemPost->setUser($this->getUser());
-          $ndemPost->setTitre('New post');
+          $ndemPost->setTitre('');
 
           $em = $this->getDoctrine()->getManager();
           $em->persist($ndemPost);

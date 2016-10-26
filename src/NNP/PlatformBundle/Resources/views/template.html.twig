@@ -1,14 +1,7 @@
 {% extends "::base.html.twig" %}
 {% block menu %}
-<ul class="nav navbar-nav">
-    {# <li><a href="{{ path('nnp_platform_homepage') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li> #}
-    <li><a href="{{ path('nnp_platform_liste', {nom:'CARRIERE'}) }}">CARRIERE</a></li>
-    <li><a href="{{ path('nnp_platform_liste', {nom:'NJOKA'}) }}">NJOKA</a></li>
-    <li><a href="{{ path('nnp_platform_liste', {nom:'AMOUR'}) }}">AMOUR</a></li>
-    <li><a href="{{ path('nnp_platform_liste', {nom:'MODE'}) }}">MODE</a></li>
-    <li><a href="{{ path('nnp_platform_liste', {nom:'RELIGION'}) }}">RELIGION</a></li>
-    <li><a href="{{ path('nnp_platform_liste', {nom:'KWATT'}) }}">KWATT</a></li>
-</ul>
+{{ render(controller('NNPPlatformBundle:Homepage:menu')) }}
+
 {% endblock %}
 {% block photoConnecte %}
     <li >

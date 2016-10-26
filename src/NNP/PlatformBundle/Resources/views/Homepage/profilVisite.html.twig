@@ -32,14 +32,26 @@
 						<div class="nom">{{ user.prenom }} {{ user.nom|upper }}</div>
 					{% endif %}
 					<div class="nom"><span class="intitule">Pseudo : </span><b>{{ user.username }}</b></div>
+					<div class="biographie"><span class="intitule">Biographie : </span><b>{{ user.texte|raw }}</b></div>
 				</div>
 				<div class="liens">
 					<button onclick="location.href='{{ path('nnp_platform_ndemVisite', {'idVisite': user.id }) }}';">Voir ses sujets</button>
 				</div>
-				
+				<div class="biographie">
+					<span class="intitule">Ils vous suivent</span>
+					{% for follower in followers %}
+					<a href="{{ path('nnp_platform_profilVisite', {'idVisiteur': follower.id }) }}">
+						{% if follower.photo != null or follower.photo != '' %}
+						<img  src="{{ asset('uploads/images/photoProfil/' ~ follower.photo) }}" width="80px"  title="{{ follower.username }}" alt="{{ follower.username }}"/>
+						{% else %}
+							<img  src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="80px" alt="{{ follower.username }}" title="{{ follower.username }}"/>
+						{% endif %}
+					</a>
+					{% endfor %}
+				</div>
 			</div>
 			<div class="col-md-8 center">
-				<div class="description">
+				{# <div class="description">
 					<h1>A propos du membre</h1>
 					<p>
 						{{ user.texte|raw }}
@@ -53,7 +65,7 @@
 						<p><span class="glyphicon glyphicon-comment chiffre"></span><span class="chiffre">{{ nbrCom }}</span> commentaires</p>
 					</div>
 					<div class="bloc">
-						{# <p><span class="glyphicon glyphicon-user chiffre"></span><span class="chiffre">4 </span> coachs ont réagis à vos sujets </p> #}
+						<p><span class="glyphicon glyphicon-user chiffre"></span><span class="chiffre">4 </span> coachs ont réagis à vos sujets </p>
 					</div>
 				</div>
 				<div class="divider"></div>
@@ -68,7 +80,7 @@
 						{% endif %}
 					</a>
 					{% endfor %}
-				</div>
+				</div> #}
 			</div>
 		</div>
 	</section>

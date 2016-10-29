@@ -1,0 +1,31 @@
+{% extends "NNPPlatformBundle::template.html.twig" %}
+{% block title %}Homepage{% endblock %}
+
+
+{% block body %}
+<section>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			{% if ndemeurs == 0 %}
+				Il n y a pas de ndemeur portant ce nom, Essayez encore !
+			{% else %}	
+				{% for ndemeur in ndemeurs %}
+					<div class="ndemeur-recherche">
+			            {% if ndemeur.photo != null or ndemeur.photo != '' %}
+							<a href="{{ path('nnp_platform_profilVisite', {'idVisiteur': ndemeur.id }) }}" title="Voir le profil"><img src="{{ asset('uploads/images/photoProfil/' ~ ndemeur.photo) }}" height="150px;"  /></a>
+						{% else %}
+							<a href="{{ path('nnp_platform_profilVisite', {'idVisiteur': ndemeur.id }) }}" title="Voir le profil"><img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" height="150px;" /></a>
+						{% endif %}
+						<div class="ndemeur-info">
+							{{ ndemeur.username }}
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}	
+
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</section>
+{% endblock %}

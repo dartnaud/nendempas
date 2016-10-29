@@ -26,9 +26,7 @@
 					<p class="date">
 						<i>Posté le {{ ndem.dateCreation|date("d/m/Y") }} |
 							Catégorie : 
-							{% for categorie in ndem.categories %}
-                    			{{ categorie }} |
-                    		{% endfor %}
+							{{ ndem.categorie }}
                     	</i>
                     </p>
 					<p class="texte">{{ ndem.texte|raw }}</p>

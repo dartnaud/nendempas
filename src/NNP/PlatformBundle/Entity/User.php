@@ -72,7 +72,7 @@ class User extends BaseUser
      *      maxSizeMessage = "The maximum allowed file size is 5MB.",
      *      mimeTypesMessage = "Only the file types image are allowed.")
      */
-    private $photo;
+    protected $photo;
 
     /**
      *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\Profil")

@@ -27,8 +27,9 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-2 ">
                         <a href="{{ path('nnp_platform_homepage') }}"><img src="{{ asset('bundles/nnpplatform/images/logo_blanc.png')}}" height="80px" /></a>
-                        
+                        <div class="slogan">Ton ndem ... c'est ma leçon !</div>
                     </div>
+
                     <div class="col-xs-6 menu-user">
                         {% block menu %}
                         {% endblock %}
@@ -55,10 +56,35 @@
                             {% endif %}
                         </div>
                     </div>
+                    
+                </div>
+            </section>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.request.attributes.get('_route') != 'fos_user_registration_confirmed' %}
+            <section class="top-recherche">
+                <div class="row">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-6">
+                        
+                    </div>
+                    <div class="col-xs-4">
+                         <form class="navbar-form navbar-right" name="form" method="POST" action="{{ path('nnp_platform_ndemeur') }}" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="nom" placeholder="Trouver un ndemeur">
+                            </div>
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                        </form> 
+                       {#  {% block chercheMembre %}
+                        {% endblock %} #}
+                        
+                    </div>
                     <div class="col-xs-1"></div>
                 </div>
             </section>
+            {% endif %}
+            {% block connexion %}
+            {% endblock %}
         </div>
+
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.request.attributes.get('_route') != 'fos_user_registration_confirmed' %}
         {# <div class="container-fluid">
             <header class="header">
@@ -124,9 +150,9 @@
                 <a class="right carousel-control" href="#myCarousel" data-slide="next">
                     <span class="icon-next"></span>
                 </a>
-
+{# 
                 {% block connexion %}
-                {% endblock %}
+                {% endblock %} #}
             </header>
         {% endif %}
         {% endblock %}
@@ -145,15 +171,13 @@
                     <div class="col-md-1"></div>
                     <div class="col-lg-7">
                         <ul class="nav navbar-nav foot-menu">
-                            <li><a href="{{ path('nnp_platform_presentation') }}">Qui sommes-nous ?</a></li>
-                            <li><a href="#">Comment ça marche !</a></li>
+                            <li><a href="{{ path('nnp_platform_presentation') }}">Comment ça marche !</a></li>
                             <li><a href="#">Nous contacter</a></li>
                             
                         </ul>
                     </div>
                     <div class="col-lg-3 alignCenter foot-social">
                         <div class="icon"><i class="fa fa-facebook"></i></div>
-                        <div class="icon"><i class="fa fa-twitter"></i></div>
                         <div class="icon"><i class="fa fa-instagram"></i></div>
                     </div>
                     <div class="col-md-1"></div>

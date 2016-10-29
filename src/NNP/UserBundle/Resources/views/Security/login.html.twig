@@ -2,52 +2,75 @@
 {% block title %}Homepage{% endblock %}
 
 {% block connexion %}
-<div class="animation">
-    <div class='anim texte1'></div>
-    <div class='anim texte2'>NJOKA</div>
-    <div class='anim texte3'>AMOUR</div>
-    <div class='anim texte4'>MODE</div>
-    <div class='anim texte5'>RELIGION</div>
-    <div class='anim texte6'>KWATT</div>
-    <div class='anim texte7'>CARRIERE</div>
-</div>
-<div class="connexion">
-  {# <div class="logwith fbk">Connect with Facebook</div>
-  <div class="logwith gml">Connect with Gmail</div> #}
-  	<div class="loggin">
-		    {# On affiche les messages flash que définissent les contrôleurs du bundle #}
-		    {% for key, messages in app.session.flashbag.all() %}
-		      {% for message in messages %}
-		        <div class="alert alert-{{ key }}">
-		          {{ message|trans({}, 'FOSUserBundle') }}
-		        </div>
-		      {% endfor %}
-		    {% endfor %}
-		    {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
-			{% block fos_user_content %}
-			    {% if error %}
-			    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-				{% endif %}
+    <section class="top-animation">
+        <div class="row">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-2"></div>
+            <div class="col-xs-6"></div>
+            <div class="col-xs-2 text-right">
+                <div class="animation">
+                    <div class='anim texte1'></div>
+                    <div class='anim texte2'>NJOKA</div>
+                    <div class='anim texte3'>AMOUR</div>
+                    <div class='anim texte4'>MODE</div>
+                    <div class='anim texte5'>RELIGION</div>
+                    <div class='anim texte6'>KWATT</div>
+                    <div class='anim texte7'>CARRIERE</div>
+                </div>
+            </div>
+            <div class="col-xs-1"></div>
+        </div>
+    </section>
+    <section class="top-connexion">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4 text-right">
+                <div class="connexion">
+                  {# <div class="logwith fbk">Connect with Facebook</div>
+                  <div class="logwith gml">Connect with Gmail</div> #}
+                    <div class="loggin">
+                            {# On affiche les messages flash que définissent les contrôleurs du bundle #}
+                            {% for key, messages in app.session.flashbag.all() %}
+                              {% for message in messages %}
+                                <div class="alert alert-{{ key }}">
+                                  {{ message|trans({}, 'FOSUserBundle') }}
+                                </div>
+                              {% endfor %}
+                            {% endfor %}
+                            {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
+                            {% block fos_user_content %}
+                                {% if error %}
+                                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
 
-				<form action="{{ path("fos_user_security_check") }}" method="post">
-				    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                                <form action="{{ path("fos_user_security_check") }}" method="post">
+                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-				    <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
-				    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                                    <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 
-				    <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
-				    <input type="password" id="password" name="_password" required="required" />
+                                    <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+                                    <input type="password" id="password" name="_password" required="required" />
 
-				    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-				    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-				    
+                                    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                    
 
-				    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
-				</form>
-			{% endblock fos_user_content %}
+                                    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+                                </form>
+                            {% endblock fos_user_content %}
 
-	</div>
-	<div class="newlog"><a href="{{ path('fos_user_registration_register') }}">Nouveau membre ? Inscris-toi !</a></div>
-</div>
+                    </div>
+                    <div class="newlog"><a href="{{ path('fos_user_registration_register') }}">Nouveau membre ? Inscris-toi !</a></div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </section>
+    {% endblock %}
+
+
       
-{% endblock %}
+

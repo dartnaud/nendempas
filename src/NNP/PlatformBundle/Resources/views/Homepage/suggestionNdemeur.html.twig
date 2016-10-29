@@ -1,0 +1,25 @@
+<div class="suggestionFollow">
+	{% for item in listMembre %}
+	<div class="ndemeurASuivre">
+		<div class="chp photo" style="
+		background-attachment:fixed; 
+		{% if item.photo != null or item.photo != '' %}
+		background-image: url('{{ asset('uploads/images/photoProfil/' ~ item.photo) }}');
+		{% else %}
+		background-image: url('{{ asset('bundles/nnpplatform/images/profil_homme.jpg') }}');
+		{% endif %}	
+		">
+			
+		</div>
+		<div class="chp name">{{ item.username }}</div>
+		{#< div class="chp bio">{{ item.texte|striptags|slice(0, 60)  }}</div> #}
+		<div class="chp btn">
+			<a href="{{ path('nnp_platform_liste',{'idAFollow' : item.id }) }}">
+				<div class="lien follow">Suivre</div>
+			</a>
+		</div>
+
+	</div>
+	<div class="clear"></div>
+	{% endfor %}
+</div>

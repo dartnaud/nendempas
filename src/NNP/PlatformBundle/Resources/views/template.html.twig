@@ -1,15 +1,17 @@
 {% extends "::base.html.twig" %}
 {% block menu %}
 {{ render(controller('NNPPlatformBundle:Homepage:menu')) }}
-
+{% endblock %}
+{% block chercheMembre %}
+    {{ render(controller('NNPPlatformBundle:Homepage:chercheMembre')) }}
 {% endblock %}
 {% block photoConnecte %}
     <li >
         <div class="photoConnecte">
             {% if app.user.photo != null or app.user.photo != '' %}
-                <a href="{{ path('nnp_platform_profil') }}"><img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" height="80px" /></a>
+                <a href="{{ path('nnp_platform_profil') }}"><img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" height="102px" /></a>
             {% else %}
-                <a href="{{ path('nnp_platform_profil') }}"><img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" height="80px" /></a>
+                <a href="{{ path('nnp_platform_profil') }}"><img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" height="102px" /></a>
             {% endif %}
         </div>
     </li>

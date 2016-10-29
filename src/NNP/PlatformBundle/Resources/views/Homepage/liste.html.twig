@@ -32,14 +32,21 @@
 	{% endif %}
 		<div class="row">
 			<div class="col-md-2"></div>
-			<div class="col-md-8 center">
+
+			<div class="col-md-7 center">
 			<h1>{{ categorie }}</h1>
 			<div class="formulaire">
+				<div class="photo-post">
+					{% if app.user.photo != null or app.user.photo != '' %}
+            		<img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}"  title="{{ app.user.username }}" alt="{{ app.user.username }}" width="50px"/>
+            		{% else %}
+						<img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}"  alt="{{ app.user.username }}" title="{{ app.user.username }}" width="50px"/>
+					{% endif %}
+				</div>
                 <div class="ndemFormCat">
                   {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                   {{ form_errors(form) }}
                   {{ form_row(form.texte) }}
-                  {{ form_row(form.categories) }}
                   {{ form_rest(form) }}
                   {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
                   {{ form_end(form) }}
@@ -73,7 +80,9 @@
 				<p>Il n'y a pas de sujets dans cette catégorie pour l'instant !</p>
 			{% endif %}
 			</div>
-			<div class="col-md-2"></div>
+			<div class="col-md-3">
+				{{ render(controller('NNPPlatformBundle:Homepage:suggestionNdemeur')) }}
+			</div>
 		</div>
 	</section>
 </div>

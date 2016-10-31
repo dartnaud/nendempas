@@ -1,12 +1,38 @@
+@media screen and (max-width: 580px)
+{
+    .connexion
+    {
+       /*  bottom: 363px;
+    	right: 235px; */
+    	width: 314px !important;
+    	left: 18px;
+
+    	.loggin {
+    		label{
+    			width: 100% !important;
+    			text-align: left;
+    		}
+
+    		input{
+    			width: 100% !important;
+    		}
+    	}
+
+    	&.register{
+			/* bottom: 237px; */
+		}
+    }
+}
+
 @media screen and (max-width: 1100px)
 {
     .connexion
     {
-        bottom: 98px;
-    	right: 18px;
+        /* bottom: 98px;
+    	right: 18px; */
 
     	&.register{
-			bottom: 40px;
+			/* bottom: 40px; */
 		}
     }
 
@@ -19,12 +45,14 @@
 {
     .connexion
     {
-        bottom: 363px;
-    	right: 235px;
+       /*  bottom: 363px;
+    	right: 235px; */
 
     	&.register{
-			bottom: 237px;
+			/* bottom: 237px; */
 		}
     }
 }
+
+
 

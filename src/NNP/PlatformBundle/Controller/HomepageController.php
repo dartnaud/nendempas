@@ -30,13 +30,83 @@ use Symfony\Component\HttpFoundation\Request;
 class HomepageController extends Controller
 {
 
-    /*public function menuAction(){
+    public function suggestionNdemeurAction()
+    {
+      $em = $this->getDoctrine()->getManager();
+      $repository = $em->getRepository('NNPPlatformBundle:User');
+      $ndemeurs = sizeof($repository->findAll());
+      $offset = rand (1, $ndemeurs);
+      $limit = ($ndemeurs - $offset) + 1 ;
+      $listMembre = $repository->findBy(array('locked'=>"0"),null, $limit , $offset);
+
+      $repoFollowers= $em->getRepository('NNPPlatformBundle:Follower');
+      $mesFollowers = $repoFollowers->findByUser($this->getUser());
+
+      $tabFollowerUser = array();
+      foreach ($mesFollowers as $key => $value) {
+        $tabFollowerUser[] = $value->getIdFollower();
+      }
+
+      $membreAsuivre = array();
+
+      if($listMembre){
+        if ($tabFollowerUser){
+          foreach ($listMembre as $key => $value2) {
+            if (!(in_array($value2->getId(), $tabFollowerUser ))) {
+              $membreAsuivre[] = $value2 ;
+            }
+          }
+        }else{
+          $membreAsuivre = $listMembre;
+        }
+      }
+
+      return $this->render('NNPPlatformBundle:Homepage:suggestionNdemeur.html.twig', array(
+            'listMembre'=>$membreAsuivre
+        ));
+    }
+
+    public function menuAction()
+    {
       $em = $this->getDoctrine()->getManager();
       $repository = $em->getRepository('NNPPlatformBundle:Ndem');
-    }*/
-    
 
-    public function indexAction()
+      $repoCat = $em->getRepository('NNPPlatformBundle:Categorie');
+      $idCarriere = $repoCat->findOneBy(array('nom'=>'CARRIERE'));
+      $idNjoka = $repoCat->findOneBy(array('nom'=>'NJOKA'));
+      $idReligion = $repoCat->findOneBy(array('nom'=>'RELIGION'));
+      $idMode = $repoCat->findOneBy(array('nom'=>'MODE'));
+      $idAmour = $repoCat->findOneBy(array('nom'=>'AMOUR'));
+      $idKwatt = $repoCat->findOneBy(array('nom'=>'KWATT'));
+
+      $repo = $em->getRepository('NNPPlatformBundle:Ndem');
+      $ndems= $repo->findAll();
+
+      $listeNdemsCarriere = $repo->findByCategorie($idCarriere);
+      $listeNdemsNjoka = $repo->findByCategorie($idNjoka);
+      $listeNdemsReligion = $repo->findByCategorie($idReligion);
+      $listeNdemsMode = $repo->findByCategorie($idMode);
+      $listeNdemsAmour = $repo->findByCategorie($idAmour);
+      $listeNdemsKwatt = $repo->findByCategorie($idKwatt);
+
+      $nbrNdemCarrriere = sizeof($listeNdemsCarriere);
+      $nbrNdemNjoka = sizeof($listeNdemsNjoka);
+      $nbrNdemReligion = sizeof($listeNdemsReligion);
+      $nbrNdemMode = sizeof($listeNdemsMode);
+      $nbrNdemAmour = sizeof($listeNdemsAmour);
+      $nbrNdemKwatt = sizeof($listeNdemsKwatt);
+
+      return $this->render('NNPPlatformBundle:Homepage:menu.html.twig', array(
+            'nbrNdemCarrriere'=>$nbrNdemCarrriere,
+            'nbrNdemNjoka' => $nbrNdemNjoka,
+            'nbrNdemReligion'=>$nbrNdemReligion,
+            'nbrNdemMode' => $nbrNdemMode,
+            'nbrNdemAmour'=>$nbrNdemAmour,
+            'nbrNdemKwatt' => $nbrNdemKwatt,
+        ));
+    }
+
+    public function indexAction(Request $request)
     {
       $em = $this->getDoctrine()->getManager();
 
@@ -60,34 +130,39 @@ class HomepageController extends Controller
         $listeNdemsMode = array();
         $listeNdemsAmour = array();
         $listeNdemsKwatt = array();
+        $ndemeurCarriere = array();
+        $ndemeurNjoka = array();
+        $ndemeurReligion = array();
+        $ndemeurMode = array();
+        $ndemeurAmour = array();
+        $ndemeurKwatt = array();
         foreach ($ndems as $key => $value) {
-            $categories = $value->getCategories();
-            foreach ($categories as $value2) {
-              if ($value2 == $idCarriere){
+            $categorie = $value->getCategorie();
+              if ($categorie == $idCarriere){
                   $listeNdemsCarriere[] = $value;
                   $ndemeurCarriere[] = $value->getUser();
               }
-              else if ($value2 == $idNjoka){
+              else if ($categorie == $idNjoka){
                   $listeNdemsNjoka[] = $value;
                   $ndemeurNjoka[] = $value->getUser();
               }
-              else if ($value2 == $idReligion){
+              else if ($categorie == $idReligion){
                   $listeNdemsReligion[] = $value;
                   $ndemeurReligion[] = $value->getUser();
               }
-              else if ($value2 == $idMode){
+              else if ($categorie == $idMode){
                   $listeNdemsMode[] = $value;
                   $ndemeurMode[] = $value->getUser();
               }
-              else if ($value2 == $idAmour){
+              else if ($categorie == $idAmour){
                   $listeNdemsAmour[] = $value;
                   $ndemeurAmour[] = $value->getUser();
               }
-              else if ($value2 == $idKwatt){
+              else if ($categorie == $idKwatt){
                   $listeNdemsKwatt[] = $value;
                   $ndemeurKwatt[] = $value->getUser();
               }
-            }
+            
         }
       }else {
           $listeNdemsCarriere = null ;
@@ -98,12 +173,25 @@ class HomepageController extends Controller
           $listeNdemsKwatt = null ;
       }
 
-      $ndemeurCarriere = array_unique($ndemeurCarriere); 
-      $ndemeurNjoka = array_unique($ndemeurNjoka);
-      $ndemeurReligion = array_unique($ndemeurReligion);
-      $ndemeurMode = array_unique($ndemeurMode);
-      $ndemeurAmour = array_unique($ndemeurAmour);
-      $ndemeurKwatt = array_unique($ndemeurKwatt);
+      if($ndemeurCarriere){
+        $ndemeurCarriere = array_unique($ndemeurCarriere);
+      }
+      if($ndemeurNjoka){
+        $ndemeurNjoka = array_unique($ndemeurNjoka);
+      }
+      if($ndemeurReligion){
+        $ndemeurReligion = array_unique($ndemeurReligion);
+      }
+      if($ndemeurMode){
+        $ndemeurMode = array_unique($ndemeurMode);
+      }
+      if($ndemeurAmour){
+        $ndemeurAmour = array_unique($ndemeurAmour);
+      }
+      if($ndemeurMode){
+        $ndemeurKwatt = array_unique($ndemeurKwatt);
+      }
+      
  
       $listeComCarriere = 0;
       if (isset ($listeNdemsCarriere) ){
@@ -183,7 +271,7 @@ class HomepageController extends Controller
     	return new Response($content);
     }
 
-    public function presentationAction()
+    public function presentationAction(Request $request)
     {
     	$content = $this->get('templating')->render('NNPPlatformBundle:Homepage:presentation.html.twig');
     	return new Response($content);
@@ -249,8 +337,8 @@ class HomepageController extends Controller
 
         $comment = new Commentaire();
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $comment)
-            ->add('commentaire', TextareaType::class, array('label'=>'Laissez un commentaire'))
-            ->add('save', SubmitType::class, array('label'=>'Envoyer'));
+            ->add('commentaire', TextareaType::class, array('attr'=>array('placeholder'=>'Votre commentaire')))
+            ->add('save', SubmitType::class, array('label'=>'Poster'));
 
         $form = $formBuilder->getForm();
 
@@ -309,7 +397,7 @@ class HomepageController extends Controller
           $followersUser[] = $follower;
         }//var_dump($followersUser); exit();
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profilVisite.html.twig', array('nbrNdem'=>$nbrNdem, 'nbrCom'=>$nbrCom,'idVisiteur' => $idVisiteur,'user'=>$user, 'followers' => $followersUser));
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profilVisite.html.twig', array('nbrNdem'=>$nbrNdem,'listeNdem'=>$listeNdem, 'nbrCom'=>$nbrCom,'idVisiteur' => $idVisiteur,'user'=>$user, 'followers' => $followersUser));
         return new Response($content);
     }
 
@@ -337,7 +425,78 @@ class HomepageController extends Controller
           $followersUser[] = $follower;
         }//var_dump($followersUser); exit();
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profil.html.twig', array('nbrNdem'=>$nbrNdem, 'nbrCom'=>$nbrCom, 'followers' => $followersUser));
+        $ndemPost = new Ndem();
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $ndemPost)
+          ->add('texte', TextareaType::class, array('attr'=>array('placeholder'=>'Ecrire un nouveau ndem')))
+          ->add('firstphoto', FileType::class, array(
+            'label'=>'image 1',
+            'required'=>false, 
+            'data_class'=>null,
+            'attr'=>array(
+              'class'=>'filestyle',
+              'data-classButton'=>'btn btn-primary',
+              'data-input'=>'false',
+              'data-classIcon'=>'icon-plus',
+              'data-buttonText' =>"",
+              "data-iconName" =>"glyphicon glyphicon-picture"
+              )
+          ))
+          ->add('secondphoto', FileType::class, array(
+            'label'=>'image 2',
+            'required'=>false, 
+            'data_class'=>null,
+            'attr'=>array(
+              'class'=>'filestyle',
+              'data-classButton'=>'btn btn-primary',
+              'data-input'=>'false',
+              'data-classIcon'=>'icon-plus',
+              'data-buttonText' =>"",
+              "data-iconName" =>"glyphicon glyphicon-picture"
+              )
+          ))
+          ->add('categorie')
+          ->add('save', SubmitType::class, array('label'=>'Poster'))
+        ;
+        $form = $formBuilder->getForm();
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) { 
+        //var_dump($form->getData()); exit();
+
+          $firstphoto = $form['firstphoto']->getData(); 
+          if (isset($firstphoto)){
+              $firstphoto = $ndemPost->getFirstphoto();
+              $photoname1 = md5(uniqid()).'.'.$firstphoto->guessExtension();
+              $firstphoto->move(
+                    $this->getParameter('photondem_directory'),
+                    $photoname1
+                );
+
+              $ndemPost->setFirstphoto($photoname1); 
+          }
+
+          $secondphoto = $form['secondphoto']->getData(); 
+          if (isset($secondphoto)){
+              $secondphoto = $ndemPost->getSecondphoto();
+              $photoname2 = md5(uniqid()).'.'.$secondphoto->guessExtension();
+              $secondphoto->move(
+                    $this->getParameter('photondem_directory'),
+                    $photoname2
+                );
+
+              $ndemPost->setSecondphoto($photoname2); 
+          }
+
+          $ndemPost->setUser($this->getUser());
+          $ndemPost->setTitre('new titre');
+
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($ndemPost);
+          $em->flush();
+
+          return $this->redirectToRoute('nnp_platform_profil');
+        }
+
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profil.html.twig', array('nbrNdem'=>$nbrNdem,'listeNdem'=>$listeNdem, 'nbrCom'=>$nbrCom, 'followers' => $followersUser, 'form'=>$form->createView() ));
         return new Response($content);
     }
 
@@ -347,6 +506,16 @@ class HomepageController extends Controller
                 ->getManager()
                 ->getRepository('NNPPlatformBundle:User')
                 ->find($this->getUser()->getId());
+
+        $repoFollow = $this->getDoctrine()->getManager()->getRepository('NNPPlatformBundle:Follower');
+        $followersUserRepo = $this->getDoctrine()->getManager()->getRepository('NNPPlatformBundle:User');
+        $followersUser = array();
+        $followersList = $repoFollow->findByIdFollower($user);//
+
+        foreach ($followersList as $key => $value) {
+          $follower = $followersUserRepo->findOneBy(array('id'=>$value->getUser()->getId()));
+          $followersUser[] = $follower;
+        }//var_dump($followersUser); exit();
 
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $user)
             ->add('prenom', TextType::class)
@@ -369,11 +538,7 @@ class HomepageController extends Controller
                 'empty_data'  => null
             ))
             ->add('photo', FileType::class, array('label' => 'Photo de profil','required'=>false, 'data_class'=>null))
-            ->add('texte', CKEditorType::class, array(
-                'config' => array(
-                    'uiColor' => '#ffffff',
-                    //...
-                ),))
+            ->add('texte', TextareaType::class, array('label'=>'Biographie'))
             ->add('save', SubmitType::class, array('label'=>'Enregistrer'));
         ;
 
@@ -406,7 +571,7 @@ class HomepageController extends Controller
           return $this->redirectToRoute('nnp_platform_profil');
         }
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:editerProfil.html.twig', array('form' => $form->createView()));
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:editerProfil.html.twig', array('followers' => $followersUser,'form' => $form->createView()));
         return new Response($content);
     }
 
@@ -416,20 +581,9 @@ class HomepageController extends Controller
         //$form = $this->get('form.factory')->create(NdemType::class, $ndem);
 
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $ndem)
-          ->add('categories', null ,array('label' => 'Choisir la catégorie'))
+          ->add('categorie')
           ->add('titre',     TextType::class)
-          ->add('texte',   CKEditorType::class, array(
-                'config' => array(
-                    'uiColor' => '#ffffff',
-                    //...
-                ),))
-          ->add('statut', ChoiceType::class, array(
-                'choices'  => array(
-                    'activer' => '1',
-                    'desactiver' => '0',
-                ),
-            ))
-          
+          ->add('texte',   TextareaType::class)
           ->add('save', SubmitType::class, array('label'=>'Enregistrer'))
         ;
 
@@ -437,7 +591,7 @@ class HomepageController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) { 
           //var_dump($form->getData());
-
+          //$cats = $form["categories"]->getData(); var_dump($cats);
           $ndem->setUser($this->getUser());
 
           $em = $this->getDoctrine()->getManager();
@@ -460,6 +614,16 @@ class HomepageController extends Controller
                 ->getManager()
                 ->getRepository('NNPPlatformBundle:User')
                 ->find($this->getUser()->getId());
+
+      $repoFollow = $this->getDoctrine()->getManager()->getRepository('NNPPlatformBundle:Follower');
+        $followersUserRepo = $this->getDoctrine()->getManager()->getRepository('NNPPlatformBundle:User');
+        $followersUser = array();
+        $followersList = $repoFollow->findByIdFollower($user);//
+
+        foreach ($followersList as $key => $value) {
+          $follower = $followersUserRepo->findOneBy(array('id'=>$value->getUser()->getId()));
+          $followersUser[] = $follower;
+        }//var_dump($followersUser); exit();
 
       $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $user)
 
@@ -489,43 +653,160 @@ class HomepageController extends Controller
         return $this->redirectToRoute('nnp_platform_profil');
       }
 
-      $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:modifierPassword.html.twig', array('form' => $form->createView()));
+      $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:modifierPassword.html.twig', array('followers' => $followersUser,'form' => $form->createView()));
       return new Response($content);
 
     }
 
     public function listeAction(Request $request)
     { 
+        
         $categorie = $request->query->get('nom');
-        $repoCat = $this
-          ->getDoctrine()
-          ->getManager()
-          ->getRepository('NNPPlatformBundle:Categorie')
-        ;
-        $idcat = $repoCat->findOneBy(array('nom'=>$categorie)); 
-        $repo = $this
-          ->getDoctrine()
-          ->getManager()
-          ->getRepository('NNPPlatformBundle:Ndem')
-        ;
-        $ndems= $repo->findAll();
+        
+        
 
-        if($ndems){
-          $listeNdems = array();
-          foreach ($ndems as $key => $value) {
-              $categories = $value->getCategories();
-              foreach ($categories as $value2) {
-                if ($value2 == $idcat){
-                    $listeNdems[] = $value;
-                }
-              }
+        $repoCat = $this->getDoctrine()->getManager()->getRepository('NNPPlatformBundle:Categorie');
+        $idcat = $repoCat->findOneBy(array('nom'=>$categorie)); 
+
+        $repo = $this->getDoctrine()->getManager()->getRepository('NNPPlatformBundle:Ndem');
+        $listeNdems = $repo->findByCategorie($idcat);
+
+        $ndemPost = new Ndem();
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $ndemPost)
+          ->add('texte', TextareaType::class, array('attr'=>array('placeholder'=>'Ecris un nouveau ndem dans cette catégorie')))
+          ->add('firstphoto', FileType::class, array(
+            'label'=>'image 1',
+            'required'=>false, 
+            'data_class'=>null,
+            'attr'=>array(
+              'class'=>'filestyle',
+              'data-classButton'=>'btn btn-primary',
+              'data-input'=>'false',
+              'data-classIcon'=>'icon-plus',
+              'data-buttonText' =>"",
+              "data-iconName" =>"glyphicon glyphicon-picture"
+              )
+          ))
+          ->add('secondphoto', FileType::class, array(
+            'label'=>'image 2',
+            'required'=>false, 
+            'data_class'=>null,
+            'attr'=>array(
+              'class'=>'filestyle',
+              'data-classButton'=>'btn btn-primary',
+              'data-input'=>'false',
+              'data-classIcon'=>'icon-plus',
+              'data-buttonText' =>"",
+              "data-iconName" =>"glyphicon glyphicon-picture"
+              )
+          ))
+          ->add('save', SubmitType::class, array('label'=>'Poster'))
+        ;
+        $form = $formBuilder->getForm();
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) { 
+        //var_dump($form->getData()); exit();
+
+          $firstphoto = $form['firstphoto']->getData(); 
+          if (isset($firstphoto)){
+              $firstphoto = $ndemPost->getFirstphoto();
+              $photoname1 = md5(uniqid()).'.'.$firstphoto->guessExtension();
+              $firstphoto->move(
+                    $this->getParameter('photondem_directory'),
+                    $photoname1
+                );
+
+              $ndemPost->setFirstphoto($photoname1); 
           }
-        }else {
-            $listeNdems = null ;
+
+          $secondphoto = $form['secondphoto']->getData(); 
+          if (isset($secondphoto)){
+              $secondphoto = $ndemPost->getSecondphoto();
+              $photoname2 = md5(uniqid()).'.'.$secondphoto->guessExtension();
+              $secondphoto->move(
+                    $this->getParameter('photondem_directory'),
+                    $photoname2
+                );
+
+              $ndemPost->setSecondphoto($photoname2); 
+          }
+
+          $ndemPost->setUser($this->getUser());
+          $ndemPost->setCategorie($idcat);
+          $ndemPost->setTitre('new titre');
+
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($ndemPost);
+          $em->flush();
+
+          return $this->redirectToRoute('nnp_platform_liste', array('nom'=>$categorie));
         }
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:liste.html.twig', array('listeNdems' => $listeNdems,'categorie'=> $categorie ));
+        $em = $this->getDoctrine()->getManager();
+        $idfollower = $request->query->get('idAFollow');
+
+        if ($idfollower){
+          $newfollower = new Follower();
+          $newfollower->setIdFollower($idfollower);
+          $newfollower->setUser($this->getUser());
+          $em->persist($newfollower);
+          $em->flush();
+
+          return $this->redirectToRoute('nnp_platform_profilVisite', array('idVisiteur'=>$idfollower));
+          //path('nnp_platform_profilVisite', {'idVisiteur': ndem.user.id })
+        }
+
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:liste.html.twig', array('listeNdems' => $listeNdems,'categorie'=> $categorie, 'form'=>$form->createView() ));
         return new Response($content);
 
+    }
+
+    public function chercheMembreAction()
+    {
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, null, array('attr'=>array('name'=>'forme')))
+          ->setAction($this->generateUrl('nnp_platform_ndemeur'))
+          //->setMethod('GET')
+          //->setName('form')
+          ->add('nom',   TextType::class, array('attr'=>array('placeholder'=>'Trouver un ndemeur', 'name'=>'nom')))
+          ->add('save', SubmitType::class, array('label'=>'Enregistrer'))
+        ;
+
+        $form = $formBuilder->getForm();
+
+       return $this->render('NNPPlatformBundle:Homepage:chercheMembre.html.twig', array('form'=>$form->createView()));
+    }
+
+    public function ndemeurAction(Request $request)
+    {
+
+      //$ndemeurs = 0;
+      $ndemeurs = $request->query->get('ndemeurs');
+
+      if ($request->isMethod('POST')) { 
+          $champ = $_POST['nom'];
+
+          $em = $this->getDoctrine()->getManager();
+          $user= $em->createQuery("
+            SELECT DISTINCT   a.id, a.username, a.nom, a.prenom, a.texte, a.sexe, a.photo 
+            FROM NNPPlatformBundle:User a 
+            WHERE ( a.username like '%".$champ."%' ) 
+            OR ( a.nom like '%".$champ."%' )  
+            OR ( a.prenom like '%".$champ."%' ) 
+            OR ( a.nom like '%".$champ."%' ) 
+            ")
+              ->getResult();
+
+          //var_dump($user); exit();
+          $nbr = sizeof($user);
+          if ($nbr > 0) {
+            $ndemeurs = $user;
+          }else{
+            $ndemeurs = 0;
+          }
+          //return $this->redirectToRoute('nnp_platform_ndemeur', array('ndemeurs'=>$ndemeurs));
+      }
+
+      $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:ndemeur.html.twig', array('ndemeurs'=>$ndemeurs));
+      return new Response($content);
     }
 }

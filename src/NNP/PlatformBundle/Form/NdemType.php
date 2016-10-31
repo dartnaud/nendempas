@@ -38,7 +38,7 @@ class NdemType extends AbstractType
                 ),
             ))
             ->add('user')
-            ->add('categories')
+            ->add('categorie')
             ->add('save', SubmitType::class, array('label'=>'Enregistrer'));
         ;
     }

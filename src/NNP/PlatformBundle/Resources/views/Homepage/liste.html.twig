@@ -18,72 +18,77 @@
 {% block body %}
 <div class="container-fluid">
 	{% if categorie == 'CARRIERE' %}
-	<section class="liste" style="background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondcarriere.jpg');">
+	<section class="liste" style="background-attachment:fixed; background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondcarriere.jpg');">
 	{% elseif categorie == 'NJOKA' %}
-	<section class="liste" style="background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondnjoka.jpg');">
+	<section class="liste" style="background-attachment:fixed; background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondnjoka.jpg');">
 	{% elseif categorie == 'RELIGION' %}
-	<section class="liste" style="background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondreligion.jpg');">
+	<section class="liste" style="background-attachment:fixed; background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondreligion.jpg');">
 	{% elseif categorie == 'MODE' %}
-	<section class="liste" style="background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondmode.jpg');">
+	<section class="liste" style="background-attachment:fixed; background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondmode.jpg');">
 	{% elseif categorie == 'AMOUR' %}
-	<section class="liste" style="background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondamour.jpg');">
+	<section class="liste" style="background-attachment:fixed; background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondamour.jpg');">
 	{% elseif categorie == 'KWATT' %}
-	<section class="liste" style="background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondkwatt.jpg');">
+	<section class="liste" style="background-attachment:fixed; background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondkwatt.jpg');">
 	{% endif %}
 		<div class="row">
 			<div class="col-md-2"></div>
-			<div class="col-md-8 center">
-			<h1>{{ categorie }}</h1>
-			{% if listeNdems != null  %}
-				{% for ndem in listeNdems %}
-				<div class="bloc-ndem">	
-					<div class="ndem">
-	                    <div class="titre">{{ ndem.titre }}</div>
-	                    <div class="date">posté le {{ ndem.dateCreation|date("m/d/Y") }} |<strong> Auteur : </strong>{{ ndem.user }}</div>
-	                    <p>
-	                    	{{ ndem.texte|striptags|slice(0, 180)  }}
-	                    </p>
-	                    <!-- Trigger the modal with a button -->
-	                    <div class="info-ndem">
-	                        {# <div class="commentaire">23 commentaires -</div>
-	                        <div class="commentaire">3 coachs ont réagis</div> #}
-	                        <button onclick="location.href='{{ path('nnp_platform_leNdem', {id: ndem.id}) }}';" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Voir son ndem</button>
-	                    </div>
 
-	                    <!-- Modal -->
-	                    {# <div class="modal fade" id="myModal" role="dialog">
-	                        <div class="modal-dialog">
-	                            <!-- Modal content-->
-	                            <div class="modal-content">
-	                                <div class="modal-header">
-	                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-	                                  <div class="modal-title">
-	                                  	CATEGORIE : 
-	                                  	{% for categorie in ndem.categories %}
-			                    			{{ categorie }} |
-			                    		{% endfor %}
-			                    	  </div>
-			                    	  <div class="divider"></div>
-	                                  <h4 class="modal-title">{{ ndem.titre }}  - posté le {{ ndem.dateCreation|date("m/d/Y") }}</h4>
-	                                </div>
-	                                <div class="modal-body">
-	                                  <p>{{ ndem.texte|raw }}</p>
-	                                </div>
-	                                <div class="modal-footer">
-	                                    <button onclick="location.href='{{ path('nnp_platform_leNdem', {id: ndem.id}) }}';" type="button" class="btn btn-default" data-dismiss="modal">Réagir au Ndem</button>
-	                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div> #}
-	                </div>
+			<div class="col-md-7 center">
+			<h1>{{ categorie }}</h1>
+			<div class="formulaire">
+				<div class="photo-post" style=" 
+				{% if app.user.photo != null or app.user.photo != '' %}
+				background-image: url('{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}');
+				{% else %}
+				background-image: url('{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}');
+				{% endif %}	
+				">
+					
+				</div>
+                <div class="ndemFormCat">
+                  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                  {{ form_errors(form) }}
+                  {{ form_row(form.texte) }}
+                  {{ form_rest(form) }}
+                  {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                  {{ form_end(form) }}
+                </div>
+            </div>
+            <div class="clear"></div>
+			{% if listeNdems != null  %}
+				{% for ndem in listeNdems|reverse %}
+	            <div class="zone-ndem">
+	            	<div class="nd date-ndem">{{ ndem.dateCreation|date("d/m/Y") }}</div>
+	            	<div class="nd photo-ndem">
+	            		
+	            	</div>
+	            	<div class="nd msg-ndem">
+	            		<div class="photoNdemeur" style=" 
+						{% if ndem.user.photo != null or ndem.user.photo != '' %}
+						background-image: url('{{ asset('uploads/images/photoProfil/' ~ ndem.user.photo) }}');
+						{% else %}
+						background-image: url('{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}');
+						{% endif %}	
+						">
+		            		
+						</div>
+	            		<div class="titre-ndem">{{ ndem.titre }}</div>
+	            		<div class="texte-ndem">{{ ndem.texte|striptags|slice(0, 180)  }}</div>
+	            	</div>
+	            	<div class="nd btn-ndem">
+	            		<button onclick="location.href='{{ path('nnp_platform_leNdem', {id: ndem.id}) }}';" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Voir +</button>
+	            	</div>
+	            	<div class="clear"></div>
 	            </div>
+
 				{% endfor %}
 			{% else %}
 				<p>Il n'y a pas de sujets dans cette catégorie pour l'instant !</p>
 			{% endif %}
 			</div>
-			<div class="col-md-2"></div>
+			<div class="col-md-3">
+				{{ render(controller('NNPPlatformBundle:Homepage:suggestionNdemeur')) }}
+			</div>
 		</div>
 	</section>
 </div>

@@ -1,27 +1,49 @@
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 580px) {
   /* line 3, ../sass/responsivemain.scss */
   .connexion {
-    bottom: 98px;
-    right: 18px;
+   /*  bottom: 363px;
+	right: 235px; */
+    width: 314px !important;
+    left: 18px;
   }
-  /* line 8, ../sass/responsivemain.scss */
+  /* line 11, ../sass/responsivemain.scss */
+  .connexion .loggin label {
+    width: 100% !important;
+    text-align: left;
+  }
+  /* line 16, ../sass/responsivemain.scss */
+  .connexion .loggin input {
+    width: 100% !important;
+  }
+  /* line 21, ../sass/responsivemain.scss */
   .connexion.register {
-    bottom: 40px;
+    /* bottom: 237px; */
+  }
+}
+@media screen and (max-width: 1100px) {
+  /* line 29, ../sass/responsivemain.scss */
+  .connexion {
+    /* bottom: 98px;
+	right: 18px; */
+  }
+  /* line 34, ../sass/responsivemain.scss */
+  .connexion.register {
+    /* bottom: 40px; */
   }
 
-  /* line 13, ../sass/responsivemain.scss */
+  /* line 39, ../sass/responsivemain.scss */
   .logo {
     left: 26px;
   }
 }
 @media screen and (min-width: 1380px) {
-  /* line 20, ../sass/responsivemain.scss */
+  /* line 46, ../sass/responsivemain.scss */
   .connexion {
-    bottom: 363px;
-    right: 235px;
+   /*  bottom: 363px;
+	right: 235px; */
   }
-  /* line 25, ../sass/responsivemain.scss */
+  /* line 51, ../sass/responsivemain.scss */
   .connexion.register {
-    bottom: 237px;
+    /* bottom: 237px; */
   }
 }

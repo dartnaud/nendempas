@@ -89,31 +89,15 @@ class Ndem
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="NNP\PlatformBundle\Entity\Categorie", cascade={"persist"})
+     *@ORM\ManyToOne(targetEntity = "NNP\PlatformBundle\Entity\Categorie")
+     *@ORM\JoinColumn(nullable=true)
      */
-    private $categories;
+    private $categorie;
 
 
     public function __construct(){
         $this->dateCreation = new \DateTime();
         $this->dateModification = new \DateTime();
-        $this->categories = new ArrayCollection();
-    }
-
-
-    public function addCategory(Categorie $categorie)
-    {
-        $this->categorie[] = $categorie;
-    }
-
-    public function removeCategorie(Categorie $categorie)
-    {
-        $this->categories->removeElement($categorie);
-    }
-
-    public function getCategories()
-    {
-        return $this->categories;
     }
 
     /**
@@ -313,6 +297,28 @@ class Ndem
     public function getUser()
     {
         return $this->user;
+    }
+
+
+     /**
+     * Set categorie
+     *
+     */
+    public function setCategorie(Categorie $categorie)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     *
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 
     public function __toString() {

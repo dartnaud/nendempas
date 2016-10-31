@@ -45,9 +45,7 @@
 	                    <div class="bloc-ndem">
 	                        <div class="ndem">
 	                        	<div class="categorie">
-		                    		{% for categorie in ndem.categories %}
-		                    			{{ categorie }} |
-		                    		{% endfor %}
+		                    		{{ ndem.categorie }}
 		                    	</div>
 	                            <div class="titre">{{ ndem.titre }} posté le {{ ndem.dateCreation|date("m/d/Y") }}</div>
 	                            <p>

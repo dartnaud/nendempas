@@ -53,4 +53,9 @@ nnp_platform_liste:
     defaults:  
         _controller: NNPPlatformBundle:Homepage:liste
 
+nnp_platform_ndemeur:
+    path:     /communaute
+    defaults:  
+        _controller: NNPPlatformBundle:Homepage:ndemeur
+
 

@@ -1,78 +1,77 @@
 {% extends "NNPPlatformBundle::template.html.twig" %}
 {% block title %}Homepage{% endblock %}
-{% block menuUser %}
-<ul class="nav navbar-nav">
-    <li class="dropdown"> 
-        <a data-toggle="dropdown" href="#">{{ app.user.username }}  <b class="caret"></b></a>
-        <ul class="dropdown-menu jqueryFadeIn">
-            <li><a href="{{ path('nnp_platform_profil', {'id': app.user.id }) }}">Mon profil</a></li>
-            <li><a href="{{ path('nnp_platform_mesNdems') }}">Consulter mes ndems</a></li>
-            <li><a href="{{ path('nnp_platform_creerNdem') }}">Créer un ndem</a></li>
-            <li><a href="{{ path('nnp_platform_modifierPassword') }}">Modifier le mot de passe</a></li>        
-            <li class="divider"></li>
-            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-        </ul>
-    </li> 
-</ul>
-{% endblock %}
+
 {% block body %}
-<div class="container">
-	<section class="profil">
+<div class="container-fluid visiteur">
+	<section class="photoProfil">
 		<div class="row">
-			<div class="col-md-4 sidebar">
-				<div class="photo">
-					{% if user.photo != null or user.photo != '' %}
-						<img src="{{ asset('uploads/images/photoProfil/' ~ user.photo) }}" width="100%" />
-					{% else %}
-						<img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="100%" />
-					{% endif %}
-				</div>
-				<div class="identite">
-					{% if user.pseudo == 0 %}
-						<div class="nom">{{ user.prenom }} {{ user.nom|upper }}</div>
-					{% endif %}
-					<div class="nom"><span class="intitule">Pseudo : </span><b>{{ user.username }}</b></div>
-				</div>
-				<div class="liens">
-					<button onclick="location.href='{{ path('nnp_platform_ndemVisite', {'idVisite': user.id }) }}';">Voir ses sujets</button>
-				</div>
-				
-			</div>
-			<div class="col-md-8 center">
-				<div class="description">
-					<h1>A propos du membre</h1>
-					<p>
-						{{ user.texte|raw }}
-					</p>
-				</div>
-				<div class="divider"></div>
-				<div class="info">
-					<h1>Vos stats</h1>
-					<div class="bloc">
-						<p><span class="glyphicon glyphicon-pencil chiffre"></span><span class="chiffre"><a href="{{ path('nnp_platform_ndemVisite',{'idVisite': user.id }) }}">{{ nbrNdem }}</a></span> sujet(s) posté(s)</p>
-						<p><span class="glyphicon glyphicon-comment chiffre"></span><span class="chiffre">{{ nbrCom }}</span> commentaires</p>
-					</div>
-					<div class="bloc">
-						{# <p><span class="glyphicon glyphicon-user chiffre"></span><span class="chiffre">4 </span> coachs ont réagis à vos sujets </p> #}
-					</div>
-				</div>
-				<div class="divider"></div>
-				<div class="follower">
-					<h1>Ils vous suivent</h1>
-					{% for follower in followers %}
-					<a href="{{ path('nnp_platform_profilVisite', {'idVisiteur': follower.id }) }}">
-						{% if follower.photo != null or follower.photo != '' %}
-						<img  src="{{ asset('uploads/images/photoProfil/' ~ follower.photo) }}" width="80px"  title="{{ follower.username }}" alt="{{ follower.username }}"/>
-						{% else %}
-							<img  src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" width="80px" alt="{{ follower.username }}" title="{{ follower.username }}"/>
-						{% endif %}
-					</a>
-					{% endfor %}
+			<div class="col-xs-1"></div>
+			<div class="col-xs-4"></div>
+			<div class="col-xs-2">
+				<div class="photo" style=" 
+				{% if user.photo != null or user.photo != '' %}
+				background-image: url('{{ asset('uploads/images/photoProfil/' ~ user.photo) }}');
+				{% else %}
+				background-image: url('{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}');
+				{% endif %}	
+				">
 				</div>
 			</div>
+			<div class="col-xs-4 info">
+				{# {% if user.pseudo == 0 %}
+					<div class="nom">{{ user.prenom }} {{ user.nom|upper }}</div>
+				{% endif %} #}
+				<div class="nom"><b>{{ user.username }}</b></div>
+				{% if user.texte != null or user.texte != '' %}
+				<div class="biographie">{{ user.texte|raw }}</b></div>
+				{% endif %}
+				<div class="follower"> {{ followers|length }} followers</div>
+			</div>
+			<div class="col-xs-1"></div>
 		</div>
+	</section>
+	<section class="ndemsProfil">
+		<div class="row">
+			<div class="col-xs-1"></div>
+			<div class="col-xs-1"></div>
+			<div class="col-xs-8 text-center">
+				{% if listeNdem != null  %}
+						{% for ndem in listeNdem|reverse %}
+			            <div class="zone-ndem">
+			            	<div class="nd date-ndem">{{ ndem.dateCreation|date("d/m/Y") }}</div>
+			            	<div class="nd photo-ndem">
+			            		
+			            	</div>
+			            	<div class="nd msg-ndem">
+			            		<div class="photoNdemeur" style=" 
+								{% if ndem.user.photo != null or ndem.user.photo != '' %}
+								background-image: url('{{ asset('uploads/images/photoProfil/' ~ ndem.user.photo) }}');
+								{% else %}
+								background-image: url('{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}');
+								{% endif %}	
+								">
+				            		
+								</div>
+			            		<div class="titre-ndem">{{ ndem.titre }}</div>
+			            		<div class="texte-ndem">{{ ndem.texte|striptags|slice(0, 180)  }}</div>
+			            	</div>
+			            	<div class="nd btn-ndem">
+			            		<button onclick="location.href='{{ path('nnp_platform_leNdem', {id: ndem.id}) }}';" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Voir +</button>
+			            	</div>
+			            	<div class="clear"></div>
+			            </div>
+
+						{% endfor %}
+					{% else %}
+						<p>{{ user.username }} n'a pas encore ndem !</p>
+					{% endif %}
+				</div>
+				<div class="col-xs-1"></div>
+				<div class="col-xs-1"></div>
+			</div>
 	</section>
 </div>
 {% endblock %}
+
 
 

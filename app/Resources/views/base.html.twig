@@ -6,6 +6,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <link rel="stylesheet" href="{{ asset('bundles/nnpplatform/css/full-slider.css') }}" type="text/css" /> 
         <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
@@ -23,39 +24,69 @@
         <div class="container-fluid">
             <section class="top-header">
                 <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-8 ">
-                        <ul class="nav navbar-nav top-menu">
-                            <li><a href="{{ path('nnp_platform_presentation') }}">Qui sommes-nous ?</a></li>
-                            <li><a href="#">Comment ça marche !</a></li>
-                            <li><a href="#">Nous contacter</a></li>
-                            {% if is_granted("ROLE_ADMIN") %}
-                                    <li><a href="{{ path('nnp_admin_homepage') }}">Espace administration</a></li>
-                            {% endif %}
-                        </ul>
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-2 ">
+                        <a href="{{ path('nnp_platform_homepage') }}"><img src="{{ asset('bundles/nnpplatform/images/logo_blanc.png')}}" height="80px" /></a>
+                        <div class="slogan">Ton ndem ... c'est ma leçon !</div>
                     </div>
-                    <div class="col-md-2 reseaux">
+
+                    <div class="col-xs-6 menu-user">
+                        {% block menu %}
+                        {% endblock %}
+                    </div>
+                    <div class="col-xs-2 reseaux">
                         <!-- <div class="icon"><img src="{{ asset('bundles/nnpplatform/images/facebook.png')}}" /></div>
                         <div class="icon"><img src="{{ asset('bundles/nnpplatform/images/twitter.png')}}" /></div> -->
+
                         <div class="info-user">
 
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <ul class="nav navbar-nav">
-                                    <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                                    {% if is_granted("ROLE_ADMIN") %}
+                                            <li><a href="{{ path('nnp_admin_homepage') }}">Espace administration</a></li>
+                                    {% endif %}
+                                    {% block photoConnecte %}
+                                    {% endblock %}
+                                    <li><a href="{{ path('fos_user_security_logout') }}" title="Déconnexion"><i class="fa fa-sign-out"></i></a></li>
                                 </ul> 
                             {% else %}
-                                <ul class="nav navbar-nav">
+                                <ul class="nav navbar-nav connect">
                                     <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
                                 </ul>
                             {% endif %}
                         </div>
                     </div>
-                    <div class="col-md-1"></div>
+                    
                 </div>
             </section>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.request.attributes.get('_route') != 'fos_user_registration_confirmed' %}
+            <section class="top-recherche">
+                <div class="row">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-6">
+                        
+                    </div>
+                    <div class="col-xs-4">
+                         <form class="navbar-form navbar-right" name="form" method="POST" action="{{ path('nnp_platform_ndemeur') }}" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="nom" placeholder="Trouver un ndemeur">
+                            </div>
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                        </form> 
+                       {#  {% block chercheMembre %}
+                        {% endblock %} #}
+                        
+                    </div>
+                    <div class="col-xs-1"></div>
+                </div>
+            </section>
+            {% endif %}
+            {% block connexion %}
+            {% endblock %}
         </div>
+
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.request.attributes.get('_route') != 'fos_user_registration_confirmed' %}
-        <div class="container-fluid">
+        {# <div class="container-fluid">
             <header class="header">
                 <div class="row">
                     <div class="col-md-1"></div>
@@ -67,81 +98,92 @@
                     <div class="col-md-1"></div>
                 </div>
             </header>
-        </div>
+        </div> #}
         {% else %}
-            <header id="myCarousel" class="carousel slide">
-                {# <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-6"><a href="{{ path('nnp_platform_homepage') }}"><img src="{{ asset('bundles/nnpplatform/images/logo.png')}}" width="300px" /></a></div>
-                    <div class="col-md-4">
+            {% block slide %}
+                <header id="myCarousel" class="carousel slide">
+                    {# <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-6"><a href="{{ path('nnp_platform_homepage') }}"><img src="{{ asset('bundles/nnpplatform/images/logo.png')}}" width="300px" /></a></div>
+                        <div class="col-md-4">
 
-                    </div>
-                </div> #}
-                <div class="logo">
-                    <a href="{{ path('nnp_platform_homepage') }}"><img src="{{ asset('bundles/nnpplatform/images/logo.png')}}" width="300px" /></a>
-                </div>
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
+                        </div>
+                    </div> #}
+                    {# <div class="logo">
+                        <a href="{{ path('nnp_platform_homepage') }}"><img src="{{ asset('bundles/nnpplatform/images/logo.png')}}" width="300px" /></a>
+                    </div> #}
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
 
-                <!-- Wrapper for Slides -->
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <!-- Set the first background image using inline CSS below. -->
-                        <div class="fill" style="background-image:url('http://bedingue.com/web/bundles/nnpplatform/images/slide1.jpg');"></div>
-                        <div class="carousel-caption">
-                            <h2></h2>
+                    <!-- Wrapper for Slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <!-- Set the first background image using inline CSS below. -->
+                            <div class="fill" style="background-image:url('http://bedingue.com/web/bundles/nnpplatform/images/slide1.jpg');"></div>
+                            <div class="carousel-caption">
+                                <h2></h2>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <!-- Set the second background image using inline CSS below. -->
+                            <div class="fill" style="background-image:url('http://bedingue.com/web/bundles/nnpplatform/images/slide2.jpg');"></div>
+                            <div class="carousel-caption">
+                                <h2></h2>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <!-- Set the third background image using inline CSS below. -->
+                            <div class="fill" style="background-image:url('http://bedingue.com/web/bundles/nnpplatform/images/slide3.jpg');"></div>
+                            <div class="carousel-caption">
+                                <h2></h2>
+                            </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <!-- Set the second background image using inline CSS below. -->
-                        <div class="fill" style="background-image:url('http://bedingue.com/web/bundles/nnpplatform/images/slide2.jpg');"></div>
-                        <div class="carousel-caption">
-                            <h2></h2>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <!-- Set the third background image using inline CSS below. -->
-                        <div class="fill" style="background-image:url('http://bedingue.com/web/bundles/nnpplatform/images/slide3.jpg');"></div>
-                        <div class="carousel-caption">
-                            <h2></h2>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Controls -->
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                    <span class="icon-prev"></span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                    <span class="icon-next"></span>
-                </a>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="icon-prev"></span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="icon-next"></span>
+                    </a>
+                    {# 
+                    {% block connexion %}
+                    {% endblock %} #}
+                </header>
+            {% endblock %}
 
-                {% block connexion %}
-                {% endblock %}
-            </header>
         {% endif %}
         {% endblock %}
 
         {% block bande %}
         {% endblock %}
-
-        {% block body %}
+        
+        {% block bigBody %}
+            
         {% endblock %}
 
         {% block topfooter %}
         <div class="container-fluid">
             <section class="topfooter">
                 <div class="row">
-                    <div class="col-lg-12 alignCenter">
-                        <div class="icon"><img src="{{ asset('bundles/nnpplatform/images/facebook.png')}}" /></div>
-                        <div class="icon"><img src="{{ asset('bundles/nnpplatform/images/twitter.png')}}" /></div>
-                        <div class="icon"><img src="{{ asset('bundles/nnpplatform/images/instagram.png')}}" /></div>
-                        {# <div class="icon"><img src="{{ asset('bundles/nnpplatform/images/whatapp.png')}}" /></div> #}
+                    <div class="col-md-1"></div>
+                    <div class="col-lg-7">
+                        <ul class="nav navbar-nav foot-menu">
+                            <li><a href="{{ path('nnp_platform_presentation') }}">Comment ça marche !</a></li>
+                            <li><a href="#">Nous contacter</a></li>
+                            
+                        </ul>
                     </div>
+                    <div class="col-lg-3 alignCenter foot-social">
+                        <div class="icon"><i class="fa fa-facebook"></i></div>
+                        <div class="icon"><i class="fa fa-instagram"></i></div>
+                    </div>
+                    <div class="col-md-1"></div>
                 </div>
             </section>
         </div>
@@ -150,6 +192,8 @@
         <div class="container-fluid">
             <section class="footer">
                 <div class="row">
+                    
+                    
                     <div class="col-lg-12 alignCenter">Copyright 2016 - nendemplus.com | contact@nendemplus.com</div>
                 </div>
             </section>
@@ -158,6 +202,7 @@
         
         {% block javascripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="{{ asset('bundles/nnpplatform/js/bootstrap-filestyle.min.js') }}" ></script>
         <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="{{ asset('bundles/nnpplatform/js/bootstrap.min.js') }}" ></script>

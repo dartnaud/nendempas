@@ -36,12 +36,14 @@
 			<div class="col-md-7 center">
 			<h1>{{ categorie }}</h1>
 			<div class="formulaire">
-				<div class="photo-post">
-					{% if app.user.photo != null or app.user.photo != '' %}
-            		<img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}"  title="{{ app.user.username }}" alt="{{ app.user.username }}" width="50px"/>
-            		{% else %}
-						<img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}"  alt="{{ app.user.username }}" title="{{ app.user.username }}" width="50px"/>
-					{% endif %}
+				<div class="photo-post" style=" 
+				{% if app.user.photo != null or app.user.photo != '' %}
+				background-image: url('{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}');
+				{% else %}
+				background-image: url('{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}');
+				{% endif %}	
+				">
+					
 				</div>
                 <div class="ndemFormCat">
                   {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
@@ -54,18 +56,22 @@
             </div>
             <div class="clear"></div>
 			{% if listeNdems != null  %}
-				{% for ndem in listeNdems %}
+				{% for ndem in listeNdems|reverse %}
 	            <div class="zone-ndem">
-	            	<div class="nd date-ndem">{{ ndem.dateCreation|date("m/d/Y") }}</div>
+	            	<div class="nd date-ndem">{{ ndem.dateCreation|date("d/m/Y") }}</div>
 	            	<div class="nd photo-ndem">
 	            		
 	            	</div>
 	            	<div class="nd msg-ndem">
-	            		{% if ndem.user.photo != null or ndem.user.photo != '' %}
-	            		<img src="{{ asset('uploads/images/photoProfil/' ~ ndem.user.photo) }}"  title="{{ ndem.user.username }}" alt="{{ ndem.user.username }}"/>
-	            		{% else %}
-							<img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}"  alt="{{ ndem.user.username }}" title="{{ ndem.user.username }}"/>
-						{% endif %}
+	            		<div class="photoNdemeur" style=" 
+						{% if ndem.user.photo != null or ndem.user.photo != '' %}
+						background-image: url('{{ asset('uploads/images/photoProfil/' ~ ndem.user.photo) }}');
+						{% else %}
+						background-image: url('{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}');
+						{% endif %}	
+						">
+		            		
+						</div>
 	            		<div class="titre-ndem">{{ ndem.titre }}</div>
 	            		<div class="texte-ndem">{{ ndem.texte|striptags|slice(0, 180)  }}</div>
 	            	</div>

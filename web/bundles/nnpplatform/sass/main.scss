@@ -84,7 +84,7 @@ img{
 			.nav li{
 				a{
 					color: $white;
-					padding-top: 29px;
+					padding-top: 0px;
 					&:hover{
 						color: $white;
 						background: none;
@@ -94,10 +94,14 @@ img{
 			}
 
 			.photoConnecte{
-		    	
-		    	img{
+				height: 102px;
+				width: 102px;
+				background-repeat: no-repeat;
+				background-size: cover;
+		    	@include border-radius(50%);
+		    	/* img{
 		    		@include border-radius(50%);
-		    	}
+		    	} */
 			}
 		}
 		
@@ -114,8 +118,10 @@ img{
 }
 
 .bloclendem{
-	background-image: url('http://localhost/nendempas/web/bundles/nnpplatform/images/fondndem.jpg');
+	background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondndem.jpg');
 	width: 100%;
+	background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -142,6 +148,104 @@ img{
 		}
 	}
 	
+}
+
+.back-register{
+	background-color: $bleuFonce;
+	background-image: url('http://bedingue.com/web/bundles/nnpplatform/images/fondmode.jpg');
+	width: 100%;
+	min-height: 600px;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-top: 80px;
+	padding-top: 50px;
+	.titre-register{
+		font-family: 'Oswald', sans-serif;
+		font-size: 22px;
+		padding: 20px;
+		background-color: $bordeau;
+		color: $white;
+		width: 100%;
+
+		span{
+			margin-right: 20px;
+		}
+	}
+
+	.register{
+		font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+		margin: 0 0 10px 0;
+		background-color: $bleuFonce;
+		padding: 30px;
+		color: $white;
+
+		.logwith{
+			width: 42%;
+			margin-left: 5%;
+			border-radius: 5px;
+			color: $white;
+			text-align: center;
+			float: left;
+			padding: 10px;
+			margin-top: 10px;
+			&.fbk{
+				background-color: $facebook;
+			}
+			&.gml{
+				background-color: $twitter;
+			}
+
+			a{
+				color: $white;
+			}
+		}
+
+		.newlog{
+			font-family: 'Oswald', sans-serif;
+			font-size: 20px;
+			margin-bottom: 20px;
+			border-bottom: 2px solid $white;
+			padding-bottom: 3px;
+		}
+
+		.loggin{
+
+			#fos_user_registration_form{
+				border-bottom: 2px solid $white;
+				margin-bottom: 5px;
+				&~div{
+						text-align: right;
+						input[type=submit]{
+							width: 30%;
+							display: inline-block;
+							background-color: $bordeau;
+							padding: 10px;
+							border: none;
+							margin-right: 10px;
+							color: $white;
+						}
+					}
+				
+			}
+
+			div{
+				padding: 5px;
+				label{
+					width: 45%;
+					font-size: 14px;
+				}
+
+				input{
+					width: 55%;
+					color: $bleuFonce;
+					padding: 3px;
+
+				}
+			}
+			
+		}
+	}
 }
 
 .menu-user{
@@ -409,11 +513,11 @@ img{
 		margin-bottom: 0;
 		margin-right: 20px;
 		margin-left: 14px;
-		width: 50px;
-		height: 50px;
-		img{
-			border-radius: 50%;
-		}
+		width: 70px;
+		height: 70px;
+		background-repeat: no-repeat;
+		background-size: cover;
+    	@include border-radius(50%);
 	}
 
 	.ndemFormCat {
@@ -435,8 +539,35 @@ img{
 				width: 100%;
 			}
 			&:nth-child(2){
-				width: 100%;
-				text-align: right;
+				width: 30%;
+				#form_firstphoto{
+					margin-left: 0;
+				}
+				label{
+					display: block;
+					float: left;
+				    width: 80px;
+				    padding: 5px 0 5px 19px;
+				}
+				text-align: left;
+			}
+			&:nth-child(3){
+				width: 30%;
+				#form_secondphoto{
+					margin-left: 0;
+					/* display: none; */
+				}
+				label{
+					display: block;
+					float: left;
+				    width: 80px;
+				    padding: 5px 0 5px 19px;
+				}
+				text-align: left;
+			}
+			&:nth-child(4){
+				width: 40%;
+				text-align: right; 
 			}
 		}
 
@@ -448,8 +579,7 @@ img{
 		}
 
 		#form_save{
-			width: 25%;
-			width: 11%;
+			width: 50%;
     		padding: 5px;
     		border-radius: initial;
 		}
@@ -457,7 +587,53 @@ img{
 	
 }
 
+.visiteur{
 
+	.photoProfil{
+		border-bottom : 7px solid $bordeau;
+		margin-top: 10px;
+		.photo{
+			@include border-radius(50%);
+			height: 200px;
+			width: 200px;
+			background-repeat: no-repeat;
+			background-size: cover;
+			border: 7px solid $bordeau;
+		}
+		.info{
+			padding-top: 40px;
+			.nom{
+				background-color: $bordeau;
+				padding: 10px;
+				margin-bottom: 10px;
+				color: $white;
+				font-family: 'Oswald', sans-serif;
+				font-size: 22px;
+				width: inherit;
+				text-transform: capitalize;
+			}
+			.biographie{
+				background-color: $bordeau;
+				padding: 15px;
+				padding-bottom: 10px;
+				font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+				color: $white;
+				width: inherit;
+			}
+
+			.follower{
+				padding: 15px 0;
+				padding-bottom: 10px;
+				font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+				color: $bordeau;
+			}
+		}
+	}
+
+	.ndemsProfil{
+		background-color: $grisClair;
+	}
+}
 
 .slider{
 	//background-color: $bordeau;
@@ -471,8 +647,6 @@ img{
 	.inscription{
 
 	}
-	
-
 }
 
 @-o-keyframes backplay {
@@ -697,39 +871,43 @@ img{
 	.ndemeurASuivre{
 		margin-bottom: 10px;
 		height: 55px;
-		.chp{
+		.champ{
 			float:left;
 			margin-bottom: 5px;
 			&.photo{
 				margin: 5px;
-				width: 25%;
 				width: 50px;
 				height: 50px;
 				background-repeat: no-repeat;
 				background-size: cover;
+		    	@include border-radius(50%);
 			}
 
-			&.name{
-				width: 70%;
-			}
-
-			&.bio{
-				width: 70%;
-			}
-
-			&.btn{
-				font-family: 'Oswald', sans-serif;
+			&.ndemeurInfo{
 				padding: 3px;
-				text-align: center;
-				border-radius: 2px;
-				background-color: #fa4a6b;
-				width: inherit;
-				font-size: 14px;
-
-				a{
-					color: $white;
+				.name{
+					width: 70%;
+					padding: 3px;
 				}
-				
+
+				.bio{
+					width: 70%;
+				}
+
+				.btn{
+					font-family: 'Oswald', sans-serif;
+					padding: 3px;
+					text-align: center;
+					border-radius: 2px;
+					background-color: #fa4a6b;
+					width: inherit;
+					font-size: 14px;
+
+					a{
+						color: $white;
+					}
+					
+				}
 			}
 		}
 	}
@@ -766,14 +944,18 @@ img{
 				width: 75%;
 			}
 
-			img{
+			.photoNdemeur{
 				float: left;
 				width: 100px;
+				height: 100px;
+				background-repeat: no-repeat;
+				background-size: cover;
+		    	@include border-radius(50%);
 			}
 		}
 
 		&.date-ndem{
-			width: 10%;
+			width: 12%;
 			background-color: $bordeau;
 			vertical-align: middle;
 			color: $white;
@@ -1142,9 +1324,9 @@ img{
 	height: 100%;
 
 	h1{
-		color: $bordeau;
-		font-size: 18px;
-		background-color: $white;
+		color: $white;
+		font-size: 22px;
+		background-color: $bordeau;
 		width: 100%;
 		margin-bottom: 10px;
 		padding: 10px;

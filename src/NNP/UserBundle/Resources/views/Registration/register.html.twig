@@ -2,58 +2,41 @@
 {% extends "::base.html.twig" %}
 {% block title %}Homepage{% endblock %}
 
-{% block connexion %}
-    <section class="top-animation">
-        <div class="row">
-            <div class="col-xs-1"></div>
-            <div class="col-xs-2"></div>
-            <div class="col-xs-6"></div>
-            <div class="col-xs-2 text-right">
-                <div class="animation">
-                    <div class='anim texte1'></div>
-                    <div class='anim texte2'>NJOKA</div>
-                    <div class='anim texte3'>AMOUR</div>
-                    <div class='anim texte4'>MODE</div>
-                    <div class='anim texte5'>RELIGION</div>
-                    <div class='anim texte6'>KWATT</div>
-                    <div class='anim texte7'>CARRIERE</div>
-                </div>
-            </div>
-            <div class="col-xs-1"></div>
-        </div>
-    </section> 
-    <section class="top-connexion">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-2"></div>
-            <div class="col-md-4"></div>
-            <div class="col-md-4 text-right"> 
-              <div class="connexion register">
-                  <div class="newlog">Inscription</div>
-                  <div class="loggin">
+{% block slide %}
+  <div class="back-register">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-5 ">
+          <div class="titre-register"><span class="glyphicon glyphicon-user"></span>Vous êtes à quelques minutes de ne plus ndem ...</div> 
+          <div class="connexion register">
+              <div class="newlog">Inscription</div>
+              <div class="loggin">
 
-                    {# On affiche les messages flash que définissent les contrôleurs du bundle #}
-                    {% for key, messages in app.session.flashbag.all() %}
-                      {% for message in messages %}
-                        <div class="alert alert-{{ key }}">
-                          {{ message|trans({}, 'FOSUserBundle') }}
-                        </div>
-                      {% endfor %}
-                    {% endfor %}
-                    {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
-                    {% block fos_user_content %}
-                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-              			    {{ form_widget(form) }}
-              			    <div>
-              			        <input type="submit" value="{{ 'Enregister'|trans }}" />
-              			    </div>
-              			{{ form_end(form) }}
-                    {% endblock fos_user_content %}
+                {# On affiche les messages flash que définissent les contrôleurs du bundle #}
+                {% for key, messages in app.session.flashbag.all() %}
+                  {% for message in messages %}
+                    <div class="alert alert-{{ key }}">
+                      {{ message|trans({}, 'FOSUserBundle') }}
+                    </div>
+                  {% endfor %}
+                {% endfor %}
+                {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
+                {% block fos_user_content %}
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                    {{ form_widget(form) }}
+                    <div>
+                        <input type="submit" value="{{ 'Enregister'|trans }}" />
+                    </div>
+                {{ form_end(form) }}
+                {% endblock fos_user_content %}
 
-                  </div>
               </div>
-            </div>
+          </div>
         </div>
-    </section>
-
+        <div class="col-md-2"></div>
+    </div>
+  </div>
 {% endblock %}
+
+

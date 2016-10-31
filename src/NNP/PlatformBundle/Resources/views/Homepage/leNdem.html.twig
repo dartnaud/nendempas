@@ -30,6 +30,12 @@
                     	</i>
                     </p>
 					<p class="texte">{{ ndem.texte|raw }}</p>
+					{% if ndem.firstphoto != null or ndem.firstphoto != '' %}
+						<p><img src="{{ asset('uploads/images/photoNdem/' ~ ndem.firstphoto) }}" width="100%" /></p>
+					{% endif %}
+					{% if ndem.secondphoto != null or ndem.secondphoto != '' %}
+						<p><img src="{{ asset('uploads/images/photoNdem/' ~ ndem.secondphoto) }}" width="100%" /></p>
+					{% endif %}
 					
 					{# <p class="nrbCom"><span>{{ comments|length }} </span><span class="intitule">commentaire(s)</span> | <span>{{ nbrCoach }} reaction(s) de coach(s) </span></p> #}
 				</div>

@@ -9,6 +9,7 @@ imports:
 parameters:
     locale: fr
     photoprofil_directory: '%kernel.root_dir%/../web/uploads/images/photoProfil'
+    photondem_directory: '%kernel.root_dir%/../web/uploads/images/photoNdem'
 
 fos_user:
     db_driver: orm

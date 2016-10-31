@@ -46,7 +46,7 @@ class HomepageController extends Controller
       foreach ($mesFollowers as $key => $value) {
         $tabFollowerUser[] = $value->getIdFollower();
       }
-      
+
       $membreAsuivre = array();
 
       if($listMembre){
@@ -397,7 +397,7 @@ class HomepageController extends Controller
           $followersUser[] = $follower;
         }//var_dump($followersUser); exit();
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profilVisite.html.twig', array('nbrNdem'=>$nbrNdem, 'nbrCom'=>$nbrCom,'idVisiteur' => $idVisiteur,'user'=>$user, 'followers' => $followersUser));
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profilVisite.html.twig', array('nbrNdem'=>$nbrNdem,'listeNdem'=>$listeNdem, 'nbrCom'=>$nbrCom,'idVisiteur' => $idVisiteur,'user'=>$user, 'followers' => $followersUser));
         return new Response($content);
     }
 
@@ -587,12 +587,62 @@ class HomepageController extends Controller
         $ndemPost = new Ndem();
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $ndemPost)
           ->add('texte', TextareaType::class, array('attr'=>array('placeholder'=>'Ecris un nouveau ndem dans cette catégorie')))
+          ->add('firstphoto', FileType::class, array(
+            'label'=>'image 1',
+            'required'=>false, 
+            'data_class'=>null,
+            'attr'=>array(
+              'class'=>'filestyle',
+              'data-classButton'=>'btn btn-primary',
+              'data-input'=>'false',
+              'data-classIcon'=>'icon-plus',
+              'data-buttonText' =>"",
+              "data-iconName" =>"glyphicon glyphicon-picture"
+              )
+          ))
+          ->add('secondphoto', FileType::class, array(
+            'label'=>'image 2',
+            'required'=>false, 
+            'data_class'=>null,
+            'attr'=>array(
+              'class'=>'filestyle',
+              'data-classButton'=>'btn btn-primary',
+              'data-input'=>'false',
+              'data-classIcon'=>'icon-plus',
+              'data-buttonText' =>"",
+              "data-iconName" =>"glyphicon glyphicon-picture"
+              )
+          ))
           ->add('save', SubmitType::class, array('label'=>'Poster'))
         ;
         $form = $formBuilder->getForm();
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) { 
         //var_dump($form->getData()); exit();
+
+          $firstphoto = $form['firstphoto']->getData(); 
+          if (isset($firstphoto)){
+              $firstphoto = $ndemPost->getFirstphoto();
+              $photoname1 = md5(uniqid()).'.'.$firstphoto->guessExtension();
+              $firstphoto->move(
+                    $this->getParameter('photondem_directory'),
+                    $photoname1
+                );
+
+              $ndemPost->setFirstphoto($photoname1); 
+          }
+
+          $secondphoto = $form['secondphoto']->getData(); 
+          if (isset($secondphoto)){
+              $secondphoto = $ndemPost->getSecondphoto();
+              $photoname2 = md5(uniqid()).'.'.$secondphoto->guessExtension();
+              $secondphoto->move(
+                    $this->getParameter('photondem_directory'),
+                    $photoname2
+                );
+
+              $ndemPost->setSecondphoto($photoname2); 
+          }
 
           $ndemPost->setUser($this->getUser());
           $ndemPost->setCategorie($idcat);

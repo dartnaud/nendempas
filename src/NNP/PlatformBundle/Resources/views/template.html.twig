@@ -7,47 +7,25 @@
 {% endblock %}
 {% block photoConnecte %}
     <li >
-        <div class="photoConnecte">
-            {% if app.user.photo != null or app.user.photo != '' %}
-                <a href="{{ path('nnp_platform_profil') }}"><img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" height="102px" /></a>
-            {% else %}
-                <a href="{{ path('nnp_platform_profil') }}"><img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" height="102px" /></a>
-            {% endif %}
-        </div>
+        <a href="{{ path('nnp_platform_profil') }}">
+            <div class="photoConnecte" style=" 
+                    {% if app.user.photo != null or app.user.photo != '' %}
+                    background-image: url('{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}');
+                    {% else %}
+                    background-image: url('{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}');
+                    {% endif %} 
+                    ">
+                {# {% if app.user.photo != null or app.user.photo != '' %}
+                    <a href="{{ path('nnp_platform_profil') }}"><img src="{{ asset('uploads/images/photoProfil/' ~ app.user.photo) }}" height="102px" /></a>
+                {% else %}
+                    <a href="{{ path('nnp_platform_profil') }}"><img src="{{ asset('bundles/nnpplatform/images/profil_homme.jpg' ) }}" height="102px" /></a>
+                {% endif %} #}
+            </div>
+        </a>
     </li>
 {% endblock %}
 
 {% block bande %}
-{# <div class="container-fluid">
-	<section class="bande">
-		<div class="row">
-			<div class="col-md-1"></div>
-            <div class="col-md-8 menu-central">
-            	
-            </div>
-            <div class="col-md-2 menu-user">
-                <div class="info-user">
-                {% block menuUser %}
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown"> 
-                            <a data-toggle="dropdown" href="#">{{ app.user.username }}  <b class="caret"></b></a>
-                            <ul class="dropdown-menu jqueryFadeIn">
-                                <li><a href="{{ path('nnp_platform_profil') }}">Mon profil</a></li>
-                                <li><a href="{{ path('nnp_platform_mesNdems') }}">Consulter mes ndems</a></li>
-                                <li><a href="{{ path('nnp_platform_creerNdem') }}">Créer un ndem</a></li>
-                                <li><a href="{{ path('nnp_platform_modifierPassword') }}">Modifier le mot de passe</a></li>        
-                                <li class="divider"></li>
-                                <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-                            </ul>
-                        </li> 
-                    </ul>
-                    {% endblock %}
-                </div>
-            </div>
-            <div class="col-md-1"></div>
-		</div>
-	</section>
-</div> #}
 {% endblock %}
 
 {% block bigBody %}

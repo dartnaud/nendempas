@@ -2,7 +2,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 5, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,45 +24,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -150,12 +150,11 @@ img {
 .top-header .reseaux .info-user .nav li a {
   color: #ffffff;
   padding-top: 0px;
-}
-/* line 84, ../sass/main.scss */
-.top-header .reseaux .info-user .nav li a:hover {
-  color: #ffffff;
-  background: none;
-  font-size: 30px;
+  /* &:hover{
+  	color: $white;
+  	background: none;
+  	/* font-size: 30px; 
+  } */
 }
 /* line 93, ../sass/main.scss */
 .top-header .reseaux .info-user .connect li {
@@ -1523,7 +1522,7 @@ img {
 
 /* line 924, ../sass/main.scss */
 .zone-ndem {
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   margin-top: 20px;
   background-color: #ffffff;
   -moz-border-radius: 15px;
@@ -1550,7 +1549,7 @@ img {
 }
 /* line 946, ../sass/main.scss */
 .zone-ndem .nd.msg-ndem .texte-ndem {
-  background-color: #e3e1e1;
+  /* background-color: $grisClair; */
   padding: 10px;
   color: #000000;
   margin-left: 15px;
@@ -1594,16 +1593,16 @@ img {
   border-color: #40affc;
 }
 
-/* line 991, ../sass/main.scss */
+/* line 993, ../sass/main.scss */
 .bloc-ndem {
   padding: 10px;
 }
-/* line 993, ../sass/main.scss */
+/* line 995, ../sass/main.scss */
 .bloc-ndem .ndem {
   padding: 10px;
   border: 1px solid #e3e1e1;
 }
-/* line 997, ../sass/main.scss */
+/* line 999, ../sass/main.scss */
 .bloc-ndem .ndem .categorie {
   color: #fa4a6b;
   font-size: 18px;
@@ -1612,7 +1611,7 @@ img {
   font-family: 'Baloo Bhaina', cursive;
   padding: 10px;
 }
-/* line 1006, ../sass/main.scss */
+/* line 1008, ../sass/main.scss */
 .bloc-ndem .ndem .titre {
   background-color: #5BC0DE;
   padding: 5px;
@@ -1620,7 +1619,7 @@ img {
   font-family: 'Baloo Bhaina', cursive;
   padding-top: 13px;
 }
-/* line 1014, ../sass/main.scss */
+/* line 1016, ../sass/main.scss */
 .bloc-ndem .ndem .date {
   background-color: #5BC0DE;
   color: #ffffff;
@@ -1629,17 +1628,17 @@ img {
   padding-right: 5px;
   padding-bottom: 5px;
 }
-/* line 1023, ../sass/main.scss */
+/* line 1025, ../sass/main.scss */
 .bloc-ndem .ndem p {
   padding: 15px;
   background-color: #ffffff;
 }
-/* line 1029, ../sass/main.scss */
+/* line 1031, ../sass/main.scss */
 .bloc-ndem .ndem .info-ndem {
   text-align: right;
   background-color: #ffffff;
 }
-/* line 1033, ../sass/main.scss */
+/* line 1035, ../sass/main.scss */
 .bloc-ndem .ndem .info-ndem .commentaire {
   font-style: italic;
   margin-right: 5px;
@@ -1647,12 +1646,12 @@ img {
   color: #fa4a6b;
   font-family: 'Baloo Bhaina', cursive;
 }
-/* line 1041, ../sass/main.scss */
+/* line 1043, ../sass/main.scss */
 .bloc-ndem .ndem .info-ndem button {
   margin: 5px;
 }
 
-/* line 1049, ../sass/main.scss */
+/* line 1051, ../sass/main.scss */
 .profil .sidebar {
   border-right: 7px solid #414d54;
   padding: 20px;
@@ -1664,7 +1663,7 @@ img {
   -o-box-shadow: 0px 4px 9px 0px #656565;
   box-shadow: 0px 4px 9px 0px #656565;
 }
-/* line 1057, ../sass/main.scss */
+/* line 1059, ../sass/main.scss */
 .profil .sidebar .photo {
   width: 215px;
   height: 215px;
@@ -1675,11 +1674,11 @@ img {
   -o-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 1065, ../sass/main.scss */
+/* line 1067, ../sass/main.scss */
 .profil .sidebar p {
   margin-bottom: 10px;
 }
-/* line 1069, ../sass/main.scss */
+/* line 1071, ../sass/main.scss */
 .profil .sidebar button {
   padding: 10px;
   width: 100%;
@@ -1690,11 +1689,11 @@ img {
   margin-bottom: 20px;
   margin-bottom: 10px;
 }
-/* line 1078, ../sass/main.scss */
+/* line 1080, ../sass/main.scss */
 .profil .sidebar button:hover {
   background-color: #fa4a6b;
 }
-/* line 1083, ../sass/main.scss */
+/* line 1085, ../sass/main.scss */
 .profil .sidebar h1 {
   color: #fa4a6b;
   font-size: 18px;
@@ -1703,17 +1702,17 @@ img {
   margin-bottom: 10px;
   padding: 5px;
 }
-/* line 1092, ../sass/main.scss */
+/* line 1094, ../sass/main.scss */
 .profil .sidebar .liens {
   margin-top: 100px;
 }
-/* line 1096, ../sass/main.scss */
+/* line 1098, ../sass/main.scss */
 .profil .sidebar .identite {
   margin: 10px 0;
   color: #ffffff;
   font-size: 20px;
 }
-/* line 1100, ../sass/main.scss */
+/* line 1102, ../sass/main.scss */
 .profil .sidebar .identite .nom {
   background-color: #fa4a6b;
   padding: 10px;
@@ -1724,7 +1723,7 @@ img {
   width: inherit;
   text-transform: capitalize;
 }
-/* line 1110, ../sass/main.scss */
+/* line 1112, ../sass/main.scss */
 .profil .sidebar .identite .biographie {
   background-color: #fa4a6b;
   padding: 8px;
@@ -1733,26 +1732,26 @@ img {
   color: #ffffff;
   width: inherit;
 }
-/* line 1119, ../sass/main.scss */
+/* line 1121, ../sass/main.scss */
 .profil .sidebar .identite .follower {
   padding: 15px 0;
   padding-bottom: 10px;
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
   color: #fa4a6b;
 }
-/* line 1126, ../sass/main.scss */
+/* line 1128, ../sass/main.scss */
 .profil .sidebar .identite .description {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 16px;
   text-align: justify;
 }
-/* line 1133, ../sass/main.scss */
+/* line 1135, ../sass/main.scss */
 .profil .sidebar .identite .intitule {
   font-family: 'Oswald', sans-serif;
   color: #adadad;
 }
-/* line 1139, ../sass/main.scss */
+/* line 1141, ../sass/main.scss */
 .profil .sidebar .info p {
   margin-top: 10px;
   color: #fa4a6b;
@@ -1761,11 +1760,11 @@ img {
   margin-bottom: 10px;
   padding: 5px;
 }
-/* line 1147, ../sass/main.scss */
+/* line 1149, ../sass/main.scss */
 .profil .sidebar .info p .chiffre {
   margin-right: 10px;
 }
-/* line 1154, ../sass/main.scss */
+/* line 1156, ../sass/main.scss */
 .profil .center {
   min-height: 700px;
   height: 100%;
@@ -1776,13 +1775,13 @@ img {
   -o-box-shadow: 0px 4px 9px 0px #656565;
   box-shadow: 0px 4px 9px 0px #656565;
 }
-/* line 1157, ../sass/main.scss */
+/* line 1159, ../sass/main.scss */
 .profil .center.profil .mesNdems {
   margin-top: 30px;
   background-color: #e3e1e1;
   padding: 10px;
 }
-/* line 1168, ../sass/main.scss */
+/* line 1170, ../sass/main.scss */
 .profil .center h1 {
   padding: 10px;
   text-align: left;
@@ -1792,34 +1791,34 @@ img {
   color: #fa4a6b;
   margin-bottom: 20px;
 }
-/* line 1179, ../sass/main.scss */
+/* line 1181, ../sass/main.scss */
 .profil .center.leNdem h1 {
   background: none;
   color: #414d54;
 }
-/* line 1185, ../sass/main.scss */
+/* line 1187, ../sass/main.scss */
 .profil .center .bloc {
   display: inline-block;
   width: 45%;
 }
-/* line 1188, ../sass/main.scss */
+/* line 1190, ../sass/main.scss */
 .profil .center .bloc p {
   margin-bottom: 10px;
 }
-/* line 1190, ../sass/main.scss */
+/* line 1192, ../sass/main.scss */
 .profil .center .bloc p .chiffre {
   margin-right: 10px;
 }
-/* line 1197, ../sass/main.scss */
+/* line 1199, ../sass/main.scss */
 .profil .center .follower img {
   margin-right: 10px;
 }
-/* line 1203, ../sass/main.scss */
+/* line 1205, ../sass/main.scss */
 .profil .center .formulaire label {
   width: 30%;
 }
 
-/* line 1210, ../sass/main.scss */
+/* line 1212, ../sass/main.scss */
 .divider {
   height: 2px;
   width: 100%;
@@ -1828,16 +1827,16 @@ img {
   margin-top: 10px;
 }
 
-/* line 1218, ../sass/main.scss */
+/* line 1220, ../sass/main.scss */
 .sidebarNdem {
   background-color: #414d54;
   padding: 20px;
 }
-/* line 1221, ../sass/main.scss */
+/* line 1223, ../sass/main.scss */
 .sidebarNdem .intitule {
   color: #adadad;
 }
-/* line 1224, ../sass/main.scss */
+/* line 1226, ../sass/main.scss */
 .sidebarNdem h2 {
   padding: 10px;
   text-align: left;
@@ -1846,20 +1845,20 @@ img {
   background-color: #e3e1e1;
   color: #fa4a6b;
 }
-/* line 1232, ../sass/main.scss */
+/* line 1234, ../sass/main.scss */
 .sidebarNdem h2 a {
   color: #fa4a6b;
 }
-/* line 1237, ../sass/main.scss */
+/* line 1239, ../sass/main.scss */
 .sidebarNdem .liens {
   width: 100%;
   text-align: center;
 }
-/* line 1240, ../sass/main.scss */
+/* line 1242, ../sass/main.scss */
 .sidebarNdem .liens a {
   color: #ffffff;
 }
-/* line 1244, ../sass/main.scss */
+/* line 1246, ../sass/main.scss */
 .sidebarNdem .liens .lien {
   font-family: 'Oswald', sans-serif;
   padding: 10px;
@@ -1871,28 +1870,28 @@ img {
   margin-top: 8px;
   font-size: 20px;
 }
-/* line 1256, ../sass/main.scss */
+/* line 1258, ../sass/main.scss */
 .sidebarNdem .liens .infoAuteur {
   font-family: 'Oswald', sans-serif;
   color: #fa4a6b;
   margin-top: 7px;
 }
-/* line 1260, ../sass/main.scss */
+/* line 1262, ../sass/main.scss */
 .sidebarNdem .liens .infoAuteur a {
   color: #fa4a6b;
 }
 
-/* line 1269, ../sass/main.scss */
+/* line 1271, ../sass/main.scss */
 .leNdem {
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
   line-height: 28px;
 }
-/* line 1273, ../sass/main.scss */
+/* line 1275, ../sass/main.scss */
 .leNdem h1 {
   background: none;
   color: #000000;
 }
-/* line 1277, ../sass/main.scss */
+/* line 1279, ../sass/main.scss */
 .leNdem .date {
   width: 100%;
   text-align: right;
@@ -1901,24 +1900,24 @@ img {
   padding-bottom: 10px;
   color: #222222;
 }
-/* line 1286, ../sass/main.scss */
+/* line 1288, ../sass/main.scss */
 .leNdem .nrbCom {
   font-family: 'Oswald', sans-serif;
   color: #fa4a6b;
 }
-/* line 1291, ../sass/main.scss */
+/* line 1293, ../sass/main.scss */
 .leNdem .user {
   background-color: #40affc;
   color: #ffffff;
   padding: 5px;
 }
-/* line 1297, ../sass/main.scss */
+/* line 1299, ../sass/main.scss */
 .leNdem .userCoach {
   background-color: #fa4a6b;
   color: white;
   padding: 5px;
 }
-/* line 1301, ../sass/main.scss */
+/* line 1303, ../sass/main.scss */
 .leNdem .userCoach::before {
   content: "LE COACH";
   color: #fa4a6b;
@@ -1927,36 +1926,56 @@ img {
   margin: 10px;
   font-family: 'Oswald', sans-serif;
 }
-/* line 1311, ../sass/main.scss */
+/* line 1313, ../sass/main.scss */
 .leNdem .post {
   padding: 10px;
   border-left: 2px solid #40affc;
 }
-/* line 1316, ../sass/main.scss */
+/* line 1318, ../sass/main.scss */
 .leNdem .postCoach {
   padding: 10px;
   border-left: 2px solid #fa4a6b;
 }
 
-/* line 1322, ../sass/main.scss */
+/* line 1324, ../sass/main.scss */
+.commentListe {
+  width: 90%;
+  margin: auto;
+  background-color: #e3e1e1;
+  padding: 20px;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  moz-box-shadow: 0px 4px 10px 0px #656565;
+  -webkit-box-shadow: 0px 4px 10px 0px #656565;
+  -o-box-shadow: 0px 4px 10px 0px #656565;
+  box-shadow: 0px 4px 10px 0px #656565;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=180, Strength=10);
+}
+/* line 1336, ../sass/main.scss */
+.commentListe .leComment.leNdem {
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* line 1344, ../sass/main.scss */
 .comment {
   padding: 20px;
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
 }
-/* line 1325, ../sass/main.scss */
+/* line 1348, ../sass/main.scss */
 .comment label {
   width: 100%;
   font-weight: bold;
   margin-bottom: 10px;
   display: none;
 }
-/* line 1332, ../sass/main.scss */
+/* line 1355, ../sass/main.scss */
 .comment textarea {
   width: 100%;
   height: 90px;
   padding: 10px;
 }
-/* line 1338, ../sass/main.scss */
+/* line 1361, ../sass/main.scss */
 .comment button {
   padding: 10px;
   width: 30%;
@@ -1966,25 +1985,29 @@ img {
   margin-left: 65%;
   margin-bottom: 10px;
 }
-/* line 1347, ../sass/main.scss */
+/* line 1370, ../sass/main.scss */
 .comment button:hover {
   background-color: #40affc;
 }
-/* line 1352, ../sass/main.scss */
+/* line 1375, ../sass/main.scss */
+.comment .formComNdem {
+  display: none;
+}
+/* line 1379, ../sass/main.scss */
 .comment .leComment {
   background-color: #ffffff;
   padding: 10px;
   margin-bottom: 10px;
 }
 
-/* line 1359, ../sass/main.scss */
+/* line 1387, ../sass/main.scss */
 .liste {
   width: 100%;
   padding: 20px;
   min-height: 600px;
   height: 100%;
 }
-/* line 1366, ../sass/main.scss */
+/* line 1394, ../sass/main.scss */
 .liste h1 {
   color: #ffffff;
   font-size: 22px;
@@ -1994,56 +2017,56 @@ img {
   padding: 10px;
   font-family: 'Oswald', sans-serif;
 }
-/* line 1376, ../sass/main.scss */
+/* line 1404, ../sass/main.scss */
 .liste .bloc-ndem {
   width: 46%;
   margin-left: 20px;
   float: left;
 }
 
-/* line 1383, ../sass/main.scss */
+/* line 1411, ../sass/main.scss */
 .bande-stat {
   margin-top: 50px;
 }
-/* line 1385, ../sass/main.scss */
+/* line 1413, ../sass/main.scss */
 .bande-stat .stat {
   font-family: 'Oswald', sans-serif;
   text-align: center;
   font-size: 25px;
 }
-/* line 1391, ../sass/main.scss */
+/* line 1419, ../sass/main.scss */
 .bande-stat .stat .chf {
   color: #fa4a6b;
   font-size: 45px;
 }
 
-/* line 1398, ../sass/main.scss */
+/* line 1426, ../sass/main.scss */
 .ndemeur-recherche {
   float: left;
   margin: 20px;
   border: 10px solid #e3e1e1;
 }
-/* line 1402, ../sass/main.scss */
+/* line 1430, ../sass/main.scss */
 .ndemeur-recherche:hover {
   border: 10px solid #fa4a6b;
 }
-/* line 1404, ../sass/main.scss */
+/* line 1432, ../sass/main.scss */
 .ndemeur-recherche:hover .ndemeur-info {
   background-color: #fa4a6b;
   color: #ffffff;
 }
 
-/* line 1411, ../sass/main.scss */
+/* line 1439, ../sass/main.scss */
 .ndemeur-info {
   text-align: center;
   padding: 3px;
 }
 
-/* line 1416, ../sass/main.scss */
+/* line 1444, ../sass/main.scss */
 .topfooter {
   background-color: #222222;
 }
-/* line 1418, ../sass/main.scss */
+/* line 1446, ../sass/main.scss */
 .topfooter .icon {
   width: 30px;
   height: 30px;
@@ -2051,25 +2074,25 @@ img {
   display: inline-block;
   margin-left: 8px;
 }
-/* line 1425, ../sass/main.scss */
+/* line 1453, ../sass/main.scss */
 .topfooter .icon i {
   color: #ffffff;
   padding: 7px;
 }
-/* line 1433, ../sass/main.scss */
+/* line 1461, ../sass/main.scss */
 .topfooter .foot-menu a {
   color: #ffffff;
 }
-/* line 1435, ../sass/main.scss */
+/* line 1463, ../sass/main.scss */
 .topfooter .foot-menu a:hover {
   color: #fa4a6b;
 }
-/* line 1441, ../sass/main.scss */
+/* line 1469, ../sass/main.scss */
 .topfooter .foot-social {
   padding-top: 10px;
 }
 
-/* line 1446, ../sass/main.scss */
+/* line 1474, ../sass/main.scss */
 .footer {
   background-color: #000000;
   padding: 10px;
@@ -2077,7 +2100,7 @@ img {
   margin-bottom: 0;
 }
 
-/* line 1454, ../sass/main.scss */
+/* line 1482, ../sass/main.scss */
 #app_user_registration, .formulaire {
   padding: 20px;
   font-family: 'Inconsolata', monospace;
@@ -2087,16 +2110,16 @@ img {
     margin-top: 20px;
   }  */
 }
-/* line 1457, ../sass/main.scss */
+/* line 1485, ../sass/main.scss */
 #app_user_registration div, .formulaire div {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 1460, ../sass/main.scss */
+/* line 1488, ../sass/main.scss */
 #app_user_registration div label, .formulaire div label {
   width: 30%;
 }
-/* line 1465, ../sass/main.scss */
+/* line 1493, ../sass/main.scss */
 #app_user_registration div input, .formulaire div input {
   width: 65%;
   padding: 10px;
@@ -2105,21 +2128,21 @@ img {
   -o-box-shadow: 0px 4px 9px 0px #e3e1e1;
   box-shadow: 0px 4px 9px 0px #e3e1e1;
 }
-/* line 1471, ../sass/main.scss */
+/* line 1499, ../sass/main.scss */
 #app_user_registration div #form_categories, .formulaire div #form_categories {
   width: 65%;
   height: 150px;
   padding: 10px;
   vertical-align: top;
 }
-/* line 1478, ../sass/main.scss */
+/* line 1506, ../sass/main.scss */
 #app_user_registration div textarea, .formulaire div textarea {
   width: 65%;
   height: 200px;
   padding: 10px;
   vertical-align: top;
 }
-/* line 1485, ../sass/main.scss */
+/* line 1513, ../sass/main.scss */
 #app_user_registration div button, .formulaire div button {
   padding: 10px;
   width: 100%;
@@ -2129,4 +2152,9 @@ img {
   border: none;
   margin-bottom: 20px;
   margin-bottom: 10px;
+}
+
+/* line 1532, ../sass/main.scss */
+.bodyAdmin {
+  margin-top: 120px;
 }

@@ -81,11 +81,11 @@ img{
 				a{
 					color: $white;
 					padding-top: 0px;
-					&:hover{
+					/* &:hover{
 						color: $white;
 						background: none;
-						font-size: 30px;
-					}
+						/* font-size: 30px; 
+					} */
 				}
 			}
 
@@ -922,7 +922,7 @@ img{
 }
 
 .zone-ndem{
-	margin-bottom: 10px;
+	/* margin-bottom: 10px; */
 	margin-top: 20px;
 	background-color: $white;
 	@include border-radius(15px);
@@ -944,7 +944,7 @@ img{
 			}
 
 			.texte-ndem{
-				background-color: $grisClair;
+				/* background-color: $grisClair; */
 				padding: 10px;
 				color: $black;
 				margin-left: 15px;
@@ -987,6 +987,8 @@ img{
 		}
 	}
 }
+
+
 
 .bloc-ndem{
 	padding: 10px;
@@ -1319,7 +1321,28 @@ img{
 	}
 }
 
+.commentListe{
+	width: 90%;
+    margin: auto;
+    background-color: $grisClair;
+    padding: 20px;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	moz-box-shadow: 0px 4px 10px 0px #656565;
+    -webkit-box-shadow: 0px 4px 10px 0px #656565;
+    -o-box-shadow: 0px 4px 10px 0px #656565;
+    box-shadow: 0px 4px 10px 0px #656565;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=180, Strength=10);
+	.leComment{
+		&.leNdem{
+			background-color: $white;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+	}
+}
+
 .comment{
+	
 	padding: 20px;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
 	label{
@@ -1349,10 +1372,15 @@ img{
 		}
 	}
 
+	.formComNdem{
+		display: none;
+	}
+
 	.leComment{
 		background-color: $white;
 		padding:10px;
 		margin-bottom: 10px;
+
 	}
 }
 
@@ -1499,4 +1527,8 @@ img{
 	  margin-bottom: 20px;
 	  margin-top: 20px;
 	}  */
+}
+
+.bodyAdmin{
+	margin-top: 120px;
 }

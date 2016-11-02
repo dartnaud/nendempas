@@ -14,7 +14,9 @@
                                 <div class="info-categorie">{{ listeNdemsCarriere|length }} ndem(s) | {{ listeComCarriere }} réaction(s)</div>
                                 <div class="info-ndemeur">
                                     {% for ndemeur in ndemeurCarriere %}
+                                        {% if loop.index < 10 %}
                                         {{ ndemeur.username }} |
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>
@@ -27,7 +29,9 @@
                                 <div class="info-categorie">{{ listeNdemsNjoka|length }} ndem(s) | {{ listeComNjoka }} réaction(s)</div>
                                 <div class="info-ndemeur">
                                     {% for ndemeur in ndemeurNjoka %}
+                                        {% if loop.index < 10 %}
                                         {{ ndemeur.username }} |
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>
@@ -40,7 +44,9 @@
                                 <div class="info-categorie">{{ listeNdemsReligion|length }} ndem(s) | {{ listeComReligion }} réaction(s)</div>
                                 <div class="info-ndemeur">
                                     {% for ndemeur in ndemeurReligion %}
+                                        {% if loop.index < 10 %}
                                         {{ ndemeur.username }} |
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>
@@ -61,7 +67,9 @@
                                 <div class="info-categorie">{{ listeNdemsMode|length }} ndem(s) | {{ listeComMode }} réaction(s)</div>
                                 <div class="info-ndemeur">
                                     {% for ndemeur in ndemeurMode %}
+                                        {% if loop.index < 10 %}
                                         {{ ndemeur.username }} |
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>
@@ -74,7 +82,9 @@
                                 <div class="info-categorie">{{ listeNdemsAmour|length }} ndem(s) | {{ listeComAmour }} réaction(s)</div>
                                 <div class="info-ndemeur">
                                     {% for ndemeur in ndemeurAmour %}
+                                        {% if loop.index < 10 %}
                                         {{ ndemeur.username }} |
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>
@@ -87,7 +97,9 @@
                                 <div class="info-categorie">{{ listeNdemsKwatt|length }} ndem(s) | {{ listeComKwatt }} réaction(s)</div>
                                 <div class="info-ndemeur">
                                     {% for ndemeur in ndemeurKwatt %}
+                                        {% if loop.index < 10 %}
                                         {{ ndemeur.username }} |
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>

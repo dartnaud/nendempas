@@ -26,11 +26,7 @@ class NdemType extends AbstractType
         //$utilisateur= $this->container->get('security.context')->getToken()->getUser()->getId();
         $builder
             ->add('titre', TextType::class)
-            ->add('texte', CKEditorType::class, array(
-                'config' => array(
-                    'uiColor' => '#ffffff',
-                    //...
-                ),))
+            ->add('texte', TextareaType::class)
             ->add('statut', ChoiceType::class, array(
                 'choices'  => array(
                     'activer' => '1',

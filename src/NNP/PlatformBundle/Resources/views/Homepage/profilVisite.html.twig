@@ -53,14 +53,39 @@
 				            		
 								</div>
 			            		<div class="titre-ndem">{{ ndem.titre }}</div>
-			            		<div class="texte-ndem">{{ ndem.texte|striptags|slice(0, 180)  }}</div>
+			            		<div class="texte-ndem">{{ ndem.texte|striptags }}</div>
+			            		{% if ndem.firstphoto != null or ndem.firstphoto != '' %}
+									<div><img src="{{ asset('uploads/images/photoNdem/' ~ ndem.firstphoto) }}" width="100%" /></div>
+								{% endif %}
+								{% if ndem.secondphoto != null or ndem.secondphoto != '' %}
+									<div><img src="{{ asset('uploads/images/photoNdem/' ~ ndem.secondphoto) }}" width="100%" /></div>
+								{% endif %}
 			            	</div>
 			            	<div class="nd btn-ndem">
 			            		<button onclick="location.href='{{ path('nnp_platform_leNdem', {id: ndem.id}) }}';" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Voir +</button>
 			            	</div>
 			            	<div class="clear"></div>
 			            </div>
-
+			            <div class="commentListe">
+					
+							{% for comment in listeCom %}
+								{% if comment.ndem.id == ndem.id and loop.index < 10 %}
+									<div class="leComment leNdem">
+										{# <div class="date">{{ comment.dateCreation|date('d/m/Y h:i') }}</div> #}
+										{% if comment.user.profil != 'COACH' %}
+											<div class="user">{{ comment.dateCreation|date('d/m/Y') }} | <b>{{ comment.user }}</b> </div>
+											<div class="post">{{ comment.commentaire }}</div>
+										{% else %}
+											<div class="userCoach">{{ comment.dateCreation|date('d/m/Y') }} | <b>{{ comment.user }}</b></div>
+											<div class="postCoach">{{ comment.commentaire }}</div>
+										{% endif %}
+									</div>
+								{% endif %}
+							{% endfor %}
+							{# <div >
+			                  {{ form(formCom) }}
+			                </div> #}
+						</div>
 						{% endfor %}
 					{% else %}
 						<p>{{ user.username }} n'a pas encore ndem !</p>

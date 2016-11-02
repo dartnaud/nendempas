@@ -384,6 +384,9 @@ class HomepageController extends Controller
         $listeCom = $em->getRepository('NNPPlatformBundle:Commentaire')->findByUser($idVisiteur);
         $nbrCom = sizeof($listeCom);
 
+        $repoCom = $em->getRepository('NNPPlatformBundle:Commentaire');
+        $listeCom = $repoCom->findAll();
+
         $user = $em->getRepository('NNPPlatformBundle:User')
                    ->findOneBy(array('id'=>$idVisiteur)); 
 
@@ -397,7 +400,7 @@ class HomepageController extends Controller
           $followersUser[] = $follower;
         }//var_dump($followersUser); exit();
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profilVisite.html.twig', array('nbrNdem'=>$nbrNdem,'listeNdem'=>$listeNdem, 'nbrCom'=>$nbrCom,'idVisiteur' => $idVisiteur,'user'=>$user, 'followers' => $followersUser));
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profilVisite.html.twig', array('nbrNdem'=>$nbrNdem,'listeNdem'=>$listeNdem, 'nbrCom'=>$nbrCom,'listeCom'=>$listeCom,'idVisiteur' => $idVisiteur,'user'=>$user, 'followers' => $followersUser));
         return new Response($content);
     }
 
@@ -411,6 +414,8 @@ class HomepageController extends Controller
         $listeCom = $em->getRepository('NNPPlatformBundle:Commentaire')->findByUser($this->getUser());
         $nbrCom = sizeof($listeCom);
 
+        $repoCom = $em->getRepository('NNPPlatformBundle:Commentaire');
+        $listeCom = $repoCom->findAll();
 
         $user = $em->getRepository('NNPPlatformBundle:User')
                    ->find($this->getUser()->getId()); 
@@ -496,7 +501,7 @@ class HomepageController extends Controller
           return $this->redirectToRoute('nnp_platform_profil');
         }
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profil.html.twig', array('nbrNdem'=>$nbrNdem,'listeNdem'=>$listeNdem, 'nbrCom'=>$nbrCom, 'followers' => $followersUser, 'form'=>$form->createView() ));
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:profil.html.twig', array('nbrNdem'=>$nbrNdem,'listeNdem'=>$listeNdem, 'nbrCom'=>$nbrCom,'listeCom'=>$listeCom, 'followers' => $followersUser, 'form'=>$form->createView() ));
         return new Response($content);
     }
 
@@ -663,13 +668,16 @@ class HomepageController extends Controller
         
         $categorie = $request->query->get('nom');
         
-        
+        $em = $this->getDoctrine()->getManager();
 
-        $repoCat = $this->getDoctrine()->getManager()->getRepository('NNPPlatformBundle:Categorie');
+        $repoCat = $em->getRepository('NNPPlatformBundle:Categorie');
         $idcat = $repoCat->findOneBy(array('nom'=>$categorie)); 
 
-        $repo = $this->getDoctrine()->getManager()->getRepository('NNPPlatformBundle:Ndem');
+        $repo = $em->getRepository('NNPPlatformBundle:Ndem');
         $listeNdems = $repo->findByCategorie($idcat);
+
+        $repoCom = $em->getRepository('NNPPlatformBundle:Commentaire');
+        $listeCom = $repoCom->findAll(); //var_dump($listeCom); exit();
 
         $ndemPost = new Ndem();
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $ndemPost)
@@ -742,6 +750,8 @@ class HomepageController extends Controller
           return $this->redirectToRoute('nnp_platform_liste', array('nom'=>$categorie));
         }
 
+
+
         $em = $this->getDoctrine()->getManager();
         $idfollower = $request->query->get('idAFollow');
 
@@ -756,7 +766,9 @@ class HomepageController extends Controller
           //path('nnp_platform_profilVisite', {'idVisiteur': ndem.user.id })
         }
 
-        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:liste.html.twig', array('listeNdems' => $listeNdems,'categorie'=> $categorie, 'form'=>$form->createView() ));
+        
+
+        $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:liste.html.twig', array('listeNdems' => $listeNdems,'categorie'=> $categorie,'listeCom'=>$listeCom, 'form'=>$form->createView() ));
         return new Response($content);
 
     }
@@ -808,5 +820,111 @@ class HomepageController extends Controller
 
       $content = $this->get('templating')->render('NNPPlatformBundle:Homepage:ndemeur.html.twig', array('ndemeurs'=>$ndemeurs));
       return new Response($content);
+    }
+
+    public function commentaireListeAction(Request $request, $ndem){
+        
+
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('NNPPlatformBundle:Ndem');
+        $ndem = $repo->findOneById($ndem);
+
+        $comment = new Commentaire();
+        $comment->setNdem($ndem);
+
+        $formBuilderCom = $this->get('form.factory')->createBuilder(FormType::class, $comment)
+            ->add('commentaire', TextareaType::class, array('attr'=>array('placeholder'=>'Votre commentaire')))
+            ->add('ndem')
+            ->add('save', SubmitType::class, array('label'=>'Poster'));
+
+        $formCom = $formBuilderCom->getForm();
+
+
+        return $this->render('NNPPlatformBundle:Homepage:commentaireListe.html.twig', array(
+            'formCom'=>$formCom->createView(),'ndem'=>$ndem
+        ));
+    }
+
+    public function commentaireListe2Action(Request $request, $ndem){
+        
+
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('NNPPlatformBundle:Ndem');
+        $ndem = $repo->findOneById($ndem);
+
+        $comment = new Commentaire();
+        $comment->setNdem($ndem);
+
+        $formBuilderCom = $this->get('form.factory')->createBuilder(FormType::class, $comment)
+            ->add('commentaire', TextareaType::class, array('attr'=>array('placeholder'=>'Votre commentaire')))
+            ->add('ndem')
+            ->add('save', SubmitType::class, array('label'=>'Poster'));
+
+        $formCom = $formBuilderCom->getForm();
+
+
+        return $this->render('NNPPlatformBundle:Homepage:commentaireListe2.html.twig', array(
+            'formCom'=>$formCom->createView(),'ndem'=>$ndem
+        ));
+    }
+
+    
+
+    public function commentaireListeTempAction(Request $request){
+        
+
+        $comment = new Commentaire();
+
+        $formBuilderCom = $this->get('form.factory')->createBuilder(FormType::class, $comment)
+            ->add('commentaire', TextareaType::class, array('attr'=>array('placeholder'=>'Votre commentaire')))
+            ->add('ndem')
+            ->add('save', SubmitType::class, array('label'=>'Poster'));
+
+        $formCom = $formBuilderCom->getForm();
+
+        if ($request->isMethod('POST') && $formCom->handleRequest($request)->isValid()) { 
+
+          $categorie = $formCom['ndem']->getData()->getCategorie()->getNom(); 
+
+          $comment->setUser($this->getUser());
+
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($comment);
+          $em->flush();
+
+          //$request->getSession()->getFlashBag()->add('notice', 'Merci pour votre commentaire.');
+
+          return $this->redirectToRoute('nnp_platform_liste', array('nom'=>$categorie));
+        }
+
+    }
+
+    public function commentaireListeTemp2Action(Request $request){
+        
+
+        $comment = new Commentaire();
+
+        $formBuilderCom = $this->get('form.factory')->createBuilder(FormType::class, $comment)
+            ->add('commentaire', TextareaType::class, array('attr'=>array('placeholder'=>'Votre commentaire')))
+            ->add('ndem')
+            ->add('save', SubmitType::class, array('label'=>'Poster'));
+
+        $formCom = $formBuilderCom->getForm();
+
+        if ($request->isMethod('POST') && $formCom->handleRequest($request)->isValid()) { 
+
+          $categorie = $formCom['ndem']->getData()->getCategorie()->getNom(); 
+
+          $comment->setUser($this->getUser());
+
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($comment);
+          $em->flush();
+
+          //$request->getSession()->getFlashBag()->add('notice', 'Merci pour votre commentaire.');
+
+          return $this->redirectToRoute('nnp_platform_profil');
+        }
+
     }
 }

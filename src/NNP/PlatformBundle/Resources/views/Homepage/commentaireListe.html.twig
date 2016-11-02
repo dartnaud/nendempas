@@ -1,0 +1,9 @@
+{# {{ form(formCom) }}
+ #}
+{{ form_start(formCom, {'action':path('nnp_platform_commentaireListeTemp'),'attr': {'class': 'form-horizontal'}}) }}
+{{ form_errors(formCom) }}
+{{ form_row(formCom.commentaire) }}
+{{ form_row(formCom.ndem, {'attr': {'class': 'formComNdem'}}) }}
+{{ form_rest(formCom) }}
+{{ form_widget(formCom.save, {'attr': {'class': 'btn btn-primary'}}) }}
+{{ form_end(formCom) }}

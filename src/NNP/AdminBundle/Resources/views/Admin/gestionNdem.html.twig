@@ -13,8 +13,8 @@
 </ul>
 {% endblock %}
 
-{% block body %}
-<div class="container-fluid">
+{% block bodyAdmin %}
+<div class="container-fluid bodyAdmin">
 	<section class="profil">
 		<div class="row">
 			<div class="col-md-1"></div>
@@ -41,9 +41,7 @@
 									<td>{{ ndem.texte|striptags|slice(0,120) }}</td>
 									<td>{{ ndem.dateCreation|date('d-m-Y H:i') }}</td>
 									<td>
-										{% for categorie in ndem.categories %}
-			                    			{{ categorie }} |
-			                    		{% endfor %}
+										{{ ndem.categorie }} 
 			                    	</td>
 									<td>{{ ndem.user }}</td>
 									<td>

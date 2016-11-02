@@ -58,4 +58,19 @@ nnp_platform_ndemeur:
     defaults:  
         _controller: NNPPlatformBundle:Homepage:ndemeur
 
+nnp_platform_commentaireListeTemp:
+    path:     /commentaire-liste
+    defaults:  
+        _controller: NNPPlatformBundle:Homepage:commentaireListeTemp
+
+nnp_platform_commentaireListeTemp2:
+    path:     /commentaire-liste2
+    defaults:  
+        _controller: NNPPlatformBundle:Homepage:commentaireListeTemp2
+
+nnp_platform_commentaireListeTemp3:
+    path:     /commentaire-liste3
+    defaults:  
+        _controller: NNPPlatformBundle:Homepage:commentaireListeTemp3
+
 
